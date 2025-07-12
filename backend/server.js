@@ -11,7 +11,7 @@ import { Regis } from "./models/Regis.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-// import {ClubPOJO} from './models/Seed.js'
+// import ClubPOJO from './models/Seed.js'
 import { Club } from "./models/Club.js";
 import Clubroutes from "./routes/ClubRoutes.js";
 import SearchRoute from "./routes/SearchRoute.js";
@@ -33,7 +33,14 @@ await mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 // Connect to MongoDB
-
+app.get('/api/test', async (req, res) => {
+  try {
+    const collections = await mongoose.connection.db.listCollections().toArray();
+    res.json({ message: 'Database working ✅', collections });
+  } catch (err) {
+    res.status(500).json({ message: 'Database not responding ❌', error: err });
+  }
+});
 // Signup route
 app.post("/api/signup", async (req, res) => {
   const { name, email, password } = req.body;
