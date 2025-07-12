@@ -257,6 +257,10 @@ app.get("/", (req, res) => {
   res.send("Hello from backend"); // for root '/'
 });
 
+app.get("/api/ping", (req, res) => {
+  res.json("backend is running fine"); 
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import {React,useState} from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import iiti from '../Images/iiti.png';
 import { useParams } from 'react-router-dom';
@@ -9,6 +11,7 @@ function Announce() {
   const club_name=decodeURIComponent(clubname);
   const navigate = useNavigate();
   const [announcelogo,setannouncelogo]=useState(iiti);
+  const clubpages=[{clubname:club_name,announcelogo:announcelogo}]
   const [logininfo, setlogininfo] = useState({
     clubname: club_name,
     heading: "",
