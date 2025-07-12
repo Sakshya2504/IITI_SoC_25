@@ -26,7 +26,7 @@ app.use("/api/clubs", Clubroutes);
 
 // Connect to MongoDB with the validation using Mongoose
 
-await mongoose.connect("mongodb://localhost:27017/todo", {});
+// await mongoose.connect("mongodb://localhost:27017/todo", {});
 
 await mongoose
   .connect("mongodb://localhost:27017/todo", {})
@@ -66,7 +66,7 @@ app.post("/api/signup", async (req, res) => {
     if (err.name === "ValidationError") {
       return res.status(400).json({ message: err.message });
     }
-    res.status(500).json({ message: "Something went wrong" });
+    res.status(500).json({ message: "Something went wrong",err });
   }
 });
 
