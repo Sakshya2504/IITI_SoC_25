@@ -23,7 +23,7 @@ await mongoose.connect("mongodb://localhost:27017/todo", {
 
 // Signup route
 app.post('/api/signup', async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, userphoto } = req.body;
 
     try {
         const existingUser = await User.findOne({ email });
@@ -37,12 +37,13 @@ app.post('/api/signup', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, saltRounds); 
 
         // Store hashed password
-        const newUser = new User({ name, email, password: hashedPassword }); 
+        const newUser = new User({ name, email, password: hashedPassword, userphoto }); 
         await newUser.save();
 
         res.status(201).json({ message: 'User registered successfully!',user: {
         name: name,
-        email: email
+        email: email,
+        userphoto:userphoto
       } });
     } catch (err) {
         if (err.name === 'ValidationError') {
@@ -71,7 +72,8 @@ app.post('/api/login', async (req, res) => {
 
         res.json({ message: 'Login successful!',user: {
         name: user.name,
-        email: user.email
+        email: user.email,
+        userphoto:user.userphoto
       } });
     } catch (err) {
       console.error(err);
@@ -84,13 +86,14 @@ app.post('/api/login', async (req, res) => {
 app.post('/announce', async (req, res) => {
     console.log("Incoming body:", req.body);
     try {
-        const { clubname, heading, info } = req.body;
+        const { clubname, heading, info ,announcelogo} = req.body;
 
         // Create and save the new announcement
         const newAnnounce = new Announce_({
             clubname,
             heading,
-            info
+            info,
+            announcelogo
         });
 
         await newAnnounce.save();
@@ -117,14 +120,15 @@ app.get('/notification', async (req, res) => {
 app.post('/Createevent', async (req, res) => {
     console.log("Incoming body:", req.body);
     try {
-        const { EventName, EventDateAndTime, ConductedBy, EventInfo } = req.body;
+        const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo} = req.body;
 
         // Create and save the new event
         const newEvent = new event_({
             EventName,
             EventDateAndTime,
             ConductedBy,
-            EventInfo
+            EventInfo,
+            Eventlogo
         });
 
         await newEvent.save();

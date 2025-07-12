@@ -1,5 +1,4 @@
 import './Notification.css';
-import image from '../Images/image.png';
 import { useEffect, useState } from 'react';
 
 
@@ -24,7 +23,7 @@ export default function Notification() {
 
         // Augment each announcement with a static image
         const filled = data.map(ann => ({
-          anouncment_photo: image,
+          anouncment_photo: ann.announcelogo,
           anouncement_heading: ann.heading,
           anouncment_info: ann.info
         }));
