@@ -31,6 +31,10 @@ import { useParams } from 'react-router-dom';
         const reader= new FileReader();
         reader.onloadend=()=>{
           seteventlogo(reader.result);
+          setlogininfo(prev => ({
+        ...prev,
+        Eventlogo: reader.result   
+      }));
         }
         reader.readAsDataURL(file);
       }
