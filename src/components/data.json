@@ -172,7 +172,7 @@
     "name": "IVDC",
     "heading": "Intelligent Vehicle Design Club",
     "info": "IVDC focuses on smart vehicle technology, automation, and robotics integration.",
-    "logo": "/_next/static/media/IVDC Club 20230426_231624.82624cc9.jpg",
+    "logo": "/Club-logo/IVDC.png",
     "clubHead": [],
     "social": [
       {
@@ -188,7 +188,7 @@
     "name": "Robotics Club",
     "heading": "Mechanical and Robotics Engineering",
     "info": "The Robotics Club builds and programs robots for national and international competitions.",
-    "logo": "/_next/static/media/ROBOTICS CLUB_.b09d9280.jpg",
+    "logo": "/Club-logo/Robotics.png",
     "clubHead": [],
     "social": [
       {
@@ -204,7 +204,7 @@
     "name": "The Programming Club",
     "heading": "Competitive Programming & Software Dev",
     "info": "The Programming Club helps students with problem solving, DSA, and CP contests.",
-    "logo": "/_next/static/media/Pclub.0526228d.png",
+    "logo": "/Club-logo/Pclub.png",
     "clubHead": [],
     "social": [
       {
@@ -220,7 +220,7 @@
     "name": "Aaina Club",
     "heading": "Dramatics and Theatre",
     "info": "Aaina Club is IIT Indore’s dramatics club known for plays, street performances and theatrical arts.",
-    "logo": "/_next/static/media/aaina_logo.e8006f82.png",
+    "logo": "/Club-logo/aaina_logo.png",
     "clubHead": [],
     "social": [
       {
