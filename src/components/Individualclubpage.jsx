@@ -6,6 +6,7 @@ import "./Individualclubpage.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+
 import exampleImage from "../Images/image.png"; // relative to Events.jsx
 import insta from "../Images/Insta.png";
 import linkedIn from "../Images/linkedIn.png";
