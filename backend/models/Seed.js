@@ -1,140 +1,197 @@
 import mongoose from 'mongoose';
-// import dotenv from 'dotenv';
-import { Club } from './Club.js'; // ensure correct path
-// import path from 'path';
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
+import { Club } from './Club.js'; // Ensure correct path
+import process from 'process';
 dotenv.config();
-// dotenv.config({ path: path.resolve('../.env') });
 
 const seedClubs = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/todo") || process.env.MONGO_URL;
+    const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/todo";
+    await mongoose.connect(MONGO_URL);
     console.log("✅ Connected to MongoDB");
+
     await Club.deleteMany({});
 
-
     const ClubPOJO = [
+      
+  {
+    "name": "Astronomy Club",
+    "heading": "Stargazing & Astronomy",
+    "info": "Astronomy Club promotes interest in celestial phenomena and organizes stargazing events.",
+    "logo": "/_next/static/media/The_Astronomy_Club.c81e4bb1.jpg",
+    "clubHead": [
       {
-        // _id : 'Aaina',
-        name: 'Aaina',
-        heading: 'Dramatics Club of IITI',
-        info: 'Aaina is the dramatics club of IITI. It conducts plays, nukkad nataks and workshops.',
-        logo: '/Images/iiti.png',
-        events: [
-          {
-            name: 'Street Play',
-            time: '6 PM',
-            location: 'Main Gate',
-            info: 'A powerful performance on social issues.',
-            image: '/images/image.png',
-          },
-        ],
-        clubHead: {
-          name: 'Anurag',
-          about: '4th Year EE Student, Passionate about theatre',
-          email: 'aainahead@iiti.ac.in',
-          image: '/Images/user.png',
-          linkedin: 'https://linkedin.com/in/anurag',
-        },
-        social: {
-          instagram: 'https://www.instagram.com/dramaticsclubiiti/',
-          linkedin: 'https://www.instagram.com/dramaticsclubiiti/',
-          facebook: 'https://www.instagram.com/dramaticsclubiiti/',
-        },
-      },
+        "name": "Parul Pahurkar",
+        "role": "Head",
+        "image": "/_next/static/media/TheAstronomyClub.19f08411.jpg",
+        "linkedin": "https://www.linkedin.com/company/the-astronomy-club-iit-indore/",
+        "instagram": "https://www.instagram.com/astronomyclub_iiti/"
+      }
+    ],
+    "social": [
       {
-        // _id : 'Avana',
-        name: 'Avana',
-        heading: 'Cultural Expression & Dance',
-        info: 'Avana is the cultural dance club. It performs classical and contemporary forms in fests.',
-        logo: '/Images/iiti.png',
-        events: [],
-        clubHead: {
-          name: 'Shruti',
-          about: 'Dance lead, 4th Year ME',
-          email: 'shruti@iiti.ac.in',
-          image: '/Images/user.png',
-          linkedin: 'https://linkedin.com/in/shruti',
-        },
-        social: {
-          instagram: 'https://www.instagram.com/avana_iiti/',
-          linkedin: 'https://www.instagram.com/avana_iiti/',
-          facebook: 'https://www.instagram.com/avana_iiti/',
-        },
-      },
-
+        "platform": "Instagram",
+        "link": "https://www.instagram.com/astronomyclub_iiti/"
+      }
+    ],
+    "_id": "5ec93aca2a534df3a45a64b2",
+    "events": [],
+    "__v": 0
+  },
+  {
+    "name": "The Aeromodelling Club",
+    "heading": "Aviation & Design",
+    "info": "The Aeromodelling Club builds and flies model aircrafts, promoting aerospace knowledge.",
+    "logo": "/_next/static/media/Aeromodelling .d40a7958.jpg",
+    "clubHead": [
       {
-        // _id : 'gdsc',
-        name: 'gdsc',
-        heading: 'Cultural Expression & Dance',
-        info: 'Avana is the cultural dance club. It performs classical and contemporary forms in fests.',
-        logo: '/Images/iiti.png',
-        events: [],
-        clubHead: {
-          name: 'Shrut',
-          about: 'Dance lead, 4th Year ME',
-          email: 'shruti@iiti.ac.in',
-          image: '/Images/user.png',
-          linkedin: 'https://linkedin.com/in/shruti',
-        },
-        social: {
-          instagram: 'https://www.instagram.com/avana_iiti/',
-          linkedin: 'https://www.instagram.com/avana_iiti/',
-          facebook: 'https://www.instagram.com/avana_iiti/',
-        },
-      },
+        "name": "Sibasish Barik",
+        "role": "Head",
+        "image": "/_next/static/media/Sibasish_Aeromodelling.730637f8.jpg",
+        "linkedin": "https://www.linkedin.com/company/aeromodelling-club-iit-indore/",
+        "instagram": "https://www.instagram.com/aeroclub_iiti/"
+      }
+    ],
+    "social": [
       {
-
-        name: 'cynaptics',
-        heading: 'Cultural Expression & Dance',
-        info: 'cynaptics is the cultural dance club. It performs classical and contemporary forms in fests.',
-        logo: '/Images/iiti.png',
-        events: [],
-        clubHead: {
-          name: 'Shru',
-          about: 'Dance lead, 4th Year ME',
-          email: 'shruti@iiti.ac.in',
-          image: '/Images/user.png',
-          linkedin: 'https://linkedin.com/in/shruti',
-        },
-        social: {
-          instagram: 'https://www.instagram.com/avana_iiti/',
-          linkedin: 'https://www.instagram.com/avana_iiti/',
-          facebook: 'https://www.instagram.com/avana_iiti/',
-        },
-      },
+        "platform": "Instagram",
+        "link": "https://www.instagram.com/aeroclub_iiti/"
+      }
+    ],
+    "_id": "782c54b807c64f3fbb240b5c",
+    "events": [],
+    "__v": 0
+  },
+  {
+    "name": "CAE",
+    "heading": "Computer-Aided Engineering",
+    "info": "CAE Club focuses on simulation, design and engineering through software tools.",
+    "logo": "/_next/static/media/cae.275cafb6.png",
+    "clubHead": [
       {
-
-        name: 'programming',
-        heading: 'Cultural Expression & Dance',
-        info: 'Avana is the cultural dance club. It performs classical and contemporary forms in fests.',
-        logo: '/Images/iiti.png',
-        events: [],
-        clubHead: {
-          name: 'Shr',
-          about: 'Dance lead, 4th Year ME',
-          email: 'shruti@iiti.ac.in',
-          image: '/Images/user.png',
-          linkedin: 'https://linkedin.com/in/shruti',
-        },
-        social: {
-          instagram: 'https://www.instagram.com/avana_iiti/',
-          linkedin: 'https://www.instagram.com/avana_iiti/',
-          facebook: 'https://www.instagram.com/avana_iiti/',
-        },
-      },
-
+        "name": "Adinath Apte",
+        "role": "President",
+        "image": "/_next/static/media/CAE.c0194bc7.jpg",
+        "linkedin": "https://www.linkedin.com/company/cae-club-iit-indore/",
+        "instagram": "https://www.instagram.com/caeclub_iiti/"
+      }
+    ],
+    "social": [
+      {
+        "platform": "Instagram",
+        "link": "https://www.instagram.com/caeclub_iiti/"
+      }
+    ],
+    "_id": "e9d0f975eb54479bbcbfd13a",
+    "events": [],
+    "__v": 0
+  },
+  {
+    "name": "Concreate",
+    "heading": "Civil & Structural Design",
+    "info": "Concreate is a civil engineering-based club involved in construction, architecture and practical design.",
+    "logo": "/_next/static/media/concreate logo (new).0bd2d4d9.jpg",
+    "clubHead": [
+      {
+        "name": "Rajnish Bairwa",
+        "role": "Head",
+        "image": "/_next/static/media/Concreate.2a3de49b.jpg",
+        "linkedin": "https://www.linkedin.com/company/concreate-club-iit-indore/",
+        "instagram": "https://www.instagram.com/concreate_iiti/"
+      }
+    ],
+    "social": [
+      {
+        "platform": "Instagram",
+        "link": "https://www.instagram.com/concreate_iiti/"
+      }
+    ],
+    "_id": "116111c6239d4a95b9a8f9b9",
+    "events": [],
+    "__v": 0
+  },
+  {
+    "name": "Cynaptics",
+    "heading": "Cultural Expression & Dance",
+    "info": "Cynaptics is the cultural dance club. It performs classical and contemporary forms at events and fests.",
+    "logo": "/_next/static/media/Cynaptics club 20230325_104746.90b3a336.jpg",
+    "clubHead": [
+      {
+        "name": "Harshvardhan Choudhary",
+        "role": "President",
+        "image": "/_next/static/media/Cynaptics.161fd5e1.webp",
+        "linkedin": "https://www.linkedin.com/company/cynaptics-club-iit-indore/",
+        "instagram": "https://www.instagram.com/cynapticsclubiiti/"
+      }
+    ],
+    "social": [
+      {
+        "platform": "Instagram",
+        "link": "https://www.instagram.com/cynapticsclubiiti/"
+      }
+    ],
+    "_id": "8e55c2e0480243f5b902457f",
+    "events": [],
+    "__v": 0
+  },
+  {
+    "name": "Electronics Club",
+    "heading": "Electronics and Embedded Systems",
+    "info": "The Electronics Club focuses on hands-on learning of circuits, IoT, and embedded systems.",
+    "logo": "/_next/static/media/Copy of electronics club (18).66884efa.png",
+    "clubHead": [
+      {
+        "name": "Advay Kunte",
+        "role": "President",
+        "image": "/_next/static/media/elec.14d9aecf.jpg",
+        "linkedin": "https://www.linkedin.com/company/elecclub-iit-indore/mycompany/",
+        "instagram": "https://www.instagram.com/electronics_club_iiti/"
+      }
+    ],
+    "social": [
+      {
+        "platform": "Instagram",
+        "link": "https://www.instagram.com/electronics_club_iiti/"
+      }
+    ],
+    "_id": "4996c98fedb742009e3a865f",
+    "events": [],
+    "__v": 0
+  },
+  {
+    "name": "GDSC",
+    "heading": "Google Developer Student Club",
+    "info": "GDSC at IIT Indore helps students explore technology, contribute to open source, and build innovative solutions.",
+    "logo": "/_next/static/media/GDSC-IITI-Logo.e90dc451.png",
+    "clubHead": [
+      {
+        "name": "Vedant Dinkar",
+        "role": "Lead",
+        "image": "/_next/static/media/gdsc.064c6894.jpg",
+        "linkedin": "https://gdsc.community.dev/indian-institute-of-technology-indore-india/",
+        "instagram": "https://www.instagram.com/gdsc.iiti/"
+      }
+    ],
+    "social": [
+      {
+        "platform": "Instagram",
+        "link": "https://www.instagram.com/gdsc.iiti/"
+      }
+    ],
+    "_id": "28d141ba5df346b7b2258215",
+    "events": [],
+    "__v": 0
+  },
     ];
 
     await Club.insertMany(ClubPOJO);
-    console.log("✅  Clubs seeded successfully.");
-    process.exit();
+    console.log("✅ Clubs seeded successfully.");
+    process.exit(0);
+
   } catch (err) {
-    console.error("Error seeding:", err.message);
-    process.exit(1);
+    console.error("❌ Error seeding:", err.message);
+   process.exit(1);
   }
 };
-//  export default ClubPOJO;
+
 seedClubs();
-// export const clubs = mongoose.model('ClubPOJO', ClubPOJO);
-// export default ClubPOJO;
