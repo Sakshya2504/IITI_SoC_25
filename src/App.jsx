@@ -81,19 +81,13 @@ function App() {
           <Route
             path="/signup"
             element={
-              <Signup
-                setissignup={setissignup}
-                setpersoninfo={setpersoninfo}
-              />
+              <Signup setissignup={setissignup} setpersoninfo={setpersoninfo} />
             }
           />
           <Route
             path="/login"
             element={
-              <Login
-                setissignup={setissignup}
-                setpersoninfo={setpersoninfo}
-              />
+              <Login setissignup={setissignup} setpersoninfo={setpersoninfo} />
             }
           />
           <Route
