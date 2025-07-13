@@ -22,6 +22,10 @@ function Announce() {
         const reader= new FileReader();
         reader.onloadend=()=>{
           setannouncelogo(reader.result);
+          setlogininfo(prev => ({
+        ...prev,
+        announcelogo: reader.result   
+      }));
         }
         reader.readAsDataURL(file);
       }

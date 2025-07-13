@@ -1,4 +1,4 @@
-import exampleImage from '../Images/image.png'; // relative to Events.jsx
+
 import { useEffect, useState , React } from 'react';
 import './Animation.css'
 import { useNavigate } from 'react-router-dom';
@@ -88,8 +88,7 @@ export default function Events(props) {
 
         const updatedEvents = data.map(eve => ({
           ...eve,
-          id: eve._id,
-          image: exampleImage,
+          id: eve._id
         }));
 
         setEvents(updatedEvents);
@@ -152,7 +151,7 @@ export default function Events(props) {
               <div className="event-logo flex items-center justify-center">
               <img
                 alt="Event Logo"
-                src={event.image}
+                src={event.Eventlogo}
                 className="h-100 w-100"
               />
             </div>

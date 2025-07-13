@@ -100,7 +100,7 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
           {isuserinfoopen && (
             <div className='w-80 hidden md:block absolute border border-radius-2 top-32 right-3 z-100 bg-white rounded-md '>
               <div className='flex flex-col items-center my-5 mx-5 border rounded bg-gray-300' >
-                <img src={user} alt="user" className='w-15 h-15 my-2 ' />
+                <img src={props.personinfo.userphoto} alt="user" className='w-15 h-15 my-2 ' />
                 <h2 className='font-bold py-1'>{props.personinfo?.name || 'No name'}</h2>
                 <h2>{props.personinfo?.email || 'No email '}</h2>
               </div>

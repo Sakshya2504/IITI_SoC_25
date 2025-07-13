@@ -13,7 +13,7 @@ function Signup(props) {
         name:"",
         email:"",
         password:"",
-        user_photo:userphoto
+        userphoto:userphoto
       
     })
     // useState is used to manage the state of the login information
@@ -31,6 +31,10 @@ function Signup(props) {
         const reader= new FileReader();
         reader.onloadend=()=>{
           setuserphoto(reader.result);
+          setlogininfo(prev => ({
+        ...prev,
+        userphoto: reader.result   
+      }));
         }
         reader.readAsDataURL(file);
       }
