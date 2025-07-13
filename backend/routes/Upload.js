@@ -6,6 +6,7 @@ import fs from "fs";
 
 const router = express.Router();
 
+
 // Ensure the upload directory exists
 const uploadDir = "./uploads";
 if (!fs.existsSync(uploadDir)) {
