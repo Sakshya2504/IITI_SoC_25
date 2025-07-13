@@ -1,30 +1,15 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import { Club } from './Club.js'; // Ensure correct path
-import process from 'process';
-dotenv.config();
 
-const seedClubs = async () => {
-  try {
-    const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/todo";
-    await mongoose.connect(MONGO_URL);
-    console.log("✅ Connected to MongoDB");
-
-    await Club.deleteMany({});
-
-    const ClubPOJO = [
-
-  [
+[
   {
     "name": "Astronomy Club",
     "heading": "Stargazing & Astronomy",
     "info": "Astronomy Club promotes interest in celestial phenomena and organizes stargazing events.",
-    "logo": "/_next/static/media/The_Astronomy_Club.c81e4bb1.jpg",
+    "logo": "/Club-logo/AstronomyClub.png",
     "clubHead": [
       {
         "name": "Parul Pahurkar",
         "role": "Head",
-        "image": "/_next/static/media/TheAstronomyClub.19f08411.jpg",
+        "image": "/Club-logo/AstronomyClub.png",
         "linkedin": "https://www.linkedin.com/company/the-astronomy-club-iit-indore/",
         "instagram": "https://www.instagram.com/astronomyclub_iiti/"
       }
@@ -43,12 +28,12 @@ const seedClubs = async () => {
     "name": "The Aeromodelling Club",
     "heading": "Aviation & Design",
     "info": "The Aeromodelling Club builds and flies model aircrafts, promoting aerospace knowledge.",
-    "logo": "/_next/static/media/Aeromodelling .d40a7958.jpg",
+    "logo": "/Club-logo/AeromodellingClub.png",
     "clubHead": [
       {
         "name": "Sibasish Barik",
         "role": "Head",
-        "image": "/_next/static/media/Sibasish_Aeromodelling.730637f8.jpg",
+        "image": "/Club-logo/AeromodellingClub.png",
         "linkedin": "https://www.linkedin.com/company/aeromodelling-club-iit-indore/",
         "instagram": "https://www.instagram.com/aeroclub_iiti/"
       }
@@ -67,12 +52,12 @@ const seedClubs = async () => {
     "name": "CAE",
     "heading": "Computer-Aided Engineering",
     "info": "CAE Club focuses on simulation, design and engineering through software tools.",
-    "logo": "/_next/static/media/cae.275cafb6.png",
+    "logo": "/Club-logo/CAE.275cafb6.png",
     "clubHead": [
       {
         "name": "Adinath Apte",
         "role": "President",
-        "image": "/_next/static/media/CAE.c0194bc7.jpg",
+        "image": "/Club-logo/CAE.275cafb6.png",
         "linkedin": "https://www.linkedin.com/company/cae-club-iit-indore/",
         "instagram": "https://www.instagram.com/caeclub_iiti/"
       }
@@ -91,12 +76,12 @@ const seedClubs = async () => {
     "name": "Concreate",
     "heading": "Civil & Structural Design",
     "info": "Concreate is a civil engineering-based club involved in construction, architecture and practical design.",
-    "logo": "/_next/static/media/concreate logo (new).0bd2d4d9.jpg",
+    "logo": "/Club-logo/Concreate.png",
     "clubHead": [
       {
         "name": "Rajnish Bairwa",
         "role": "Head",
-        "image": "/_next/static/media/Concreate.2a3de49b.jpg",
+        "image": "/Club-logo/Concreate.png",
         "linkedin": "https://www.linkedin.com/company/concreate-club-iit-indore/",
         "instagram": "https://www.instagram.com/concreate_iiti/"
       }
@@ -115,12 +100,12 @@ const seedClubs = async () => {
     "name": "Cynaptics",
     "heading": "Cultural Expression & Dance",
     "info": "Cynaptics is the cultural dance club. It performs classical and contemporary forms at events and fests.",
-    "logo": "/_next/static/media/Cynaptics club 20230325_104746.90b3a336.jpg",
+    "logo": "/Club-logo/Cynaptics.png",
     "clubHead": [
       {
         "name": "Harshvardhan Choudhary",
         "role": "President",
-        "image": "/_next/static/media/Cynaptics.161fd5e1.webp",
+        "image": "/Club-logo/Cynaptics.png",
         "linkedin": "https://www.linkedin.com/company/cynaptics-club-iit-indore/",
         "instagram": "https://www.instagram.com/cynapticsclubiiti/"
       }
@@ -139,12 +124,12 @@ const seedClubs = async () => {
     "name": "Electronics Club",
     "heading": "Electronics and Embedded Systems",
     "info": "The Electronics Club focuses on hands-on learning of circuits, IoT, and embedded systems.",
-    "logo": "/_next/static/media/Copy of electronics club (18).66884efa.png",
+    "logo": "/Club-logo/electronics club .66884efa.png",
     "clubHead": [
       {
         "name": "Advay Kunte",
         "role": "President",
-        "image": "/_next/static/media/elec.14d9aecf.jpg",
+        "image": "/Club-logo/electronics club .66884efa.png",
         "linkedin": "https://www.linkedin.com/company/elecclub-iit-indore/mycompany/",
         "instagram": "https://www.instagram.com/electronics_club_iiti/"
       }
@@ -163,12 +148,12 @@ const seedClubs = async () => {
     "name": "GDSC",
     "heading": "Google Developer Student Club",
     "info": "GDSC at IIT Indore helps students explore technology, contribute to open source, and build innovative solutions.",
-    "logo": "/_next/static/media/GDSC-IITI-Logo.e90dc451.png",
+    "logo": "/Club-logo/GDSC-IITI-Logo.e90dc451.png",
     "clubHead": [
       {
         "name": "Vedant Dinkar",
         "role": "Lead",
-        "image": "/_next/static/media/gdsc.064c6894.jpg",
+        "image": "/Club-logo/GDSC-IITI-Logo.e90dc451.jpg",
         "linkedin": "https://gdsc.community.dev/indian-institute-of-technology-indore-india/",
         "instagram": "https://www.instagram.com/gdsc.iiti/"
       }
@@ -457,17 +442,3 @@ const seedClubs = async () => {
   }
 ]
 
-
-    ];
-
-    await Club.insertMany(ClubPOJO);
-    console.log("✅ Clubs seeded successfully.");
-    process.exit(0);
-
-  } catch (err) {
-    console.error("❌ Error seeding:", err.message);
-   process.exit(1);
-  }
-};
-
-seedClubs();

@@ -3,17 +3,17 @@ import { Club } from "../models/Club.js";
 
 
 const router = express.Router();
-
 router.get("/:name", async (req, res) => {
   try {
+    if (!req.params.name) return res.status(400).json({ error: "Name is required" });
     const club = await Club.findOne({ name: req.params.name });
-    if (!club)
-      return
-    res.status(404).json({ error: "Club not found" });
+    if (!club) {
+      return res.status(404).json({ error: "Club not found" });
+    }
     res.json(club);
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
 export default router;
