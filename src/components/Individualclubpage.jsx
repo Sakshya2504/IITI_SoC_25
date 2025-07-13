@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 
 import React from "react";
 // import cynapticlogo from './Images/cynapticlogo.png'
@@ -11,7 +11,7 @@ import exampleImage from "../Images/image.png"; // relative to Events.jsx
 import insta from "../Images/Insta.png";
 import linkedIn from "../Images/linkedIn.png";
 import facebook from "../Images/facebook.png";
-import head from "../Images/user.png";
+// import head from "../Images/user.png";
 
 const clubs = [
   {
