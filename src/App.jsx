@@ -11,6 +11,7 @@ import twitter from './Images/twitter.png';
 import facebook from './Images/facebook.png';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Clubselection from './components/Clubselection'
 import Createevent from './components/Createevent';
 import Announce from './components/Announce';
 import { useState } from 'react';
@@ -48,7 +49,9 @@ const [personinfo, setpersoninfo] = useState(null);
         <Routes>
           <Route path="/" element={<Events issignup={issignup} searchQuery={searchQuery}
           />} />
+          <Route path="/clubselection" element={<Clubselection />} />
           <Route path="/clubs" element={<ClubPage />} />
+
         
            <Route path="/notification" element={<Notification />} />
 
@@ -59,6 +62,7 @@ const [personinfo, setpersoninfo] = useState(null);
           
           <Route path="/individualclubpage/:clubname" element={<Individualclubpage issignup={issignup} />} />
           <Route path="/createevent/:clubname" element={<Createevent/>} />
+
            <Route path="/announce/:clubname" element={<Announce/>} />
         </Routes>
         

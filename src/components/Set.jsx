@@ -7,7 +7,7 @@ function Set(props) {
      const location = useLocation();
      const navigate=useNavigate();
   const navigation = [
-  { name: '🧑‍🤝‍🧑 Clubs', path: '/clubs' },
+  { name: '🧑‍🤝‍🧑 Clubs', path: '/clubselection' },
   { name: '📅 Events', path: '/' },
  
   { name: '🔔 Notification', path: '/notification' },
