@@ -54,8 +54,8 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
                 key={item.path}
                 to={item.path}
                 className={`text-xl ${location.pathname === item.path
-                    ? 'text-white font-bold'
-                    : 'text-white  font-bold hover:text-blue-500'
+                  ? 'text-white font-bold'
+                  : 'text-white  font-bold hover:text-blue-500'
                   }`}
               >
                 {item.name}
