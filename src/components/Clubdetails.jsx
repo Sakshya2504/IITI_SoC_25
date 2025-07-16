@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+// /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import techClubs from "./data.json";
@@ -75,7 +75,7 @@ function Individualclubpage(props) {
           <div className="clubbody text-center h-60 w-full mx-auto mb-6">
             <img
               src={club.logo}
-              alt={club.name}
+              alt={club.clubname}
               className="clubimage  mx-auto"
             />
           </div>

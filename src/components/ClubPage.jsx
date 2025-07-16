@@ -10,19 +10,19 @@ function ClubPage() {
       className="flex mt-0 xs:mt-30 flex-wrap place-content-center gap-0.5"
     >
       {techClubs.map((club) => (
-        <ClubCard key={club.name} {...club} />
+        <ClubCard key={club.clubname} {...club} />
       ))}
     </div>
   );
 }
 
-function ClubCard({ name, logo }) {
+function ClubCard({ clubname, logo }) {
   return (
     <div className="clubpage bg-gradient-to-r from-cyan-500/5 to-blue-500/5 border-2 border-[#87CEEB] pt-20 flex flex-col items-center pb-10 sm:w-[25vh] sm:h-[40vw] md:w-[35vh] md:h-[40vw] lg:w-[50vh] lg:h-[30vw]">
       <div className="img-cont lg:w-52 lg:h-52 md:w-40 md:h-40 sm:w-30 sm:h-40 flex items-center justify-center lg:mb-5 md:m-2 xs:w-40 xs:h-40 cursor-pointer hover:shadow-xl xxs:h-40">
         <img
           src={logo}
-          alt={name}
+          alt={clubname}
           loading="lazy"
           hover="true"
           onError={(e) => {
@@ -36,12 +36,12 @@ function ClubCard({ name, logo }) {
       </div>
       <div className="heading-cont flex items-center justify-center lg:w-60 lg:h-12 sm:w-40 sm:h-8 md:w-50 md:h-10 xxs:w-40 xxs:h-10">
         <h5 className="mb-1 text-center text-white lg:text-xl xxs:text-sm md:text-md lg:font-medium">
-          {name}
+          {clubname}
         </h5>
       </div>
       <div className="w-52 h-12 mb-10 mt-1 flex items-center justify-center cursor-pointer xl:border-b-4 border-blue-500">
         <Link
-          to={`/Clubdetails/${encodeURIComponent(name)}`}
+          to={`/Clubdetails/${encodeURIComponent(clubname)}`}
           className="px-4 py-2 max-sm:mb-8 xxs:text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-lg"
         >
           See more

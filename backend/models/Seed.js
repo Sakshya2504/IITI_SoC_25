@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { Club } from './Club.js'; // Ensure correct path
+import { Clubs_ } from './Club.js'; // Ensure correct path
 import process from 'process';
 dotenv.config();
 
@@ -10,11 +10,11 @@ const seedClubs = async () => {
     await mongoose.connect(MONGO_URL);
     console.log("✅ Connected to MongoDB");
 
-    await Club.deleteMany({});
+    await Clubs_.deleteMany({});
 
     const ClubPOJO = [
 
-  [
+
   {
     "name": "Astronomy Club",
     "heading": "Stargazing & Astronomy",
@@ -35,9 +35,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/astronomyclub_iiti/"
       }
     ],
-    "_id": "5ec93aca2a534df3a45a64b2",
+    //"_id": "5ec93aca2a534df3a45a64b2",
     "events": [],
-    "__v": 0
+    ////"__v": 0
   },
   {
     "name": "The Aeromodelling Club",
@@ -59,9 +59,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/aeroclub_iiti/"
       }
     ],
-    "_id": "782c54b807c64f3fbb240b5c",
+    //"_id": "782c54b807c64f3fbb240b5c",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "CAE",
@@ -83,9 +83,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/caeclub_iiti/"
       }
     ],
-    "_id": "e9d0f975eb54479bbcbfd13a",
+    //"_id": "e9d0f975eb54479bbcbfd13a",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Concreate",
@@ -107,9 +107,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/concreate_iiti/"
       }
     ],
-    "_id": "116111c6239d4a95b9a8f9b9",
+    //"_id": "116111c6239d4a95b9a8f9b9",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Cynaptics",
@@ -131,9 +131,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/cynapticsclubiiti/"
       }
     ],
-    "_id": "8e55c2e0480243f5b902457f",
+    //"_id": "8e55c2e0480243f5b902457f",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Electronics Club",
@@ -155,9 +155,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/electronics_club_iiti/"
       }
     ],
-    "_id": "4996c98fedb742009e3a865f",
+    //"_id": "4996c98fedb742009e3a865f",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "GDSC",
@@ -179,9 +179,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/gdsc.iiti/"
       }
     ],
-    "_id": "28d141ba5df346b7b2258215",
+    //"_id": "28d141ba5df346b7b2258215",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "IVDC",
@@ -195,9 +195,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/ivdc_iiti/"
       }
     ],
-    "_id": "6591b5eed4bb4026ad17ee7c",
+    //"_id": "6591b5eed4bb4026ad17ee7c",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Robotics Club",
@@ -211,9 +211,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/roboticsclub_iitindore/"
       }
     ],
-    "_id": "3c751bd6df284dea88b150df",
+    //"_id": "3c751bd6df284dea88b150df",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "The Programming Club",
@@ -227,9 +227,9 @@ const seedClubs = async () => {
         "link": "http://progclub.iiti.ac.in/"
       }
     ],
-    "_id": "c11b270143fd41609fae39df",
+    //"_id": "c11b270143fd41609fae39df",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Aaina Club",
@@ -243,9 +243,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/dramaticsclubiiti/"
       }
     ],
-    "_id": "aaina001",
+    //"_id": "aaina001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Avana Club",
@@ -259,9 +259,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/avana_iiti/"
       }
     ],
-    "_id": "avana001",
+    //"_id": "avana001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Cinephiles",
@@ -275,9 +275,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/cinephiles_iiti/"
       }
     ],
-    "_id": "cinephiles001",
+    //"_id": "cinephiles001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "D' Alpha Crewz",
@@ -291,9 +291,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/d_alphazcrew/"
       }
     ],
-    "_id": "dalpha001",
+    //"_id": "dalpha001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "The Debating Society",
@@ -307,9 +307,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/debsociiti/"
       }
     ],
-    "_id": "debsoc001",
+    //"_id": "debsoc001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "EBSB Club",
@@ -323,9 +323,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/ebsbclub_iiti/"
       }
     ],
-    "_id": "ebsb001",
+    //"_id": "ebsb001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Gaming Club",
@@ -339,9 +339,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/gamingclubiiti/"
       }
     ],
-    "_id": "gaming001",
+    //"_id": "gaming001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Literary Club",
@@ -355,9 +355,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/thelitclub.iiti/"
       }
     ],
-    "_id": "litclub001",
+    //"_id": "litclub001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Mystic Hues",
@@ -371,9 +371,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/mystichues/"
       }
     ],
-    "_id": "mystichues001",
+    //"_id": "mystichues001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Music Club",
@@ -387,9 +387,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/themusicclub.iiti/"
       }
     ],
-    "_id": "music001",
+    //"_id": "music001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Prakriti",
@@ -403,9 +403,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/prakriti.iiti/"
       }
     ],
-    "_id": "prakriti001",
+    //"_id": "prakriti001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "The Quiz Club",
@@ -419,9 +419,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/thequizclub_iiti/"
       }
     ],
-    "_id": "quiz001",
+    //"_id": "quiz001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "Srijan",
@@ -435,9 +435,9 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/srijan_iit_indore/"
       }
     ],
-    "_id": "srijan001",
+    //"_id": "srijan001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   },
   {
     "name": "VLR Club",
@@ -451,16 +451,15 @@ const seedClubs = async () => {
         "link": "https://www.instagram.com/vlr_iiti/"
       }
     ],
-    "_id": "vlr001",
+    //"_id": "vlr001",
     "events": [],
-    "__v": 0
+    //"__v": 0
   }
-]
 
 
     ];
 
-    await Club.insertMany(ClubPOJO);
+    await Clubs_.insertMany(ClubPOJO);
     console.log("✅ Clubs seeded successfully.");
     process.exit(0);
 
@@ -468,6 +467,7 @@ const seedClubs = async () => {
     console.error("❌ Error seeding:", err.message);
    process.exit(1);
   }
+  
 };
 
 seedClubs();
