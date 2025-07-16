@@ -26,6 +26,11 @@ await mongoose.connect("mongodb://localhost:27017/todo", {
 // Signup route
 app.post('/api/signup', async (req, res) => {
     const { name, email, password, userphoto } = req.body;
+    if (password.length < 6 || password.length > 10) {
+        return res.status(400).json({ errors: ['Password must be between 6 and 10 characters long'] });
+    }
+    
+
 
     try {
         const existingUser = await User.findOne({ email });
@@ -49,7 +54,8 @@ app.post('/api/signup', async (req, res) => {
       } });
     } catch (err) {
         if (err.name === 'ValidationError') {
-            return res.status(400).json({message : err.message });
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
         }
         res.status(500).json({ message: 'Something went wrong' });
       }
