@@ -108,7 +108,10 @@ app.post('/announce', async (req, res) => {
 
         res.status(201).json({ message: 'Announcement created successfully!' });
     } catch (err) {
-        console.error('Error creating announcement:', err);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ message: 'Something went wrong while saving the announcement' });
     }
 });
@@ -143,7 +146,10 @@ app.post('/Createevent', async (req, res) => {
 
         res.status(201).json({ message: 'Event Creation successful!' });
     } catch (err) {
-        console.error('Error creating event:', err);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ message: 'Something went wrong while saving the event' });
     }
 });
