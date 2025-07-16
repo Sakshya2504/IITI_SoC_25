@@ -89,7 +89,11 @@ function Announce() {
         setlogininfo({ clubname: club_name, heading: "", info: "", announcelogo: { announcelogo } });
         navigate('/notification');
       } else {
-        alert(result.message || 'Announcement failed');
+        if (result.errors) {
+          setErrors(result.errors);
+        } else {
+          setErrors([result.message || 'Signup failed']);
+        }
       }
     } catch (err) {
       console.error("Submit error:", err);

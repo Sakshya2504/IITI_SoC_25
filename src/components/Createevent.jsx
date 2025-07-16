@@ -101,7 +101,11 @@ function Createevent() {
         });
         navigate('/');
       } else {
-        alert(result.message || 'Event creation failed');
+        if (result.errors) {
+          setErrors(result.errors);
+        } else {
+          setErrors([result.message || 'Signup failed']);
+        }
       }
     } catch (error) {
       console.error('Error submitting event:', error);
