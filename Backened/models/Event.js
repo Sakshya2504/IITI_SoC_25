@@ -5,7 +5,7 @@ const Event = new mongoose.Schema({
     EventDateAndTime: {type : String, required: true, minlength: [1, 'Event date and time must be provided'], maxlength: [100, 'Event date and time must be at most 100 characters long'] },
     ConductedBy: { type: String, required: true, minlength: [1, 'Conducted by must be provided'], maxlength: [50, 'Conducted by must be at most 50 characters long'] },
     EventInfo: { type: String, required: true, minlength: [1, 'Event info must be provided'], maxlength: [500, 'Event info must be at most 500 characters long'] },
-    Eventlogo:{type:String,required:true}
+    Eventlogo:{type:String,required:[true,"Please Provide Event Poster"]}
   }, { timestamps: true });
 
 export const event_ = mongoose.model('Event', Event);
