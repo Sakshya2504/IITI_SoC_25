@@ -50,7 +50,7 @@ const [personinfo, setpersoninfo] = useState(null);
           <Route path="/" element={<Events issignup={issignup} searchQuery={searchQuery}
           />} />
           <Route path="/clubselection" element={<Clubselection />} />
-          <Route path="/clubs" element={<ClubPage />} />
+          <Route path="/clubs/:clubtype" element={<ClubPage />} />
 
         
            <Route path="/notification" element={<Notification />} />
@@ -60,7 +60,7 @@ const [personinfo, setpersoninfo] = useState(null);
           
           
           
-          <Route path="/individualclubpage/:clubname" element={<Individualclubpage issignup={issignup} />} />
+          <Route path="/individualclubpage/:clubname/:_id" element={<Individualclubpage issignup={issignup} />} />
           <Route path="/createevent/:clubname" element={<Createevent/>} />
 
            <Route path="/announce/:clubname" element={<Announce/>} />
