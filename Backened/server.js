@@ -219,7 +219,10 @@ app.post('/events/:eventId/register', async (req, res) => {
         await registration.save();
         res.status(200).json({ message: 'Registered successfully' });
     } catch (err) {
-        console.error('Error saving registration:', err.message);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });

@@ -13,6 +13,7 @@ function Createevent() {
   // useState is used to manage the state of the event information
   const { clubname } = useParams();
   const club_name = decodeURIComponent(clubname);
+   const [errors, setErrors] = useState([]);
   console.log(club_name);
   const [eventlogo, seteventlogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({
@@ -118,6 +119,15 @@ function Createevent() {
 
 
             <h2 className='text-white font-bold text-[22px] '>Event Detailes</h2>
+            {errors.length > 0 && (
+              <div className="w-full flex justify-center mb-4">
+                <div className="text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-md shadow-lg animate-fade-in">
+                  {errors.map((msg, idx) => (
+                    <p key={idx} className="my-1">{msg}</p>
+                  ))}
+                </div>
+              </div>
+            )}
             <input type="text" placeholder='Event Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventName' value={logininfo.EventName} onChange={handleChange} />
             <input type="text" placeholder='Event Date And Time' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventDateAndTime' value={logininfo.EventDateAndTime} onChange={handleChange} />
             <input type="text" placeholder='Conducted By' name='ConductedBy' className='text-black font-bold block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.ConductedBy} />

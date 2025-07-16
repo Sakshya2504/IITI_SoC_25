@@ -7,6 +7,7 @@ export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
   const navigate = useNavigate();
+   const [errors, setErrors] = useState([]);
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
   const [registrationCounts, setRegistrationCounts] = useState({});
@@ -48,6 +49,14 @@ export default function Events(props) {
         });
         navigate('/');
       }
+      else {
+        if (result.errors) {
+          setErrors(result.errors);
+        } else {
+          setErrors([result.message || 'Signup failed']);
+        }
+      }
+
 
 
     } catch (err) {
@@ -183,6 +192,15 @@ export default function Events(props) {
 
 
               <h2 className='text-white font-bold text-[22px] '>Event Registration</h2>
+              {errors.length > 0 && (
+                <div className="w-full flex justify-center mb-4">
+                  <div className="text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-md shadow-lg animate-fade-in">
+                    {errors.map((msg, idx) => (
+                      <p key={idx} className="my-1">{msg}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
               <input type="text" placeholder=' Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Name' value={registerinfo.Name} onChange={handleChange} />
               <input type="text" placeholder='EmailAddress' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EmailAddress' value={registerinfo.EmailAddress} onChange={handleChange} />
               <input type="text" placeholder='RollNumber' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='RollNumber' value={registerinfo.RollNumber} onChange={handleChange} />
