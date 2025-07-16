@@ -53,12 +53,9 @@ export default function Events(props) {
         if (result.errors) {
           setErrors(result.errors);
         } else {
-          setErrors([result.message || 'Signup failed']);
+          setErrors([result.message || 'Registration Failed']);
         }
       }
-
-
-
     } catch (err) {
       console.error(err);
       alert('Something went wrong. Please try again.');

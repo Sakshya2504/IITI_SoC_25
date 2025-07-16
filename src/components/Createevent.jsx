@@ -104,7 +104,7 @@ function Createevent() {
         if (result.errors) {
           setErrors(result.errors);
         } else {
-          setErrors([result.message || 'Signup failed']);
+          setErrors([result.message || 'Event Creation failed']);
         }
       }
     } catch (error) {
