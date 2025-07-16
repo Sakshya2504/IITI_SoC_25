@@ -22,100 +22,65 @@ import facebook from "./Images/facebook.png";
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [issignup, setissignup] = useState(false);
+  const changestatus = () => setIsOpen(!isOpen);
+  const closeset = () => setIsOpen(false);
   const [personinfo, setpersoninfo] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const changestatus = () => setIsOpen(!isOpen);
-  const closeset = () => setIsOpen(false);
 
   useEffect(() => {
-    const storedInfo = localStorage.getItem("personinfo");
+    const storedInfo = localStorage.getItem('personinfo');
     if (storedInfo && storedInfo !== "undefined") {
       setpersoninfo(JSON.parse(storedInfo));
       setissignup(true);
     }
   }, []);
 
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col ">
+
+
       <div className="bg-[rgba(1,1,27)]">
-        <NavBar
-          changestatus={changestatus}
-          setissignup={setissignup}
-          closeset={closeset}
-          personinfo={personinfo}
-          setpersoninfo={setpersoninfo}
-          issignup={issignup}
-          isOpen={isOpen}
+        <NavBar changestatus={changestatus} setissignup={setissignup} closeset={closeset} personinfo={personinfo} setpersoninfo={setpersoninfo} issignup={issignup} isOpen={isOpen}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-
-        {isOpen && (
-          <Set
-            changestatus={changestatus}
-            setissignup={setissignup}
-            issignup={issignup}
-            personinfo={personinfo}
-            setpersoninfo={setpersoninfo}
-            closeset={closeset}
-            isOpen={isOpen}
-          />
-        )}
-
+        {isOpen && <Set changestatus={changestatus} setissignup={setissignup} issignup={issignup} personinfo={personinfo} setpersoninfo={setpersoninfo} closeset={closeset} isOpen={isOpen} />}
         <Routes>
-          <Route
-            path="/"
-            element={<Events issignup={issignup} searchQuery={searchQuery} />}
-          />
+          <Route path="/" element={<Events issignup={issignup} searchQuery={searchQuery}
+          />} />
           <Route path="/clubs" element={<ClubPage />} />
-          <Route
-            path="/events"
-            element={<Events issignup={issignup} searchQuery={searchQuery} />}
-          />
-          <Route
-            path="/clubdetails/:name"
-            element={<Clubdetails issignup={issignup} />}
-          />
+
           <Route path="/notification" element={<Notification />} />
-          <Route
-            path="/signup"
-            element={
-              <Signup setissignup={setissignup} setpersoninfo={setpersoninfo} />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <Login setissignup={setissignup} setpersoninfo={setpersoninfo} />
-            }
-          />
-          <Route
-            path="/individualclubpage/:clubname"
-            element={<Individualclubpage issignup={issignup} />}
-          />
-          <Route path="/createevent/:name" element={<Createevent />} />
-          <Route path="/announce/:name" element={<Announce />} />
+
+          <Route path="/signup" element={<Signup setissignup={setissignup} setpersoninfo={setpersoninfo} />} />
+          <Route path="/login" element={<Login setissignup={setissignup} setpersoninfo={setpersoninfo} />} />
+
+
+
+          <Route path="/individualclubpage/:clubname" element={<Individualclubpage issignup={issignup} />} />
+          <Route path="/createevent/:clubname" element={<Createevent />} />
+          <Route path="/announce/:clubname" element={<Announce />} />
         </Routes>
+
       </div>
 
-      {/* Footer */}
-      <div className="footer-container border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4">
-        <footer className="bg-[rgba(1,1,27)] border-t-[#3f3e45] text-white py-5">
-          <div className="max-w-7xl flex flex-col justify-between md:flex-row mx-auto px-auto">
-            <div className="ml-3">
+      <div className="footer-container  border border-t-[#3f3e45] bottom-0 w-full bg-[rgba(1,1,27)] text-white py-4  ">
+        <footer className="bg-[rgba(1,1,27)] border-t-[#3f3e45] text-white  bottom-0 py-5">
+          <div className="max-w-7xl flex flex-col justify-between md:flex-row mx-auto px-auto  ">
+            <div className='ml-3'>
               <a href="https://www.iiti.ac.in">
                 <img
                   src="https://www.iiti.ac.in/public/themes/iitindore/demos/update-logo.png"
-                  alt="IIT Indore Logo"
                   className="logo h-15 w-15 p-0 lg:h-20 lg:w-20"
+                  alt="IIT Indore Logo"
                 />
               </a>
-              <p className="font-bold text-xl">
-                Indian Institute of Technology Indore,
-                <br /> Khandwa Road, Simrol, Indore 453552
-              </p>
-              <div className="Social-Handles mt-4 flex gap-10">
+
+              <p className='font-bold text-xl'>Indian Institute of Technology Indore,<br></br> Khandwa Road, Simrol, Indore 453552</p>
+              <div className="Social-Handles mt-4 flex justify-start items-center  gap-10">
+
                 <a
                   href="https://www.instagram.com/iitindoreofficial"
                   target="_blank"
@@ -162,22 +127,17 @@ function App() {
                 </a>
               </div>
             </div>
-
             <div className="mt-12 ml-3">
-              <h2 className="hover:underline text-2xl text-[#00EAFF] font-bold">
-                Contact us
-              </h2>
-              <p className="font-bold">✉️ cse240001068@iiti.ac.in</p>
-              <p className="font-bold">✉️ me240003006@iiti.ac.in</p>
-              <p className="font-bold">✉️ sse240021015@iiti.ac.in</p>
+              <h2 className="hover:underline text-2xl text-[#00EAFF] font-bold">Contact us</h2>
+              <p className='font-bold'>✉️ cse240001068@iiti.ac.in</p>
+              <p className='font-bold'>✉️ me240003006@iiti.ac.in</p>
+              <p className='font-bold'>✉️ sse240021015@iiti.ac.in</p>
+            </div>
+            <div className='mt-12 ml-3'>
+              <h2 className="hover:underline text-2xl text-[#00EAFF] font-bold">Share</h2>
+              <p className='font-bold '>https://campannounce.netlify.app</p>
             </div>
 
-            <div className="mt-12 ml-3">
-              <h2 className="hover:underline text-2xl text-[#00EAFF] font-bold">
-                Share
-              </h2>
-              <p className="font-bold">https://campannounce.netlify.app</p>
-            </div>
           </div>
         </footer>
       </div>
