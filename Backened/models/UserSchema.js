@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    userphoto:{type:String}
+    userphoto:{type:String,required: [true,"Please Upload Profile Image"] }
 }, { timestamps: true });
 
 export const User = mongoose.model('User', userSchema);
