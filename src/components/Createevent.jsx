@@ -13,7 +13,7 @@ function Createevent() {
   // useState is used to manage the state of the event information
   const { clubname } = useParams();
   const club_name = decodeURIComponent(clubname);
-   const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   console.log(club_name);
   const [eventlogo, seteventlogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({

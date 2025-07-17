@@ -128,31 +128,31 @@ app.get('/notification', async (req, res) => {
 
 // Event routes
 // This route is used to create a new event
-app.post('/Createevent', async (req, res) => {
-    console.log("Incoming body:", req.body);
-    try {
-        const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo} = req.body;
+    app.post('/Createevent', async (req, res) => {
+        console.log("Incoming body:", req.body);
+        try {
+            const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo} = req.body;
 
-        // Create and save the new event
-        const newEvent = new event_({
-            EventName,
-            EventDateAndTime,
-            ConductedBy,
-            EventInfo,
-            Eventlogo
-        });
+            // Create and save the new event
+            const newEvent = new event_({
+                EventName,
+                EventDateAndTime,
+                ConductedBy,
+                EventInfo,
+                Eventlogo
+            });
 
-        await newEvent.save();
+            await newEvent.save();
 
-        res.status(201).json({ message: 'Event Creation successful!' });
-    } catch (err) {
-        if (err.name === 'ValidationError') {
-            const messages = Object.values(err.errors).map(e => e.message);
-            return res.status(400).json({ errors: messages });
+            res.status(201).json({ message: 'Event Creation successful!' });
+        } catch (err) {
+            if (err.name === 'ValidationError') {
+                const messages = Object.values(err.errors).map(e => e.message);
+                return res.status(400).json({ errors: messages });
+            }
+            res.status(500).json({ message: 'Something went wrong while saving the event' });
         }
-        res.status(500).json({ message: 'Something went wrong while saving the event' });
-    }
-});
+    });
 
 // This route is used to fetch all events
 // It retrieves all events from the database and returns them as a JSON response
