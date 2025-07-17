@@ -159,7 +159,7 @@ import twitter from './Images/twitter.png';
 import facebook from './Images/facebook.png';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import Clubselection from './components/Clubselection'
+import Clubselection from './components/clubselesction'
 import Createevent from './components/Createevent';
 import Announce from './components/Announce';
 import { useState } from 'react';
