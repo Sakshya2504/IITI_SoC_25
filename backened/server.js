@@ -12,7 +12,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // import ClubPOJO from './models/Seed.js'
-import { Club } from "./models/Club.js";
+import { Clubs_ } from "./models/Club.js";
 import Clubroutes from "./routes/ClubRoutes.js";
 import SearchRoute from "./routes/SearchRoute.js";
 import { Search } from "./models/Search.js";
@@ -29,16 +29,18 @@ app.use("/api/clubs", Clubroutes);
 // await mongoose.connect("mongodb://localhost:27017/todo", {});
 
 await mongoose
-  .connect("mongodb://localhost:27017/todo", {})
+  .connect("mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.net/", {})
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 // Connect to MongoDB
-app.get('/api/test', async (req, res) => {
+app.get("/api/test", async (req, res) => {
   try {
-    const collections = await mongoose.connection.db.listCollections().toArray();
-    res.json({ message: 'Database working ✅', collections });
+    const collections = await mongoose.connection.db
+      .listCollections()
+      .toArray();
+    res.json({ message: "Database working ✅", collections });
   } catch (err) {
-    res.status(500).json({ message: 'Database not responding ❌', error: err });
+    res.status(500).json({ message: "Database not responding ❌", error: err });
   }
 });
 // Signup route
@@ -73,7 +75,7 @@ app.post("/api/signup", async (req, res) => {
     if (err.name === "ValidationError") {
       return res.status(400).json({ message: err.message });
     }
-    res.status(500).json({ message: "Something went wrong",err });
+    res.status(500).json({ message: "Something went wrong", err });
   }
 });
 
@@ -205,13 +207,34 @@ app.get("/Events", async (req, res) => {
 });
 
 // individual Clubpages
-app.get("/clubs", async (req, res) => {
+// app.get("/clubs", async (req, res) => {
+//   try {
+//     const club = await Club.find();
+//     res.status(200).json(club);
+//   } catch (err) {
+//     console.error("Error fetching Club details:", err);
+//     res.status(500).json({ message: "Failed to fetch Club details" });
+//   }
+// });
+app.post("/api/findclub", async (req, res) => {
+  const { clubname } = req.body;
   try {
-    const club = await Club.find();
-    res.status(200).json(club);
+    const club = await Clubs_.findOne({ clubname });
+    if (club) {
+      res.status(201).json(club);
+    }
   } catch (err) {
-    console.error("Error fetching Club details:", err);
-    res.status(500).json({ message: "Failed to fetch Club details" });
+    console.log(err);
+    res.status(500).json({ error: "Could not retrieve clubdata" });
+  }
+});
+app.get("/api/allclubs", async (req, res) => {
+  try {
+    const clubs = await Clubs_.find();
+    res.status(201).json(clubs);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Could not retrieve clubdata" });
   }
 });
 
@@ -265,7 +288,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/ping", (req, res) => {
-  res.json("backend is running fine"); 
+  res.json("backend is running fine");
 });
 
 app.listen(PORT, () => {

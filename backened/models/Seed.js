@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import { Club } from './Club.js'; // Ensure correct path
-import process from 'process';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import { Clubs_ } from "./Club.js"; // Ensure correct path
+import process from "process";
 dotenv.config();
 
 const seedClubs = async () => {
@@ -10,463 +10,463 @@ const seedClubs = async () => {
     await mongoose.connect(MONGO_URL);
     console.log("✅ Connected to MongoDB");
 
-    await Club.deleteMany({});
+    await Clubs_.deleteMany({});
 
     const ClubPOJO = [
-
-  [
-  {
-    "name": "Astronomy Club",
-    "heading": "Stargazing & Astronomy",
-    "info": "Astronomy Club promotes interest in celestial phenomena and organizes stargazing events.",
-    "logo": "/_next/static/media/The_Astronomy_Club.c81e4bb1.jpg",
-    "clubHead": [
       {
-        "name": "Parul Pahurkar",
-        "role": "Head",
-        "image": "/_next/static/media/TheAstronomyClub.19f08411.jpg",
-        "linkedin": "https://www.linkedin.com/company/the-astronomy-club-iit-indore/",
-        "instagram": "https://www.instagram.com/astronomyclub_iiti/"
-      }
-    ],
-    "social": [
+        name: "Astronomy Club",
+        heading: "Stargazing & Astronomy",
+        info: "Astronomy Club promotes interest in celestial phenomena and organizes stargazing events.",
+        logo: "/_next/static/media/The_Astronomy_Club.c81e4bb1.jpg",
+        clubHead: [
+          {
+            name: "Parul Pahurkar",
+            role: "Head",
+            image: "/_next/static/media/TheAstronomyClub.19f08411.jpg",
+            linkedin:
+              "https://www.linkedin.com/company/the-astronomy-club-iit-indore/",
+            instagram: "https://www.instagram.com/astronomyclub_iiti/",
+          },
+        ],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/astronomyclub_iiti/",
+          },
+        ],
+        //"_id": "5ec93aca2a534df3a45a64b2",
+        events: [],
+        ////"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/astronomyclub_iiti/"
-      }
-    ],
-    "_id": "5ec93aca2a534df3a45a64b2",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "The Aeromodelling Club",
-    "heading": "Aviation & Design",
-    "info": "The Aeromodelling Club builds and flies model aircrafts, promoting aerospace knowledge.",
-    "logo": "/_next/static/media/Aeromodelling .d40a7958.jpg",
-    "clubHead": [
+        name: "The Aeromodelling Club",
+        heading: "Aviation & Design",
+        info: "The Aeromodelling Club builds and flies model aircrafts, promoting aerospace knowledge.",
+        logo: "/_next/static/media/Aeromodelling .d40a7958.jpg",
+        clubHead: [
+          {
+            name: "Sibasish Barik",
+            role: "Head",
+            image: "/_next/static/media/Sibasish_Aeromodelling.730637f8.jpg",
+            linkedin:
+              "https://www.linkedin.com/company/aeromodelling-club-iit-indore/",
+            instagram: "https://www.instagram.com/aeroclub_iiti/",
+          },
+        ],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/aeroclub_iiti/",
+          },
+        ],
+        //"_id": "782c54b807c64f3fbb240b5c",
+        events: [],
+        //"__v": 0
+      },
       {
-        "name": "Sibasish Barik",
-        "role": "Head",
-        "image": "/_next/static/media/Sibasish_Aeromodelling.730637f8.jpg",
-        "linkedin": "https://www.linkedin.com/company/aeromodelling-club-iit-indore/",
-        "instagram": "https://www.instagram.com/aeroclub_iiti/"
-      }
-    ],
-    "social": [
+        name: "CAE",
+        heading: "Computer-Aided Engineering",
+        info: "CAE Club focuses on simulation, design and engineering through software tools.",
+        logo: "/_next/static/media/cae.275cafb6.png",
+        clubHead: [
+          {
+            name: "Adinath Apte",
+            role: "President",
+            image: "/_next/static/media/CAE.c0194bc7.jpg",
+            linkedin: "https://www.linkedin.com/company/cae-club-iit-indore/",
+            instagram: "https://www.instagram.com/caeclub_iiti/",
+          },
+        ],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/caeclub_iiti/",
+          },
+        ],
+        //"_id": "e9d0f975eb54479bbcbfd13a",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/aeroclub_iiti/"
-      }
-    ],
-    "_id": "782c54b807c64f3fbb240b5c",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "CAE",
-    "heading": "Computer-Aided Engineering",
-    "info": "CAE Club focuses on simulation, design and engineering through software tools.",
-    "logo": "/_next/static/media/cae.275cafb6.png",
-    "clubHead": [
+        name: "Concreate",
+        heading: "Civil & Structural Design",
+        info: "Concreate is a civil engineering-based club involved in construction, architecture and practical design.",
+        logo: "/_next/static/media/concreate logo (new).0bd2d4d9.jpg",
+        clubHead: [
+          {
+            name: "Rajnish Bairwa",
+            role: "Head",
+            image: "/_next/static/media/Concreate.2a3de49b.jpg",
+            linkedin:
+              "https://www.linkedin.com/company/concreate-club-iit-indore/",
+            instagram: "https://www.instagram.com/concreate_iiti/",
+          },
+        ],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/concreate_iiti/",
+          },
+        ],
+        //"_id": "116111c6239d4a95b9a8f9b9",
+        events: [],
+        //"__v": 0
+      },
       {
-        "name": "Adinath Apte",
-        "role": "President",
-        "image": "/_next/static/media/CAE.c0194bc7.jpg",
-        "linkedin": "https://www.linkedin.com/company/cae-club-iit-indore/",
-        "instagram": "https://www.instagram.com/caeclub_iiti/"
-      }
-    ],
-    "social": [
+        name: "Cynaptics",
+        heading: "Cultural Expression & Dance",
+        info: "Cynaptics is the cultural dance club. It performs classical and contemporary forms at events and fests.",
+        logo: "/_next/static/media/Cynaptics club 20230325_104746.90b3a336.jpg",
+        clubHead: [
+          {
+            name: "Harshvardhan Choudhary",
+            role: "President",
+            image: "/_next/static/media/Cynaptics.161fd5e1.webp",
+            linkedin:
+              "https://www.linkedin.com/company/cynaptics-club-iit-indore/",
+            instagram: "https://www.instagram.com/cynapticsclubiiti/",
+          },
+        ],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/cynapticsclubiiti/",
+          },
+        ],
+        //"_id": "8e55c2e0480243f5b902457f",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/caeclub_iiti/"
-      }
-    ],
-    "_id": "e9d0f975eb54479bbcbfd13a",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Concreate",
-    "heading": "Civil & Structural Design",
-    "info": "Concreate is a civil engineering-based club involved in construction, architecture and practical design.",
-    "logo": "/_next/static/media/concreate logo (new).0bd2d4d9.jpg",
-    "clubHead": [
+        name: "Electronics Club",
+        heading: "Electronics and Embedded Systems",
+        info: "The Electronics Club focuses on hands-on learning of circuits, IoT, and embedded systems.",
+        logo: "/_next/static/media/Copy of electronics club (18).66884efa.png",
+        clubHead: [
+          {
+            name: "Advay Kunte",
+            role: "President",
+            image: "/_next/static/media/elec.14d9aecf.jpg",
+            linkedin:
+              "https://www.linkedin.com/company/elecclub-iit-indore/mycompany/",
+            instagram: "https://www.instagram.com/electronics_club_iiti/",
+          },
+        ],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/electronics_club_iiti/",
+          },
+        ],
+        //"_id": "4996c98fedb742009e3a865f",
+        events: [],
+        //"__v": 0
+      },
       {
-        "name": "Rajnish Bairwa",
-        "role": "Head",
-        "image": "/_next/static/media/Concreate.2a3de49b.jpg",
-        "linkedin": "https://www.linkedin.com/company/concreate-club-iit-indore/",
-        "instagram": "https://www.instagram.com/concreate_iiti/"
-      }
-    ],
-    "social": [
+        name: "GDSC",
+        heading: "Google Developer Student Club",
+        info: "GDSC at IIT Indore helps students explore technology, contribute to open source, and build innovative solutions.",
+        logo: "/_next/static/media/GDSC-IITI-Logo.e90dc451.png",
+        clubHead: [
+          {
+            name: "Vedant Dinkar",
+            role: "Lead",
+            image: "/_next/static/media/gdsc.064c6894.jpg",
+            linkedin:
+              "https://gdsc.community.dev/indian-institute-of-technology-indore-india/",
+            instagram: "https://www.instagram.com/gdsc.iiti/",
+          },
+        ],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/gdsc.iiti/",
+          },
+        ],
+        //"_id": "28d141ba5df346b7b2258215",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/concreate_iiti/"
-      }
-    ],
-    "_id": "116111c6239d4a95b9a8f9b9",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Cynaptics",
-    "heading": "Cultural Expression & Dance",
-    "info": "Cynaptics is the cultural dance club. It performs classical and contemporary forms at events and fests.",
-    "logo": "/_next/static/media/Cynaptics club 20230325_104746.90b3a336.jpg",
-    "clubHead": [
+        name: "IVDC",
+        heading: "Intelligent Vehicle Design Club",
+        info: "IVDC focuses on smart vehicle technology, automation, and robotics integration.",
+        logo: "/_next/static/media/IVDC Club 20230426_231624.82624cc9.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/ivdc_iiti/",
+          },
+        ],
+        //"_id": "6591b5eed4bb4026ad17ee7c",
+        events: [],
+        //"__v": 0
+      },
       {
-        "name": "Harshvardhan Choudhary",
-        "role": "President",
-        "image": "/_next/static/media/Cynaptics.161fd5e1.webp",
-        "linkedin": "https://www.linkedin.com/company/cynaptics-club-iit-indore/",
-        "instagram": "https://www.instagram.com/cynapticsclubiiti/"
-      }
-    ],
-    "social": [
+        name: "Robotics Club",
+        heading: "Mechanical and Robotics Engineering",
+        info: "The Robotics Club builds and programs robots for national and international competitions.",
+        logo: "/_next/static/media/ROBOTICS CLUB_.b09d9280.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/roboticsclub_iitindore/",
+          },
+        ],
+        //"_id": "3c751bd6df284dea88b150df",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/cynapticsclubiiti/"
-      }
-    ],
-    "_id": "8e55c2e0480243f5b902457f",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Electronics Club",
-    "heading": "Electronics and Embedded Systems",
-    "info": "The Electronics Club focuses on hands-on learning of circuits, IoT, and embedded systems.",
-    "logo": "/_next/static/media/Copy of electronics club (18).66884efa.png",
-    "clubHead": [
+        name: "The Programming Club",
+        heading: "Competitive Programming & Software Dev",
+        info: "The Programming Club helps students with problem solving, DSA, and CP contests.",
+        logo: "/_next/static/media/Pclub.0526228d.png",
+        clubHead: [],
+        social: [
+          {
+            platform: "Website",
+            link: "http://progclub.iiti.ac.in/",
+          },
+        ],
+        //"_id": "c11b270143fd41609fae39df",
+        events: [],
+        //"__v": 0
+      },
       {
-        "name": "Advay Kunte",
-        "role": "President",
-        "image": "/_next/static/media/elec.14d9aecf.jpg",
-        "linkedin": "https://www.linkedin.com/company/elecclub-iit-indore/mycompany/",
-        "instagram": "https://www.instagram.com/electronics_club_iiti/"
-      }
-    ],
-    "social": [
+        name: "Aaina Club",
+        heading: "Dramatics and Theatre",
+        info: "Aaina Club is IIT Indore’s dramatics club known for plays, street performances and theatrical arts.",
+        logo: "/_next/static/media/aaina_logo.e8006f82.png",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/dramaticsclubiiti/",
+          },
+        ],
+        //"_id": "aaina001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/electronics_club_iiti/"
-      }
-    ],
-    "_id": "4996c98fedb742009e3a865f",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "GDSC",
-    "heading": "Google Developer Student Club",
-    "info": "GDSC at IIT Indore helps students explore technology, contribute to open source, and build innovative solutions.",
-    "logo": "/_next/static/media/GDSC-IITI-Logo.e90dc451.png",
-    "clubHead": [
+        name: "Avana Club",
+        heading: "Social Welfare & Volunteering",
+        info: "Avana Club drives social change through volunteering, awareness campaigns and community service.",
+        logo: "/_next/static/media/avana.eb82c157.png",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/avana_iiti/",
+          },
+        ],
+        //"_id": "avana001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "name": "Vedant Dinkar",
-        "role": "Lead",
-        "image": "/_next/static/media/gdsc.064c6894.jpg",
-        "linkedin": "https://gdsc.community.dev/indian-institute-of-technology-indore-india/",
-        "instagram": "https://www.instagram.com/gdsc.iiti/"
-      }
-    ],
-    "social": [
+        name: "Cinephiles",
+        heading: "Film Appreciation & Media",
+        info: "Cinephiles is a film club for cinema enthusiasts, screenings, discussions and filmmaking activities.",
+        logo: "/_next/static/media/cinephiles.410ae55f.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/cinephiles_iiti/",
+          },
+        ],
+        //"_id": "cinephiles001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/gdsc.iiti/"
-      }
-    ],
-    "_id": "28d141ba5df346b7b2258215",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "IVDC",
-    "heading": "Intelligent Vehicle Design Club",
-    "info": "IVDC focuses on smart vehicle technology, automation, and robotics integration.",
-    "logo": "/_next/static/media/IVDC Club 20230426_231624.82624cc9.jpg",
-    "clubHead": [],
-    "social": [
+        name: "D' Alpha Crewz",
+        heading: "Hip-Hop & Street Dance",
+        info: "D' Alpha Crewz is a hip-hop and street-style dance crew showcasing vibrant, urban dance performances.",
+        logo: "/_next/static/media/alphad.141d2885.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/d_alphazcrew/",
+          },
+        ],
+        //"_id": "dalpha001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/ivdc_iiti/"
-      }
-    ],
-    "_id": "6591b5eed4bb4026ad17ee7c",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Robotics Club",
-    "heading": "Mechanical and Robotics Engineering",
-    "info": "The Robotics Club builds and programs robots for national and international competitions.",
-    "logo": "/_next/static/media/ROBOTICS CLUB_.b09d9280.jpg",
-    "clubHead": [],
-    "social": [
+        name: "The Debating Society",
+        heading: "Debate & Public Speaking",
+        info: "The Debating Society promotes logical reasoning and public discourse through MUNs and debates.",
+        logo: "/_next/static/media/Debsoc.a48dd20f.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/debsociiti/",
+          },
+        ],
+        //"_id": "debsoc001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/roboticsclub_iitindore/"
-      }
-    ],
-    "_id": "3c751bd6df284dea88b150df",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "The Programming Club",
-    "heading": "Competitive Programming & Software Dev",
-    "info": "The Programming Club helps students with problem solving, DSA, and CP contests.",
-    "logo": "/_next/static/media/Pclub.0526228d.png",
-    "clubHead": [],
-    "social": [
+        name: "EBSB Club",
+        heading: "Cultural Exchange",
+        info: "Ek Bharat Shreshtha Bharat (EBSB) Club fosters unity through inter-state cultural exchange.",
+        logo: "/_next/static/media/ebsb.d54b34f1.png",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/ebsbclub_iiti/",
+          },
+        ],
+        //"_id": "ebsb001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Website",
-        "link": "http://progclub.iiti.ac.in/"
-      }
-    ],
-    "_id": "c11b270143fd41609fae39df",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Aaina Club",
-    "heading": "Dramatics and Theatre",
-    "info": "Aaina Club is IIT Indore’s dramatics club known for plays, street performances and theatrical arts.",
-    "logo": "/_next/static/media/aaina_logo.e8006f82.png",
-    "clubHead": [],
-    "social": [
+        name: "Gaming Club",
+        heading: "Esports & Game Culture",
+        info: "Gaming Club hosts LAN events and competitive tournaments to promote gaming and esports.",
+        logo: "/_next/static/media/gaming.f000c3e2.png",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/gamingclubiiti/",
+          },
+        ],
+        //"_id": "gaming001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/dramaticsclubiiti/"
-      }
-    ],
-    "_id": "aaina001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Avana Club",
-    "heading": "Social Welfare & Volunteering",
-    "info": "Avana Club drives social change through volunteering, awareness campaigns and community service.",
-    "logo": "/_next/static/media/avana.eb82c157.png",
-    "clubHead": [],
-    "social": [
+        name: "Literary Club",
+        heading: "Creative Writing & Literature",
+        info: "The Literary Club encourages expression through poetry, writing, storytelling, and open mics.",
+        logo: "/_next/static/media/literary.3dc5884b.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/thelitclub.iiti/",
+          },
+        ],
+        //"_id": "litclub001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/avana_iiti/"
-      }
-    ],
-    "_id": "avana001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Cinephiles",
-    "heading": "Film Appreciation & Media",
-    "info": "Cinephiles is a film club for cinema enthusiasts, screenings, discussions and filmmaking activities.",
-    "logo": "/_next/static/media/cinephiles.410ae55f.jpg",
-    "clubHead": [],
-    "social": [
+        name: "Mystic Hues",
+        heading: "Fine Arts & Design",
+        info: "Mystic Hues is a visual arts club focusing on sketching, painting, and creative installations.",
+        logo: "/_next/static/media/Mystichues_logo.6ab745a5.png",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/mystichues/",
+          },
+        ],
+        //"_id": "mystichues001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/cinephiles_iiti/"
-      }
-    ],
-    "_id": "cinephiles001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "D' Alpha Crewz",
-    "heading": "Hip-Hop & Street Dance",
-    "info": "D' Alpha Crewz is a hip-hop and street-style dance crew showcasing vibrant, urban dance performances.",
-    "logo": "/_next/static/media/alphad.141d2885.jpg",
-    "clubHead": [],
-    "social": [
+        name: "Music Club",
+        heading: "Musical Talent & Performance",
+        info: "The Music Club of IIT Indore brings together vocalists and instrumentalists to create soulful tunes.",
+        logo: "/_next/static/media/Music.4c3e778c.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/themusicclub.iiti/",
+          },
+        ],
+        //"_id": "music001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/d_alphazcrew/"
-      }
-    ],
-    "_id": "dalpha001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "The Debating Society",
-    "heading": "Debate & Public Speaking",
-    "info": "The Debating Society promotes logical reasoning and public discourse through MUNs and debates.",
-    "logo": "/_next/static/media/Debsoc.a48dd20f.jpg",
-    "clubHead": [],
-    "social": [
+        name: "Prakriti",
+        heading: "Environment & Sustainability",
+        info: "Prakriti Club works on environment-friendly initiatives like clean-up drives and green awareness.",
+        logo: "/_next/static/media/Prakriti.bf999295.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/prakriti.iiti/",
+          },
+        ],
+        //"_id": "prakriti001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/debsociiti/"
-      }
-    ],
-    "_id": "debsoc001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "EBSB Club",
-    "heading": "Cultural Exchange",
-    "info": "Ek Bharat Shreshtha Bharat (EBSB) Club fosters unity through inter-state cultural exchange.",
-    "logo": "/_next/static/media/ebsb.d54b34f1.png",
-    "clubHead": [],
-    "social": [
+        name: "The Quiz Club",
+        heading: "Knowledge & Quizzing",
+        info: "The Quiz Club of IIT Indore nurtures curiosity with quizzes across genres and competitive events.",
+        logo: "/_next/static/media/quiz.9916a78d.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/thequizclub_iiti/",
+          },
+        ],
+        //"_id": "quiz001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/ebsbclub_iiti/"
-      }
-    ],
-    "_id": "ebsb001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Gaming Club",
-    "heading": "Esports & Game Culture",
-    "info": "Gaming Club hosts LAN events and competitive tournaments to promote gaming and esports.",
-    "logo": "/_next/static/media/gaming.f000c3e2.png",
-    "clubHead": [],
-    "social": [
+        name: "Srijan",
+        heading: "Innovation & Creation",
+        info: "Srijan is a creative ideation club that hosts hindi poem, Story telling and invention challenges.",
+        logo: "/_next/static/media/Srijan.0ece6832.jpg",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/srijan_iit_indore/",
+          },
+        ],
+        //"_id": "srijan001",
+        events: [],
+        //"__v": 0
+      },
       {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/gamingclubiiti/"
-      }
-    ],
-    "_id": "gaming001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Literary Club",
-    "heading": "Creative Writing & Literature",
-    "info": "The Literary Club encourages expression through poetry, writing, storytelling, and open mics.",
-    "logo": "/_next/static/media/literary.3dc5884b.jpg",
-    "clubHead": [],
-    "social": [
-      {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/thelitclub.iiti/"
-      }
-    ],
-    "_id": "litclub001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Mystic Hues",
-    "heading": "Fine Arts & Design",
-    "info": "Mystic Hues is a visual arts club focusing on sketching, painting, and creative installations.",
-    "logo": "/_next/static/media/Mystichues_logo.6ab745a5.png",
-    "clubHead": [],
-    "social": [
-      {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/mystichues/"
-      }
-    ],
-    "_id": "mystichues001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Music Club",
-    "heading": "Musical Talent & Performance",
-    "info": "The Music Club of IIT Indore brings together vocalists and instrumentalists to create soulful tunes.",
-    "logo": "/_next/static/media/Music.4c3e778c.jpg",
-    "clubHead": [],
-    "social": [
-      {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/themusicclub.iiti/"
-      }
-    ],
-    "_id": "music001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Prakriti",
-    "heading": "Environment & Sustainability",
-    "info": "Prakriti Club works on environment-friendly initiatives like clean-up drives and green awareness.",
-    "logo": "/_next/static/media/Prakriti.bf999295.jpg",
-    "clubHead": [],
-    "social": [
-      {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/prakriti.iiti/"
-      }
-    ],
-    "_id": "prakriti001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "The Quiz Club",
-    "heading": "Knowledge & Quizzing",
-    "info": "The Quiz Club of IIT Indore nurtures curiosity with quizzes across genres and competitive events.",
-    "logo": "/_next/static/media/quiz.9916a78d.jpg",
-    "clubHead": [],
-    "social": [
-      {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/thequizclub_iiti/"
-      }
-    ],
-    "_id": "quiz001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "Srijan",
-    "heading": "Innovation & Creation",
-    "info": "Srijan is a creative ideation club that hosts workshops, hackathons and invention challenges.",
-    "logo": "/_next/static/media/Srijan.0ece6832.jpg",
-    "clubHead": [],
-    "social": [
-      {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/srijan_iit_indore/"
-      }
-    ],
-    "_id": "srijan001",
-    "events": [],
-    "__v": 0
-  },
-  {
-    "name": "VLR Club",
-    "heading": "Virtual Labs & Research",
-    "info": "VLR Club bridges research and simulation through virtual labs and practical learning modules.",
-    "logo": "/_next/static/media/vlr.af3e8d10.png",
-    "clubHead": [],
-    "social": [
-      {
-        "platform": "Instagram",
-        "link": "https://www.instagram.com/vlr_iiti/"
-      }
-    ],
-    "_id": "vlr001",
-    "events": [],
-    "__v": 0
-  }
-]
-
-
+        name: "VLR Club",
+        heading: "Virtual Labs & Research",
+        info: "VLR Club bridges research and simulation through virtual labs and practical learning modules.",
+        logo: "/_next/static/media/vlr.af3e8d10.png",
+        clubHead: [],
+        social: [
+          {
+            platform: "Instagram",
+            link: "https://www.instagram.com/vlr_iiti/",
+          },
+        ],
+        //"_id": "vlr001",
+        events: [],
+        //"__v": 0
+      },
     ];
 
-    await Club.insertMany(ClubPOJO);
+    await Clubs_.insertMany(ClubPOJO);
     console.log("✅ Clubs seeded successfully.");
     process.exit(0);
-
   } catch (err) {
     console.error("❌ Error seeding:", err.message);
-   process.exit(1);
+    process.exit(1);
   }
 };
 

@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+// /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import techClubs from "./data.json";
@@ -56,16 +56,59 @@ function Individualclubpage(props) {
     e.preventDefault();
     // TODO: send registerInfo to backend if needed
   };
-  const { name } = useParams();
-  const decodedName = decodeURIComponent(name);
+  // const { name } = useParams();
+  // const decodedName = decodeURIComponent(name);
 
-  const club = techClubs.find((club) => club.name === decodedName);
+  // const club = techClubs.find((club) => club.name === decodedName);
 
-  if (!club) {
-    return <p className="text-white text-center">Club not found</p>;
+  // if (!club) {
+  //   return <p className="text-white text-center">Club not found</p>;
+  // }
+  // console.log("decoded name", decodedName);
+  // console.log("matched club", club);
+
+const [Clubs,setClubs]=useState();
+  useEffect( ()=>{
+    const fetchclubs= async () =>{
+    try{
+    const res =  await  fetch('http://localhost:3000/api/allclubs');
+    const data = await res.json();
+    setClubs(data);
+
   }
-  console.log("decoded name", decodedName);
-  console.log("matched club", club);
+    catch(err){
+      console.error(err);
+      alert('Something went wrong. Please try again.');
+    }
+  }
+  fetchclubs();
+},[])
+
+
+const {name} = useParams();
+  const [clubdetailes , setclubdetailes] = useState();
+  useEffect(()=>{
+    const fetchclubinfo = async()=>{
+      try{
+        const res = await fetch('http://localhost:3000/api/findclub',
+          {method:'POST',
+       headers:{'content-type':'application/json'},
+          body:JSON.stringify({name})
+    }
+        );
+        const data = await res.json();
+        setclubdetailes(data);
+
+      }
+      catch(err){
+         console.error(err);
+      alert('Something went wrong. Please try again.');
+      }
+
+    }
+    fetchclubinfo();
+
+  })
 
   return (
     <div className="individual-club-conainer">
@@ -75,7 +118,7 @@ function Individualclubpage(props) {
           <div className="clubbody text-center h-60 w-full mx-auto mb-6">
             <img
               src={club.logo}
-              alt={club.name}
+              alt={club.clubname}
               className="clubimage  mx-auto"
             />
           </div>

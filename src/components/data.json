@@ -1,7 +1,7 @@
 
 [
   {
-    "name": "Astronomy Club",
+    "clubname": "Astronomy Club",
     "heading": "Stargazing & Astronomy",
     "info": "Astronomy Club promotes interest in celestial phenomena and organizes stargazing events.",
     "logo": "/Club-logo/AstronomyClub.png",
@@ -25,7 +25,7 @@
     "__v": 0
   },
   {
-    "name": "The Aeromodelling Club",
+    "clubname": "The Aeromodelling Club",
     "heading": "Aviation & Design",
     "info": "The Aeromodelling Club builds and flies model aircrafts, promoting aerospace knowledge.",
     "logo": "/Club-logo/AeromodellingClub.png",
@@ -49,7 +49,7 @@
     "__v": 0
   },
   {
-    "name": "CAE",
+    "clubname": "CAE",
     "heading": "Computer-Aided Engineering",
     "info": "CAE Club focuses on simulation, design and engineering through software tools.",
     "logo": "/Club-logo/CAE.275cafb6.png",
@@ -73,7 +73,7 @@
     "__v": 0
   },
   {
-    "name": "Concreate",
+    "clubname": "Concreate",
     "heading": "Civil & Structural Design",
     "info": "Concreate is a civil engineering-based club involved in construction, architecture and practical design.",
     "logo": "/Club-logo/Concreate.png",
@@ -97,7 +97,7 @@
     "__v": 0
   },
   {
-    "name": "Cynaptics",
+    "clubname": "Cynaptics",
     "heading": "Cultural Expression & Dance",
     "info": "Cynaptics is the cultural dance club. It performs classical and contemporary forms at events and fests.",
     "logo": "/Club-logo/Cynaptics.png",
@@ -121,7 +121,7 @@
     "__v": 0
   },
   {
-    "name": "Electronics Club",
+    "clubname": "Electronics Club",
     "heading": "Electronics and Embedded Systems",
     "info": "The Electronics Club focuses on hands-on learning of circuits, IoT, and embedded systems.",
     "logo": "/Club-logo/electronics club .66884efa.png",
@@ -145,7 +145,7 @@
     "__v": 0
   },
   {
-    "name": "GDSC",
+    "clubname": "GDSC",
     "heading": "Google Developer Student Club",
     "info": "GDSC at IIT Indore helps students explore technology, contribute to open source, and build innovative solutions.",
     "logo": "/Club-logo/GDSC-IITI-Logo.e90dc451.png",
@@ -169,7 +169,7 @@
     "__v": 0
   },
   {
-    "name": "IVDC",
+    "clubname": "IVDC",
     "heading": "Intelligent Vehicle Design Club",
     "info": "IVDC focuses on smart vehicle technology, automation, and robotics integration.",
     "logo": "/Club-logo/IVDC.png",
@@ -185,7 +185,7 @@
     "__v": 0
   },
   {
-    "name": "Robotics Club",
+    "clubname": "Robotics Club",
     "heading": "Mechanical and Robotics Engineering",
     "info": "The Robotics Club builds and programs robots for national and international competitions.",
     "logo": "/Club-logo/Robotics.png",
@@ -201,7 +201,7 @@
     "__v": 0
   },
   {
-    "name": "The Programming Club",
+    "clubname": "The Programming Club",
     "heading": "Competitive Programming & Software Dev",
     "info": "The Programming Club helps students with problem solving, DSA, and CP contests.",
     "logo": "/Club-logo/Pclub.png",
@@ -217,7 +217,7 @@
     "__v": 0
   },
   {
-    "name": "Aaina Club",
+    "clubname": "Aaina Club",
     "heading": "Dramatics and Theatre",
     "info": "Aaina Club is IIT Indore’s dramatics club known for plays, street performances and theatrical arts.",
     "logo": "/Club-logo/AAINA.png",
@@ -233,7 +233,7 @@
     "__v": 0
   },
   {
-    "name": "Avana Club",
+    "clubname": "Avana Club",
     "heading": "Social Welfare & Volunteering",
     "info": "Avana Club drives social change through volunteering, awareness campaigns and community service.",
     "logo": "/Club-logo/AVANA.png",
@@ -249,7 +249,7 @@
     "__v": 0
   },
   {
-    "name": "Cinephiles",
+    "clubname": "Cinephiles",
     "heading": "Film Appreciation & Media",
     "info": "Cinephiles is a film club for cinema enthusiasts, screenings, discussions and filmmaking activities.",
     "logo": "/Club-logo/CINEPHILES.png",
@@ -265,7 +265,7 @@
     "__v": 0
   },
   {
-    "name": "D' Alpha Crewz",
+    "clubname": "D' Alpha Crewz",
     "heading": "Hip-Hop & Street Dance",
     "info": "D' Alpha Crewz is a hip-hop and street-style dance crew showcasing vibrant, urban dance performances.",
     "logo": "/Club-logo/ALPHA.png",
@@ -281,7 +281,7 @@
     "__v": 0
   },
   {
-    "name": "The Debating Society",
+    "clubname": "The Debating Society",
     "heading": "Debate & Public Speaking",
     "info": "The Debating Society promotes logical reasoning and public discourse through MUNs and debates.",
     "logo": "/Club-logo/DEBSOC.png",
@@ -297,7 +297,7 @@
     "__v": 0
   },
   {
-    "name": "EBSB Club",
+    "clubname": "EBSB Club",
     "heading": "Cultural Exchange",
     "info": "Ek Bharat Shreshtha Bharat (EBSB) Club fosters unity through inter-state cultural exchange.",
     "logo": "/Club-logo/EBSB.png",
@@ -313,7 +313,7 @@
     "__v": 0
   },
   {
-    "name": "Gaming Club",
+    "clubname": "Gaming Club",
     "heading": "Esports & Game Culture",
     "info": "Gaming Club hosts LAN events and competitive tournaments to promote gaming and esports.",
     "logo": "/Club-logo/Gaming.png",
@@ -329,7 +329,7 @@
     "__v": 0
   },
   {
-    "name": "Literary Club",
+    "clubname": "Literary Club",
     "heading": "Creative Writing & Literature",
     "info": "The Literary Club encourages expression through poetry, writing, storytelling, and open mics.",
     "logo": "/Club-logo/LIT.png",
@@ -345,7 +345,7 @@
     "__v": 0
   },
   {
-    "name": "Mystic Hues",
+    "clubname": "Mystic Hues",
     "heading": "Fine Arts & Design",
     "info": "Mystic Hues is a visual arts club focusing on sketching, painting, and creative installations.",
     "logo": "/Club-logo/MYSTIC.png",
@@ -361,7 +361,7 @@
     "__v": 0
   },
   {
-    "name": "Music Club",
+    "clubname": "Music Club",
     "heading": "Musical Talent & Performance",
     "info": "The Music Club of IIT Indore brings together vocalists and instrumentalists to create soulful tunes.",
     "logo": "/Club-logo/MUSIC.png",
@@ -377,7 +377,7 @@
     "__v": 0
   },
   {
-    "name": "Prakriti",
+    "clubname": "Prakriti",
     "heading": "Environment & Sustainability",
     "info": "Prakriti Club works on environment-friendly initiatives like clean-up drives and green awareness.",
     "logo": "/Club-logo/PRAKRITI.png",
@@ -393,7 +393,7 @@
     "__v": 0
   },
   {
-    "name": "The Quiz Club",
+    "clubname": "The Quiz Club",
     "heading": "Knowledge & Quizzing",
     "info": "The Quiz Club of IIT Indore nurtures curiosity with quizzes across genres and competitive events.",
     "logo": "/Club-logo/QUIZ.png",
@@ -409,7 +409,7 @@
     "__v": 0
   },
   {
-    "name": "Srijan",
+    "clubname": "Srijan",
     "heading": "Innovation & Creation",
     "info": "Srijan is a creative ideation club that hosts workshops, hackathons and invention challenges.",
     "logo": "/Club-logo/SRIJAN.png",
@@ -425,7 +425,7 @@
     "__v": 0
   },
   {
-    "name": "VLR Club",
+    "clubname": "VLR Club",
     "heading": "Virtual Labs & Research",
     "info": "VLR Club bridges research and simulation through virtual labs and practical learning modules.",
     "logo": "/Club-logo/VLR.png",

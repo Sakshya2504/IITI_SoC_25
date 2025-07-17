@@ -1,12 +1,12 @@
 import express from 'express';
-import { Club } from "../models/Club.js";
+import { Clubs_ } from "../models/Club.js";
 
 
 const router = express.Router();
-router.get("/:name", async (req, res) => {
+router.get("/:clubname", async (req, res) => {
   try {
-    if (!req.params.name) return res.status(400).json({ error: "Name is required" });
-    const club = await Club.findOne({ name: req.params.name });
+    if (!req.params.clubname) return res.status(400).json({ error: "Name is required" });
+    const club = await Clubs_.findOne({ name: req.params.clubname });
     if (!club) {
       return res.status(404).json({ error: "Club not found" });
     }
