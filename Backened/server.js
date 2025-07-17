@@ -27,6 +27,11 @@ await mongoose.connect("mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.n
 // Signup route
 app.post('/api/signup', async (req, res) => {
     const { name, email, password, userphoto } = req.body;
+    if (password.length < 6 || password.length > 10) {
+        return res.status(400).json({ errors: ['Password must be between 6 and 10 characters long'] });
+    }
+    
+
 
     try {
         const existingUser = await User.findOne({ email });
@@ -50,7 +55,8 @@ app.post('/api/signup', async (req, res) => {
       } });
     } catch (err) {
         if (err.name === 'ValidationError') {
-            return res.status(400).json({message : err.message });
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
         }
         res.status(500).json({ message: 'Something went wrong' });
       }
@@ -103,7 +109,10 @@ app.post('/announce', async (req, res) => {
 
         res.status(201).json({ message: 'Announcement created successfully!' });
     } catch (err) {
-        console.error('Error creating announcement:', err);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ message: 'Something went wrong while saving the announcement' });
     }
 });
@@ -138,7 +147,10 @@ app.post('/Createevent', async (req, res) => {
 
         res.status(201).json({ message: 'Event Creation successful!' });
     } catch (err) {
-        console.error('Error creating event:', err);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ message: 'Something went wrong while saving the event' });
     }
 });
@@ -185,7 +197,10 @@ app.post('/events/:eventId/register', async (req, res) => {
         await registration.save();
         res.status(200).json({ message: 'Registered successfully' });
     } catch (err) {
-        console.error('Error saving registration:', err.message);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });

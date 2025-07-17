@@ -9,6 +9,7 @@ function Signup(props) {
   // It includes a form where users can input their name, email, and password
   const navigate = useNavigate();
   const [userphoto, setuserphoto] = useState(user);
+  const [errors, setErrors] = useState([]);
   const [logininfo, setlogininfo] = useState({
     name: "",
     email: "",
@@ -74,7 +75,11 @@ function Signup(props) {
 
       }
       else {
-        alert(result.message || 'signup failed');
+        if (result.errors) {
+          setErrors(result.errors);
+        } else {
+          setErrors([result.message || 'Signup failed']);
+        }
       }
     }
     catch (error) {
@@ -96,6 +101,13 @@ function Signup(props) {
             <h2 className=' text-xl text-white font-bold py-10'>
               CREATE ACCOUNT
             </h2>
+            {errors.length > 0 && (
+              <div className="w-full flex justify-center mb-4">
+                {errors.map((msg, idx) => (
+                  <div key={idx} className="text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-md shadow-lg animate-fade-in">{msg}</div>
+                ))}
+              </div>
+            )}
             <input type="text" className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]" name='name' placeholder='Username' value={logininfo.name} id="Inputusername" onChange={change} required />
 
             <input type="email" placeholder='Email' className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]" name='email' value={logininfo.email} id="InputEmail1" onChange={change} required />

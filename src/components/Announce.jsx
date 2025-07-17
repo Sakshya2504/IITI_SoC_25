@@ -10,8 +10,12 @@ function Announce() {
   const { clubname } = useParams();
   const club_name = decodeURIComponent(clubname);
   const navigate = useNavigate();
+<<<<<<< HEAD
   // const [announcelogo,setannouncelogo]=useState(iiti);
   const clubpages=[{clubname:club_name,announcelogo:announcelogo}]
+=======
+   const [errors, setErrors] = useState([]);
+>>>>>>> 89148b1d2e360c2299148d290e19ea29672aff0c
   const [announcelogo, setannouncelogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({
     clubname: club_name,
@@ -92,7 +96,11 @@ function Announce() {
         setlogininfo({ clubname: club_name, heading: "", info: "", announcelogo: { announcelogo } });
         navigate('/notification');
       } else {
-        alert(result.message || 'Announcement failed');
+        if (result.errors) {
+          setErrors(result.errors);
+        } else {
+          setErrors([result.message || 'Signup failed']);
+        }
       }
     } catch (err) {
       console.error("Submit error:", err);
@@ -108,6 +116,15 @@ function Announce() {
           <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={() => navigate(-1)}>❌</button>
           <form action="/individualclubpage" onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
             <h2 className='text-white font-bold text-[22px] '>Announcement Details</h2>
+            {errors.length > 0 && (
+              <div className="w-full flex justify-center mb-4">
+                <div className="text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-md shadow-lg animate-fade-in">
+                  {errors.map((msg, idx) => (
+                    <p key={idx} className="my-1">{msg}</p>
+                  ))}
+                </div>
+              </div>
+            )}
             <input
               type="text"
               placeholder="Clubname"
