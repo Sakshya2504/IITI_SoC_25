@@ -10,6 +10,8 @@ import {Regis} from './models/Regis.js'
 
 
 const app = express();
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 const port = 3000;
 
 app.use(cors());
@@ -23,7 +25,12 @@ await mongoose.connect("mongodb://localhost:27017/todo", {
 
 // Signup route
 app.post('/api/signup', async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, userphoto } = req.body;
+    if (password.length < 6 || password.length > 10) {
+        return res.status(400).json({ errors: ['Password must be between 6 and 10 characters long'] });
+    }
+    
+
 
     try {
         const existingUser = await User.findOne({ email });
@@ -37,16 +44,18 @@ app.post('/api/signup', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, saltRounds); 
 
         // Store hashed password
-        const newUser = new User({ name, email, password: hashedPassword }); 
+        const newUser = new User({ name, email, password: hashedPassword, userphoto }); 
         await newUser.save();
 
         res.status(201).json({ message: 'User registered successfully!',user: {
         name: name,
-        email: email
+        email: email,
+        userphoto:userphoto
       } });
     } catch (err) {
         if (err.name === 'ValidationError') {
-            return res.status(400).json({message : err.message });
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
         }
         res.status(500).json({ message: 'Something went wrong' });
       }
@@ -71,7 +80,8 @@ app.post('/api/login', async (req, res) => {
 
         res.json({ message: 'Login successful!',user: {
         name: user.name,
-        email: user.email
+        email: user.email,
+        userphoto:user.userphoto
       } });
     } catch (err) {
       console.error(err);
@@ -84,20 +94,24 @@ app.post('/api/login', async (req, res) => {
 app.post('/announce', async (req, res) => {
     console.log("Incoming body:", req.body);
     try {
-        const { clubname, heading, info } = req.body;
+        const { clubname, heading, info ,announcelogo} = req.body;
 
         // Create and save the new announcement
         const newAnnounce = new Announce_({
             clubname,
             heading,
-            info
+            info,
+            announcelogo
         });
 
         await newAnnounce.save();
 
         res.status(201).json({ message: 'Announcement created successfully!' });
     } catch (err) {
-        console.error('Error creating announcement:', err);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ message: 'Something went wrong while saving the announcement' });
     }
 });
@@ -117,21 +131,25 @@ app.get('/notification', async (req, res) => {
 app.post('/Createevent', async (req, res) => {
     console.log("Incoming body:", req.body);
     try {
-        const { EventName, EventDateAndTime, ConductedBy, EventInfo } = req.body;
+        const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo} = req.body;
 
         // Create and save the new event
         const newEvent = new event_({
             EventName,
             EventDateAndTime,
             ConductedBy,
-            EventInfo
+            EventInfo,
+            Eventlogo
         });
 
         await newEvent.save();
 
         res.status(201).json({ message: 'Event Creation successful!' });
     } catch (err) {
-        console.error('Error creating event:', err);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ message: 'Something went wrong while saving the event' });
     }
 });
@@ -207,7 +225,10 @@ app.post('/events/:eventId/register', async (req, res) => {
         await registration.save();
         res.status(200).json({ message: 'Registered successfully' });
     } catch (err) {
-        console.error('Error saving registration:', err.message);
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(e => e.message);
+            return res.status(400).json({ errors: messages });
+        }
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
