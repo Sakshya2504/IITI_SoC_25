@@ -1,296 +1,237 @@
-import mongoose from "mongoose";
-import express from "express";
-import cors from "cors";
-import { User } from "./models/UserSchema.js";
-import bcrypt from "bcrypt";
-import { Announce_ } from "./models/Announce.js";
-import { event_ } from "./models/Event.js";
-import { Admin_ } from "./models/Admins.js"; // Import the Admin model
-import { Regis } from "./models/Regis.js";
+import mongoose from 'mongoose';
+import express from 'express';
+import cors from 'cors';
+import { User } from './models/UserSchema.js'; 
+import bcrypt from 'bcrypt';
+import { Announce_ } from './models/Announce.js'; 
+import {event_} from './models/Event.js'
+import { Admin_ } from './models/Admins.js'; // Import the Admin model
+import {Regis} from './models/Regis.js'
 
-import dotenv from "dotenv";
-dotenv.config();
 
-// import ClubPOJO from './models/Seed.js'
-import { Clubs_ } from "./models/Club.js";
-import Clubroutes from "./routes/ClubRoutes.js";
-import SearchRoute from "./routes/SearchRoute.js";
-import { Search } from "./models/Search.js";
 const app = express();
-
-const PORT = 3000;
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+const port = 3000;
 
 app.use(cors());
-app.use(express.json());
-app.use("/api/clubs", Clubroutes);
+app.use(express.json()); 
 
 // Connect to MongoDB with the validation using Mongoose
-
-// await mongoose.connect("mongodb://localhost:27017/todo", {});
-
-await mongoose
-  .connect("mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.net/", {})
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error(err));
-// Connect to MongoDB
-app.get("/api/test", async (req, res) => {
-  try {
-    const collections = await mongoose.connection.db
-      .listCollections()
-      .toArray();
-    res.json({ message: "Database working ✅", collections });
-  } catch (err) {
-    res.status(500).json({ message: "Database not responding ❌", error: err });
-  }
+await mongoose.connect("mongodb://localhost:27017/todo", {
+    // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
+    // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
+
 // Signup route
-app.post("/api/signup", async (req, res) => {
-  const { name, email, password } = req.body;
+app.post('/api/signup', async (req, res) => {
+    const { name, email, password, userphoto } = req.body;
 
-  try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res
-        .status(409)
-        .json({ message: "User already registered with this email" });
-    }
+    try {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(409).json({ message: 'User already registered with this email' });
+        }
 
-    const saltRounds = 10;
-    //We use bcrypt to hash the password before storing it in the database
-    //To ensure that passwords are stored securely, we use bcrypt to hash the password before storing it in the database.
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const saltRounds = 10;
+        //We use bcrypt to hash the password before storing it in the database 
+        //To ensure that passwords are stored securely, we use bcrypt to hash the password before storing it in the database.
+        const hashedPassword = await bcrypt.hash(password, saltRounds); 
 
-    // Store hashed password
-    const newUser = new User({ name, email, password: hashedPassword });
-    await newUser.save();
+        // Store hashed password
+        const newUser = new User({ name, email, password: hashedPassword, userphoto }); 
+        await newUser.save();
 
-    res.status(201).json({
-      message: "User registered successfully!",
-      user: {
+        res.status(201).json({ message: 'User registered successfully!',user: {
         name: name,
         email: email,
-      },
-    });
-  } catch (err) {
-    if (err.name === "ValidationError") {
-      return res.status(400).json({ message: err.message });
-    }
-    res.status(500).json({ message: "Something went wrong", err });
-  }
+        userphoto:userphoto
+      } });
+    } catch (err) {
+        if (err.name === 'ValidationError') {
+            return res.status(400).json({message : err.message });
+        }
+        res.status(500).json({ message: 'Something went wrong' });
+      }
 });
 
 // Login route
-app.post("/api/login", async (req, res) => {
-  const { email, password } = req.body;
+app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
 
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
 
-    // If user exists, compare the provided password with the hashed password in the database
-    // bcrypt.compare is used to compare the provided password with the hashed password in the database
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
+        // If user exists, compare the provided password with the hashed password in the database
+        // bcrypt.compare is used to compare the provided password with the hashed password in the database
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ message: "Invalid credentials" });
+        }
 
-    res.json({
-      message: "Login successful!",
-      user: {
+        res.json({ message: 'Login successful!',user: {
         name: user.name,
         email: user.email,
-      },
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Something went wrong" });
-  }
+        userphoto:user.userphoto
+      } });
+    } catch (err) {
+      console.error(err);
+        res.status(500).json({ message: 'Something went wrong' });
+    }
 });
 
 // Announcement routes
 // This route is used to create a new announcement
-app.post("/announce", async (req, res) => {
-  console.log("Incoming body:", req.body);
-  try {
-    const { clubname, heading, info } = req.body;
+app.post('/announce', async (req, res) => {
+    console.log("Incoming body:", req.body);
+    try {
+        const { clubname, heading, info ,announcelogo} = req.body;
 
-    // Create and save the new announcement
-    const newAnnounce = new Announce_({
-      clubname,
-      heading,
-      info,
-    });
+        // Create and save the new announcement
+        const newAnnounce = new Announce_({
+            clubname,
+            heading,
+            info,
+            announcelogo
+        });
 
-    await newAnnounce.save();
+        await newAnnounce.save();
 
-    res.status(201).json({ message: "Announcement created successfully!" });
-  } catch (err) {
-    console.error("Error creating announcement:", err);
-    res
-      .status(500)
-      .json({ message: "Something went wrong while saving the announcement" });
-  }
+        res.status(201).json({ message: 'Announcement created successfully!' });
+    } catch (err) {
+        console.error('Error creating announcement:', err);
+        res.status(500).json({ message: 'Something went wrong while saving the announcement' });
+    }
 });
 
-app.get("/notification", async (req, res) => {
-  try {
-    const Events = await Announce_.find();
-    res.status(200).json(Events);
-  } catch (err) {
-    console.error("Error fetching Events:", err);
-    res.status(500).json({ message: "Failed to fetch Events" });
-  }
+app.get('/notification', async (req, res) => {
+    try {
+        const Events = await Announce_.find();
+        res.status(200).json(Events);
+    } catch (err) {
+        console.error('Error fetching Events:', err);
+        res.status(500).json({ message: 'Failed to fetch Events' });
+    }
 });
 
 // Event routes
 // This route is used to create a new event
-app.post("/Createevent", async (req, res) => {
-  console.log("Incoming body:", req.body);
-  try {
-    const { EventName, EventDateAndTime, ConductedBy, EventInfo } = req.body;
+app.post('/Createevent', async (req, res) => {
+    console.log("Incoming body:", req.body);
+    try {
+        const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo} = req.body;
 
-    // Create and save the new event
-    const newEvent = new event_({
-      EventName,
-      EventDateAndTime,
-      ConductedBy,
-      EventInfo,
-    });
+        // Create and save the new event
+        const newEvent = new event_({
+            EventName,
+            EventDateAndTime,
+            ConductedBy,
+            EventInfo,
+            Eventlogo
+        });
 
-    await newEvent.save();
+        await newEvent.save();
 
-    res.status(201).json({ message: "Event Creation successful!" });
-  } catch (err) {
-    console.error("Error creating event:", err);
-    res
-      .status(500)
-      .json({ message: "Something went wrong while saving the event" });
-  }
-});
-
-// SearchRoute
-app.post("/api/search", SearchRoute, async (req, res) => {
-  console.log("Incoming body:", req.body);
-  try {
-    const { title, category, date, time, location } = req.body;
-
-    // Create and save the new announcement
-    const newSearch = new Search({
-      title,
-      category,
-      date,
-      time,
-      location,
-    });
-
-    await newSearch.save();
-
-    res.status(201).json();
-  } catch (err) {
-    console.error("Search not found:", err);
-    res.status(500).json({ message: "Something went wrong " });
-  }
+        res.status(201).json({ message: 'Event Creation successful!' });
+    } catch (err) {
+        console.error('Error creating event:', err);
+        res.status(500).json({ message: 'Something went wrong while saving the event' });
+    }
 });
 
 // This route is used to fetch all events
 // It retrieves all events from the database and returns them as a JSON response
-app.get("/Events", async (req, res) => {
-  try {
-    const Events = await event_.find();
-    res.status(200).json(Events);
-  } catch (err) {
-    console.error("Error fetching Events:", err);
-    res.status(500).json({ message: "Failed to fetch Events" });
-  }
+app.get('/Events', async (req, res) => {
+    try {
+        const Events = await event_.find();
+        res.status(200).json(Events);
+    } catch (err) {
+        console.error('Error fetching Events:', err);
+        res.status(500).json({ message: 'Failed to fetch Events' });
+    }
 });
 
-// individual Clubpages
-// app.get("/clubs", async (req, res) => {
-//   try {
-//     const club = await Club.find();
-//     res.status(200).json(club);
-//   } catch (err) {
-//     console.error("Error fetching Club details:", err);
-//     res.status(500).json({ message: "Failed to fetch Club details" });
-//   }
+app.post('/api/verifyadmin', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        const admin = await Admin_.findOne({ email });
+        // Check if the email exists in the Admin collection
+        // If the email exists, it means the user is an admin
+        if (admin) {
+            res.status(200).json({ authorized: true });
+        } else {
+            res.status(401).json({ authorized: false, message: 'Unauthorized email' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// app.post('/api/register', async (req, res) => {
+//     const { name, email, password } = req.body;
+
+//     try {
+//         const existingUser = await Regis.findOne({ email });
+//         if (existingUser) {
+//             return res.status(409).json({ message: 'User already registered with this email' });
+//         }
+        
+
+        
+//         const newRegis = new Regis({ name, EmailAddress,RollNumber,Program,Branch,PhoneNumber });
+//         await newRegis.save();
+
+//         res.status(201).json({
+//             message: 'User registered successfully!', user: {
+//                 Name: name,
+//                 EmailAddress: email,
+//                 RollNumber: RollNumber,
+//                 Program: Program,
+//                 Branch: Branch,
+//                 PhoneNumber: PhoneNumber
+//             }
+//         });
+//     } catch (err) {
+//         if (err.name === 'ValidationError') {
+//             return res.status(401).json({ message: err.message });
+//         }
+//         res.status(500).json({ message: 'Something went wrong' });
+//     }
 // });
-app.post("/api/findclub", async (req, res) => {
-  const { clubname } = req.body;
-  try {
-    const club = await Clubs_.findOne({ clubname });
-    if (club) {
-      res.status(201).json(club);
+
+
+app.post('/events/:eventId/register', async (req, res) => {
+    const { eventId } = req.params;
+    const formData = req.body;
+
+    try {
+        const registration = new Regis({ eventId, ...formData });
+        await registration.save();
+        res.status(200).json({ message: 'Registered successfully' });
+    } catch (err) {
+        console.error('Error saving registration:', err.message);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Could not retrieve clubdata" });
-  }
-});
-app.get("/api/allclubs", async (req, res) => {
-  try {
-    const clubs = await Clubs_.find();
-    res.status(201).json(clubs);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Could not retrieve clubdata" });
-  }
 });
 
-app.post("/api/verifyadmin", async (req, res) => {
-  const { email } = req.body;
+app.get('/events/:eventId/registrations/count', async (req, res) => {
+    const { eventId } = req.params;
 
-  try {
-    const admin = await Admin_.findOne({ email });
-    // Check if the email exists in the Admin collection
-    // If the email exists, it means the user is an admin
-    if (admin) {
-      res.status(200).json({ authorized: true });
-    } else {
-      res
-        .status(401)
-        .json({ authorized: false, message: "Unauthorized email" });
+    try {
+        const count = await Regis.countDocuments({ eventId });
+        res.json({ count });
+    } catch (err) {
+        console.error('Failed to fetch registration count:', err.message);
+        res.status(500).json({ error: 'Could not retrieve registration count' });
     }
-  } catch (err) {
-    res.status(500).json({ error: "Server error", err });
-  }
 });
 
-app.post("/events/:eventId/register", async (req, res) => {
-  const { eventId } = req.params;
-  const formData = req.body;
 
-  try {
-    const registration = new Regis({ eventId, ...formData });
-    await registration.save();
-    res.status(200).json({ message: "Registered successfully" });
-  } catch (err) {
-    console.error("Error saving registration:", err.message);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
 
-app.get("/events/:eventId/registrations/count", async (req, res) => {
-  const { eventId } = req.params;
-
-  try {
-    const count = await Regis.countDocuments({ eventId });
-    res.json({ count });
-  } catch (err) {
-    console.error("Failed to fetch registration count:", err.message);
-    res.status(500).json({ error: "Could not retrieve registration count" });
-  }
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello from backend"); // for root '/'
-});
-
-app.get("/api/ping", (req, res) => {
-  res.json("backend is running fine");
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });
