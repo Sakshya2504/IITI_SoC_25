@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import './Individualclubpage.css'
 import insta from '../Images/insta.png';
@@ -70,24 +70,24 @@ const events = [
   ],
   events: []
   });
-  
+  useEffect(()=>{
     console.log("Running useEffect with _id:", _id); 
      
     const fetchclubinfo = async()=>{
-       console.log('ok');
+       
       try{
-         console.log('ok');
+       
         const res = await fetch('http://localhost:3000/api/findclub',
           {method:'POST',
        headers:{'content-type':'application/json'},
           body:JSON.stringify({_id})
     } );
          console.log('ok');
-          console.log('ok');
+          
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         console.log(data);
-        console.log('ok');
+        
         
         setclubdetailes({
   _id: data._id || '',
@@ -108,16 +108,20 @@ const events = [
     }],
   events: data.events || []
  });
-         }
+        
+       
+
+      }
       catch(err){
          console.error(err);
       alert('Something went wrong. Please try again.');
       }
 
     }
-    fetchclubinfo();
+    if(_id){
+    fetchclubinfo();}
 
-  
+  },[_id]);
   const [register,setregister]=useState(false);
       const [registerinfo, setregisterinfo] = useState({
           Name: "",
