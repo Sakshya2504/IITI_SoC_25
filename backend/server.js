@@ -29,7 +29,7 @@ app.use("/api/clubs", Clubroutes);
 // await mongoose.connect("mongodb://localhost:27017/todo", {});
 
 await mongoose
-  .connect("mongodb://localhost:27017/todo", {})
+  .connect("mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.net/", {})
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 // Connect to MongoDB
