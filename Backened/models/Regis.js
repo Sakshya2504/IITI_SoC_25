@@ -34,7 +34,7 @@ const RegisSchema = new Schema({
         type: String,
         required: [true, 'Phone number is required'],
         unique: true,
-        match: [/^[6-9]\d{9}$/, 'Enter a valid 10-digit mobile number']
+        match: [/^[0-9]\d{9}$/, 'Enter a valid 10-digit mobile number']
     },
     eventId: {
         type: mongoose.Schema.Types.ObjectId,
