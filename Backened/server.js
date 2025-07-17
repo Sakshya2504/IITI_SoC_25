@@ -7,6 +7,7 @@ import { Announce_ } from './models/Announce.js';
 import {event_} from './models/Event.js'
 import { Admin_ } from './models/Admins.js'; // Import the Admin model
 import {Regis} from './models/Regis.js'
+import {Clubs_} from './models/Club.js'
 
 
 const app = express();
@@ -18,7 +19,7 @@ app.use(cors());
 app.use(express.json()); 
 
 // Connect to MongoDB with the validation using Mongoose
-await mongoose.connect("mongodb://localhost:27017/todo", {
+await mongoose.connect("mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.net/", {
     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
@@ -179,41 +180,12 @@ app.post('/api/verifyadmin', async (req, res) => {
             res.status(401).json({ authorized: false, message: 'Unauthorized email' });
         }
     } catch (err) {
+        console.error(err);
         res.status(500).json({ error: 'Server error' });
     }
 });
 
-// app.post('/api/register', async (req, res) => {
-//     const { name, email, password } = req.body;
 
-//     try {
-//         const existingUser = await Regis.findOne({ email });
-//         if (existingUser) {
-//             return res.status(409).json({ message: 'User already registered with this email' });
-//         }
-        
-
-        
-//         const newRegis = new Regis({ name, EmailAddress,RollNumber,Program,Branch,PhoneNumber });
-//         await newRegis.save();
-
-//         res.status(201).json({
-//             message: 'User registered successfully!', user: {
-//                 Name: name,
-//                 EmailAddress: email,
-//                 RollNumber: RollNumber,
-//                 Program: Program,
-//                 Branch: Branch,
-//                 PhoneNumber: PhoneNumber
-//             }
-//         });
-//     } catch (err) {
-//         if (err.name === 'ValidationError') {
-//             return res.status(401).json({ message: err.message });
-//         }
-//         res.status(500).json({ message: 'Something went wrong' });
-//     }
-// });
 
 
 app.post('/events/:eventId/register', async (req, res) => {
@@ -244,6 +216,34 @@ app.get('/events/:eventId/registrations/count', async (req, res) => {
         res.status(500).json({ error: 'Could not retrieve registration count' });
     }
 });
+app.post('/api/findclub', async (req, res)=>{
+    const {_id} = req.body;
+      console.log("Received findclub request:", req.body);
+      
+    try{
+        const club = await Clubs_.findOne({_id});
+         console.log("Found club:", club)
+        if(club){
+            res.status(201).json(club);
+        }
+   
+    }
+    catch(err){
+console.log(err)
+    res.status(500).json({ error: 'Could not retrieve clubdata' });
+    }
+
+});
+app.get('/api/allclubs',async(req,res)=>{
+    try{
+        const clubs = await Clubs_.find();
+        res.status(201).json(clubs);
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json({error: 'Could not retrieve clubdata'})
+    }
+})
 
 
 

@@ -11,6 +11,7 @@ import twitter from './Images/twitter.png';
 import facebook from './Images/facebook.png';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Clubselection from './components/Clubselection'
 import Createevent from './components/Createevent';
 import Announce from './components/Announce';
 import { useState } from 'react';
@@ -48,18 +49,21 @@ function App() {
         <Routes>
           <Route path="/" element={<Events issignup={issignup} searchQuery={searchQuery}
           />} />
-          <Route path="/clubs" element={<ClubPage />} />
+          <Route path="/clubselection" element={<Clubselection />} />
+          <Route path="/clubs/:clubtype" element={<ClubPage />} />
 
-          <Route path="/notification" element={<Notification />} />
+        
+           <Route path="/notification" element={<Notification />} />
 
-          <Route path="/signup" element={<Signup setissignup={setissignup} setpersoninfo={setpersoninfo} />} />
-          <Route path="/login" element={<Login setissignup={setissignup} setpersoninfo={setpersoninfo} />} />
+          <Route path="/signup" element={<Signup setissignup={setissignup}  setpersoninfo={setpersoninfo} />} />
+          <Route path="/login" element={<Login setissignup={setissignup}  setpersoninfo={setpersoninfo} />} />
+          
+          
+          
+          <Route path="/individualclubpage/:clubname/:_id" element={<Individualclubpage issignup={issignup} />} />
+          <Route path="/createevent/:clubname" element={<Createevent/>} />
 
-
-
-          <Route path="/individualclubpage/:clubname" element={<Individualclubpage issignup={issignup} />} />
-          <Route path="/createevent/:clubname" element={<Createevent />} />
-          <Route path="/announce/:clubname" element={<Announce />} />
+           <Route path="/announce/:clubname" element={<Announce/>} />
         </Routes>
 
       </div>
