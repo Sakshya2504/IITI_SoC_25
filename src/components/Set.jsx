@@ -7,12 +7,12 @@ function Set(props) {
   const location = useLocation();
   const navigate = useNavigate();
   const navigation = [
-    { name: '🧑‍🤝‍🧑 Clubs', path: '/clubs' },
-    { name: '📅 Events', path: '/' },
+  { name: '🧑‍🤝‍🧑 Clubs', path: '/clubselection' },
+  { name: '📅 Events', path: '/' },
 
-    { name: '🔔 Notification', path: '/notification' },
-    ...(!props.issignup ? [{ name: ' ✍️ Signup', path: '/signup' }] : [])
-  ];
+  { name: '🔔 Notification', path: '/notification' },
+  ...(!props.issignup?[{ name: ' ✍️ Signup', path: '/signup'}]:[] )
+];
   return (
     <>
       {/* Mobile Dropdown */}

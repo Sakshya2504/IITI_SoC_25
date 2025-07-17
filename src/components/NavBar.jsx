@@ -10,8 +10,8 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
   const navigate = useNavigate();
   const [isuserinfoopen, setisuserinfoopen] = useState(false);
   const navigation = [
-    { name: "Clubs", path: "/clubs" },
-    { name: "Events", path: "/" },
+    { name: 'Clubs', path: '/clubselection' },
+    { name: 'Events', path: '/' },
 
     { name: "Notification", path: "/notification" },
     ...(!props.issignup ? [{ name: "Signup", path: "/signup" }] : []),
