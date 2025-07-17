@@ -8,40 +8,38 @@ const RegisSchema = new Schema({
         minlength: [3, 'Name must be at least 3 characters'],
         maxlength: [50, 'Name must be at most 50 characters'],
     },
-
     EmailAddress: {
         type: String,
-        required: true,
+        required: [true, 'Email is required'],
         unique: true,
         match: [/^[\w.-]+@iiti\.ac\.in$/, 'Email must be a valid @iiti.ac.in address']
     },
-
     RollNumber: {
         type: String,
         required: [true, 'Roll number is required'],
         unique: true,
-        minlength: [9, 'Roll number must be at least 9 digits'],
-        maxlength: [12, 'Roll number must be at most 12 digits'],
-        trim: true // optional, in case users paste spaces
+        minlength: [9, 'Roll number must be at least 9 characters'],
+        maxlength: [12, 'Roll number must be at most 12 characters'],
+        trim: true
     },
     Program: {
         type: String,
-        required: true,
+        required: [true, 'Program is required'],
     },
     Branch: {
         type: String,
-        required: true,
+        required: [true, 'Branch is required'],
     },
     PhoneNumber: {
-        type: String, // Changed to string for exact 10-digit control
-        required: true,
+        type: String,
+        required: [true, 'Phone number is required'],
         unique: true,
-        length: [10,"Enter Valid Mobile Number"]
+        match: [/^[6-9]\d{9}$/, 'Enter a valid 10-digit mobile number']
     },
     eventId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Event",
-        required: true,
+        required: [true, 'Event ID is required'],
     },
     timestamp: {
         type: Date,
