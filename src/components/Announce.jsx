@@ -10,12 +10,12 @@ function Announce() {
   const { clubname } = useParams();
   const club_name = decodeURIComponent(clubname);
   const navigate = useNavigate();
-<<<<<<< HEAD
+
   // const [announcelogo,setannouncelogo]=useState(iiti);
   const clubpages=[{clubname:club_name,announcelogo:announcelogo}]
-=======
+
    const [errors, setErrors] = useState([]);
->>>>>>> 89148b1d2e360c2299148d290e19ea29672aff0c
+ 
   const [announcelogo, setannouncelogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({
     clubname: club_name,
