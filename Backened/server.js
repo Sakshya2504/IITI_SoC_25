@@ -221,7 +221,7 @@ app.post('/api/findclub', async (req, res)=>{
       console.log("Received findclub request:", req.body);
       
     try{
-        const club = await Clubs_.findOne({_id});
+        const club = await Clubs_.findOne({"_id":_id});
          console.log("Found club:", club)
         if(club){
             res.status(201).json(club);
