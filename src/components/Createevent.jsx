@@ -135,7 +135,7 @@ function Createevent() {
             <input type="text" placeholder='Event Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventName' value={logininfo.EventName} onChange={handleChange} />
             <input type="text" placeholder='Event Date And Time' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventDateAndTime' value={logininfo.EventDateAndTime} onChange={handleChange} />
             <input type="text" placeholder='Conducted By' name='ConductedBy' className='text-black font-bold block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.ConductedBy} />
-            <input type="text" placeholder='Event Info' name='EventInfo' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.EventInfo} onChange={handleChange} />
+            <textarea type="text" placeholder='Event Info' name='EventInfo' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[80px] m-[10px]' value={logininfo.EventInfo} onChange={handleChange} />
             <div className='flex justify-around items-center gap-17 py-2'>
               <h2 className='text-white font-bold '>Event logo :</h2>
               <label className='w-20 h-20 border-2 rounded-2xl overflow-clip flex items-center cursor-pointer bg-white ' >

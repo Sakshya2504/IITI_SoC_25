@@ -135,13 +135,14 @@ function Announce() {
               className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]'
             />
 
-            <input
+            <textarea
               type="text"
+             
               placeholder="Announcement Info"
               name="info"
               value={logininfo.info}
               onChange={handleChange}
-              className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]'
+              className='text-black block   bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[80px] m-[10px]'
             />
             <div className='flex justify-around items-center gap-10 py-2'>
               <h2 className='text-white font-bold '>Announcement logo :</h2>
