@@ -61,7 +61,7 @@ function App() {
           
           
           <Route path="/individualclubpage/:clubname/:_id" element={<Individualclubpage issignup={issignup} />} />
-          <Route path="/createevent/:clubname" element={<Createevent/>} />
+          <Route path="/createevent/:clubname/:_id" element={<Createevent/>} />
 
            <Route path="/announce/:clubname" element={<Announce/>} />
         </Routes>

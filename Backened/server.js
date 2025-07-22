@@ -218,11 +218,11 @@ app.get('/events/:eventId/registrations/count', async (req, res) => {
 });
 app.post('/api/findclub', async (req, res)=>{
     const {_id} = req.body;
-      console.log("Received findclub request:", req.body);
+     
       
     try{
         const club = await Clubs_.findOne({"_id":_id});
-         console.log("Found club:", club)
+        
         if(club){
             res.status(201).json(club);
         }
@@ -243,7 +243,33 @@ app.get('/api/allclubs',async(req,res)=>{
         console.log(err);
         res.status(500).json({error: 'Could not retrieve clubdata'})
     }
-})
+});
+app.post('/api/updateclubdetailes', async (req, res)=>{
+    const {    EventName ,EventDateAndTime ,ConductedBy ,EventInfo , Eventlogo,_id} = req.body;
+      
+      
+    try{
+        const club = await Clubs_.findOne({"_id":_id});
+        if(club){
+            club.events.push({
+        name: EventName,
+        time: EventDateAndTime,
+        club: ConductedBy,
+        info: EventInfo,
+        image: Eventlogo
+});
+
+await club.save();
+
+        }
+   
+    }
+    catch(err){
+console.log(err)
+    res.status(500).json({ error: 'Could not retrieve clubdata' });
+    }
+
+});
 
 
 

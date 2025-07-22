@@ -11,7 +11,7 @@ function Createevent() {
   // This component allows users to create an event for a club
   // It includes a form where users can input the event name, date and time, conducted by, and event info
   // useState is used to manage the state of the event information
-  const { clubname } = useParams();
+  const { clubname,_id } = useParams();
   const club_name = decodeURIComponent(clubname);
   const [errors, setErrors] = useState([]);
   console.log(club_name);
@@ -21,7 +21,7 @@ function Createevent() {
     EventDateAndTime: "",
     ConductedBy: club_name,
     EventInfo: "",
-    Eventlogo: { eventlogo }
+    Eventlogo: eventlogo 
   })
 
 
@@ -63,6 +63,21 @@ function Createevent() {
       return false;
     }
   };
+  const updateclubdetailes = async ()=>{
+    try{
+    const res = await fetch('http://localhost:3000/api/updateclubdetailes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({...logininfo,_id})
+      })
+    
+  }
+      catch(err){
+        console.log(err);
+      
+      }
+
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,15 +106,20 @@ function Createevent() {
 
       if (res.ok) {
         alert(result.message || 'Event creation successful');
+         navigate('/');
+         await updateclubdetailes();
+       
+
+
         seteventlogo(iiti);
         setlogininfo({
           EventName: "",
           EventDateAndTime: "",
           ConductedBy: "",
           EventInfo: club_name,
-          Eventlogo: { eventlogo }
+          Eventlogo: eventlogo 
         });
-        navigate('/');
+       
       } else {
         if (result.errors) {
           setErrors(result.errors);

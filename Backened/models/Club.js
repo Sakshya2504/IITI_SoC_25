@@ -22,6 +22,7 @@ const clubSchema = new mongoose.Schema({
   heading: { type: String, default: '' },
   info: { type: String, required: true },
   logo: { type: String, required: true },
+  type:{type:String,required:true},
   clubHead: [clubHeadSchema],
   social: [{
     platform: { type: String },
