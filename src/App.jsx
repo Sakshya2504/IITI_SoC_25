@@ -50,7 +50,7 @@ function App() {
           <Route path="/" element={<Events issignup={issignup} personinfo={personinfo} searchQuery={searchQuery}
           />} />
           <Route path="/clubselection" element={<Clubselection />} />
-          <Route path="/clubs/:clubtype" element={<ClubPage />} />
+          <Route path="/clubs/:type" element={<ClubPage />} />
 
         
            <Route path="/notification" element={<Notification />} />

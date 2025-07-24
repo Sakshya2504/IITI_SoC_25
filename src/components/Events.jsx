@@ -119,7 +119,7 @@ export default function Events(props) {
     };
 
     fetchEvents();
-  }, []);
+  }, [selectedEventId]);
 
   useEffect(() => {
     if (!props.searchQuery) {
@@ -196,24 +196,24 @@ export default function Events(props) {
                     >
                       Join Event
                     </button>
-                    <form id={event.id} onSubmit={(e)=>{
+                    <form id={event.id}  onSubmit={(e)=>{
                       e.preventDefault();
                        if (props.issignup) {
-                        
+                         setSelectedEventId(event.id);
                          handlecomment(e);
                         } else {
                           navigate('/signup');
                           alert('Please verify your email to continue.');
                         }
-                    }} className='flex flex-row m-10'>
-                       <img src={commentlogo} className={`cursor-pointer w-10 h-10 invert `} />
-                      <input type="text" id={event.id} onChange={change} value={Comment[event.id]||''} placeholder='Add a Comment' className='text-black bg-white  rounded-2xl ' />
+                    }} className='flex flex-row m-10 w-[100%] justify-between items-center'>
+                       <img src={commentlogo} className={`cursor-pointer w-8 h-8 invert `} />
+                      <input type="text" id={event.id} onChange={change} value={Comment[event.id]||''} placeholder='Add a Comment' className='text-black bg-white  rounded-2xl w-auto ' />
                       <button type='submit' className='text-white font-bold cursor-pointer'>Submit</button>
                     </form>
                     <div className='overflow-y-scroll scrollbar-hidden '>
-                    {event.comments.map((com)=>(
-                      <div>
-                        <p>{com.emailid}</p>
+                    {event.comments.map((com,index)=>(
+                      <div key={index}>
+                        <p className='text-sm'>{com.emailid}</p>
                         <p>{com.comment}</p>
                       </div>
 

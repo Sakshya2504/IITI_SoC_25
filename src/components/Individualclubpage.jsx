@@ -117,8 +117,8 @@ import { useParams } from 'react-router-dom';
   return (
     <>
       <div>
-        <div className='clubbody'>
-            <img src={clubdetailes.logo||'#'} alt="cynapticlogo" className='clubimage' />
+        <div className='clubbody h-80'>
+            <img src={clubdetailes.logo||'#'} alt="cynapticlogo" className='clubimage  object-contain' />
         </div>
         <div className="button_con">
           <button

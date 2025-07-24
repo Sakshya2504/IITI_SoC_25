@@ -235,9 +235,11 @@ console.log(err)
     }
 
 });
-app.get('/api/allclubs',async(req,res)=>{
+app.get('/api/:type',async(req,res)=>{
+    const {type} = req.params;
+    console.log(type);
     try{
-        const clubs = await Clubs_.find();
+        const clubs = await Clubs_.find({type});
         res.status(201).json(clubs);
     }
     catch(err){
