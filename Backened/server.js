@@ -19,10 +19,14 @@ app.use(cors());
 app.use(express.json()); 
 
 // Connect to MongoDB with the validation using Mongoose
-await mongoose.connect("mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.net/", {
-    // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
-    // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
-});
+// await mongoose.connect("mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.net/", {
+//     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
+//     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
+// });
+mongoose.connect('mongodb://localhost:27017/todo', {
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
+})
 
 // Signup route
 app.post('/api/signup', async (req, res) => {
