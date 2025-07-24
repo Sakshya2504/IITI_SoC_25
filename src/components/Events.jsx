@@ -185,30 +185,51 @@ export default function Events(props) {
           <div className=' fixed flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212),_rgba(59,130,246))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)]  hover:shadow-[0_0_25px_#00ffff66]'>
             <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={() => setregister(false)}> ❌ </button>
 
-            <form action="/" onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
+            <form
+              action="/"
+              onSubmit={handleSubmit}
+              className="flex flex-col items-center justify-center w-full h-full px-6 py-10 bg-gradient-to-b from-cyan-950 to-[#01011b] rounded-xl shadow-[0_0_25px_rgba(0,255,255,0.1)]"
+            >
+              <h2 className="text-cyan-300 text-3xl font-bold mb-8 tracking-wide drop-shadow-md">
+                Event Registration
+              </h2>
 
-
-              <h2 className='text-white font-bold text-[22px] '>Event Registration</h2>
               {errors.length > 0 && (
-                <div className="w-full flex justify-center mb-4">
-                  <div className="text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-md shadow-lg animate-fade-in">
+                <div className="w-full flex justify-center mb-6">
+                  <div className="text-center px-6 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg animate-fade-in">
                     {errors.map((msg, idx) => (
                       <p key={idx} className="my-1">{msg}</p>
                     ))}
                   </div>
                 </div>
               )}
-              <input type="text" placeholder=' Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Name' value={registerinfo.Name} onChange={handleChange} />
-              <input type="text" placeholder='EmailAddress' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EmailAddress' value={registerinfo.EmailAddress} onChange={handleChange} />
-              <input type="text" placeholder='RollNumber' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='RollNumber' value={registerinfo.RollNumber} onChange={handleChange} />
-              <input type="text" placeholder='Program' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Program' value={registerinfo.Program} onChange={handleChange} />
-              <input type="text" placeholder='Branch' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='Branch' value={registerinfo.Branch} onChange={handleChange} />
-              <input type="text" placeholder='PhoneNumber' name='PhoneNumber' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={registerinfo.PhoneNumber} onChange={handleChange} />
-              <button type="submit" className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]">Register</button>
 
+              {[
+                { name: "Name", placeholder: "Your Name" },
+                { name: "EmailAddress", placeholder: "Email Address" },
+                { name: "RollNumber", placeholder: "Roll Number" },
+                { name: "Program", placeholder: "Program" },
+                { name: "Branch", placeholder: "Branch" },
+                { name: "PhoneNumber", placeholder: "Phone Number" },
+              ].map((field) => (
+                <input
+                  key={field.name}
+                  type="text"
+                  name={field.name}
+                  value={registerinfo[field.name]}
+                  onChange={handleChange}
+                  placeholder={field.placeholder}
+                  className="bg-white/90 text-black w-full md:w-[75%] h-[48px] px-5 mb-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-all duration-200 placeholder:text-cyan-700 placeholder:font-medium"
+                />
+              ))}
+
+              <button
+                type="submit"
+                className="w-full md:w-[200px] py-3 text-white text-lg font-bold bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-xl shadow-lg hover:shadow-[0_0_15px_cyan] hover:scale-105 transition-all duration-300"
+              >
+                Register
+              </button>
             </form>
-
-
           </div>
         </div>
 
