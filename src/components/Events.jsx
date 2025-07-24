@@ -7,7 +7,7 @@ export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
   const navigate = useNavigate();
-   const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
   const [registrationCounts, setRegistrationCounts] = useState({});
@@ -109,76 +109,90 @@ export default function Events(props) {
     setFilteredEvents(filtered);
   }, [props.searchQuery, events]);
 
+  const [flippedEventId, setFlippedEventId] = useState(null);
+
+  const toggleFlip = (id) => {
+    setFlippedEventId((prev) => (prev === id ? null : id));
+  };
+
+
 
   return (
     <>
 
-      <div className="p-4 bg-[#01011b] min-h-screen">
-        <h1 className="text-3xl font-bold mb-6 text-white text-center">Events</h1>
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
+          <div
+            key={event.id}
+            className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.06] "
+          >
+            {filteredEvents.length === 0 && props.searchQuery && (
+              <p className="text-white text-center mt-4 animate-fade-in">
+                No events found for "{props.searchQuery}"
+              </p>
+            )}
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
-            <div
-              key={event.id}
-              className="event-detail rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-2 border-[#87CEEB]
-            hover:border-[#33bbcf] hover:scale-[1.03] "
-            >
-
-              {filteredEvents.length === 0 && props.searchQuery && (
-                <p className="text-white text-center mt-4">
-                  No events found for "{props.searchQuery}"
-                </p>
-              )}
-
-
-              <div className='box block transform-3d perspective-[1000px] hover:rotate-y-180 transition delay-[0.3s]'>
-                <div className='card grid relative transform-3d'>
-                  <div id='front ' className="event-description  col-start-1 row-start-1 space-y-1 relative backface-hidden">
-                    <div className="event-logo flex items-center justify-center">
-                      <img
-                        alt="Event Logo"
-                        src={event.Eventlogo}
-                        className="h-100 w-100"
-                      />
-                    </div>
-                    <p className="text-white font-medium">🕒 Time: {event.EventDateAndTime}</p>
-                    <p className="text-white font-medium">📍 Info: {event.EventInfo}</p>
-                    <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
-                    <p className="text-white font-semibold">
-                      📋 Registered: {registrationCounts[event._id] ?? '...'} students
-                    </p>
-                    <p className="text-white font-semibold">
-                      🧑‍💼 Conducted by: {event.ConductedBy}
-                    </p>
-
-
+            <div className="box block perspective-[1200px]">
+              <div
+                className={`card relative grid transform transition-transform duration-500 transform-style-preserve-3d ${flippedEventId === event.id ? 'rotate-y-180' : ''
+                  }`}
+                onClick={() => toggleFlip(event.id)}
+              >
+                {/* FRONT SIDE */}
+                <div className="event-description col-start-1 row-start-1 space-y-3 relative backface-hidden">
+                  <div className="event-logo flex justify-center items-center mb-2">
+                    <img
+                      alt="Event Logo"
+                      src={event.Eventlogo}
+                      className="h-[90px] w-[90px] object-contain"
+                    />
                   </div>
-                  <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
-                    <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
-                    <p className='text-white font-bold'> {event.EventInfo}</p>
-                    <button
-                      className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                      id={`joinEvent${event.id}`} onClick={() => {
-                        if (props.issignup) {
-                          setSelectedEventId(event.id);
-                          setregister(true);
-                        } else {
-                          navigate('/signup');
-                          alert('Please verify your email to continue.');
-                        }
-                      }}
-                    >
-                      Join Event
-                    </button>
-                  </div>
+                  <p className="text-white text-sm md:text-base font-medium">
+                    🕒 Time: {event.EventDateAndTime}
+                  </p>
+                  <p className="text-white text-sm md:text-base font-medium">
+                    📍 Info: {event.EventInfo}
+                  </p>
+                  <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
+                  <p className="text-white font-semibold">
+                    📋 Registered: {registrationCounts[event._id] ?? '...'} students
+                  </p>
+                  <p className="text-white font-semibold">
+                    🧑‍💼 Conducted by: {event.ConductedBy}
+                  </p>
+                </div>
+
+                {/* BACK SIDE */}
+                <div className="absolute inset-0 flex flex-col justify-center items-center rotate-y-180 backface-hidden">
+                  <h1 className="text-[#11E3FB] font-bold text-2xl py-2 text-center">
+                    {event.EventName}
+                  </h1>
+                  <p className="text-white text-center font-medium px-4">
+                    {event.EventInfo}
+                  </p>
+                  <button
+                    className="mt-6 bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 rounded-lg font-bold shadow-md hover:shadow-lg hover:scale-105 "
+                    id={`joinEvent${event.id}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (props.issignup) {
+                        setSelectedEventId(event.id);
+                        setregister(true);
+                      } else {
+                        navigate('/signup');
+                        alert('Please verify your email to continue.');
+                      }
+                    }}
+                  >
+                    Join Event
+                  </button>
                 </div>
               </div>
             </div>
-
-          ))}
-        </div>
-
+          </div>
+        ))}
       </div>
+
       {register &&
 
         <div className='fixed top-0 z-1000 w-[100%] h-[100%] flex justify-center items-center '>
