@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react'
-
+import iiti  from '../Images/iiti.png'
 
 import './Individualclubpage.css'
 import insta from '../Images/insta.png';
@@ -40,7 +40,7 @@ const events = [
     info: "An online hackathon by Nuvepro with 400+ participants and 50 teams developing blockchain-based solutions The event featured expert-led workshops, coding sessions, and industry interactions. Total prize pool was 40k INR",
   },
 ];
- 
+
 
 
 
@@ -75,24 +75,24 @@ const events = [
   events: []
   });
   useEffect(()=>{
-    console.log("Running useEffect with _id:", _id); 
-     
+    console.log("Running useEffect with _id:", _id);
+
     const fetchclubinfo = async()=>{
-       
+
       try{
-       
+
         const res = await fetch('http://localhost:3000/api/findclub',
           {method:'POST',
        headers:{'content-type':'application/json'},
           body:JSON.stringify({_id})
     } );
          console.log('ok');
-          
+
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         console.log(data);
-        
-        
+
+
         setclubdetailes({
   _id: data._id || '',
   name: data.name || '',
@@ -112,8 +112,8 @@ const events = [
     }],
   events: data.events || []
  });
-        
-       
+
+
 
       }
       catch(err){
@@ -135,19 +135,19 @@ const events = [
           Program:"",
           Branch:"",
           PhoneNumber: "",
-          
+
         })
         const handleChange = (e) => {
         const { name, value } = e.target;
         setregisterinfo(prev => ({ ...prev, [name]: value }));
       };
-       
+
       const handleSubmit = async (e) => {
         // This function handles the form submission
         // It prevents the default form submission behavior, sends the data to the server,
         e.preventDefault();
       }
-   
+
    const navigate =useNavigate();
   return (
     <>
@@ -228,15 +228,15 @@ const events = [
         ))}
       </div>
       <div className='clubhead'>
-       <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold  py-8 text-center'> Club Head</h1> 
+       <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold  py-8 text-center'> Club Head</h1>
        <div className='text-white w-70 lg:w-90 border-4 rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3  border-[#87CEEB]
             hover:border-[#33bbcf] hover:-translate-y-3  '>
-        <img src={clubdetailes.clubHead[0].image||'#'} alt="Club Head Photo" className='text-center'/>
+        <img src={clubdetailes.clubHead[0].image||iiti} alt="Club Head Photo" className='text-center'/>
         <p className='text-center font-bold'>{clubdetailes.clubHead[0].name}</p>
         <h2 className='font-bold'>About</h2>
         <p>{clubdetailes.clubHead[0].role}</p>
         <h2 className='font-bold'>Contact</h2>
-        
+
            <a
         href={clubdetailes.clubHead[0].linkedin}
          target="_blank"
