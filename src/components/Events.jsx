@@ -204,28 +204,58 @@ export default function Events(props) {
                 </div>
               )}
 
-              {[
-                { name: "Name", placeholder: "Your Name" },
-                { name: "EmailAddress", placeholder: "Email Address" },
-                { name: "RollNumber", placeholder: "Roll Number" },
-                { name: "Program", placeholder: "Program" },
-                { name: "Branch", placeholder: "Branch" },
-                { name: "PhoneNumber", placeholder: "Phone Number" },
-              ].map((field) => (
-                <input
-                  key={field.name}
-                  type="text"
-                  name={field.name}
-                  value={registerinfo[field.name]}
-                  onChange={handleChange}
-                  placeholder={field.placeholder}
-                  className="bg-white/90 text-black w-full md:w-[75%] h-[48px] px-5 mb-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-all duration-200 placeholder:text-cyan-700 placeholder:font-medium"
-                />
-              ))}
+              <input
+                type="text"
+                placeholder="Name"
+                name="Name"
+                value={registerinfo.Name}
+                onChange={handleChange}
+                className="bg-white/90 text-black w-full md:w-[75%] h-[50px] px-5 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-all duration-300 placeholder:text-cyan-700 placeholder:font-medium"
+              />
+              <input
+                type="text"
+                placeholder="Email Address"
+                name="EmailAddress"
+                value={registerinfo.EmailAddress}
+                onChange={handleChange}
+                className="bg-white/90 text-black w-full md:w-[75%] h-[50px] px-5 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-all duration-300 placeholder:text-cyan-700 placeholder:font-medium"
+              />
+              <input
+                type="text"
+                placeholder="Roll Number"
+                name="RollNumber"
+                value={registerinfo.RollNumber}
+                onChange={handleChange}
+                className="bg-white/90 text-black w-full md:w-[75%] h-[50px] px-5 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-all duration-300 placeholder:text-cyan-700 placeholder:font-medium"
+              />
+              <input
+                type="text"
+                placeholder="Program"
+                name="Program"
+                value={registerinfo.Program}
+                onChange={handleChange}
+                className="bg-white/90 text-black w-full md:w-[75%] h-[50px] px-5 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-all duration-300 placeholder:text-cyan-700 placeholder:font-medium"
+              />
+              <input
+                type="text"
+                placeholder="Branch"
+                name="Branch"
+                value={registerinfo.Branch}
+                onChange={handleChange}
+                className="bg-white/90 text-black w-full md:w-[75%] h-[50px] px-5 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-all duration-300 placeholder:text-cyan-700 placeholder:font-medium"
+              />
+              <input
+                type="text"
+                placeholder="Phone Number"
+                name="PhoneNumber"
+                value={registerinfo.PhoneNumber}
+                onChange={handleChange}
+                className="bg-white/90 text-black w-full md:w-[75%] h-[50px] px-5 mb-8 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-all duration-300 placeholder:text-cyan-700 placeholder:font-medium"
+              />
 
               <button
                 type="submit"
-                className="w-full md:w-[200px] py-3 text-white text-lg font-bold bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-xl shadow-lg hover:shadow-[0_0_15px_cyan] hover:scale-105 transition-all duration-300"
+                className="relative w-full md:w-[200px] py-3 text-white text-lg font-bold bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_cyan]"
               >
                 Register
               </button>
