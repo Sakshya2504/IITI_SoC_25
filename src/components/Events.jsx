@@ -2,7 +2,7 @@
 import { useEffect, useState, React } from 'react';
 import './Animation.css'
 import { useNavigate } from 'react-router-dom';
-
+import commentlogo from '../Images/comment.png'
 export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
@@ -22,6 +22,32 @@ export default function Events(props) {
     PhoneNumber: "",
 
   })
+  const [Comment,setComment] =useState({});
+  const handlecomment =async (e) =>{
+    e.preventDefault();
+    const _id =e.target.id;
+    console.log(_id);
+    const comment = Comment[_id];
+    const emailid = props.personinfo.email;
+    setComment(prev => ({ ...prev, [_id]: '' }));
+    try{
+    const res = await fetch(`http://localhost:3000/api/comment/${_id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({emailid,comment}),
+      });
+    }
+      catch(err){
+        console.error(err);
+      alert('Something went wrong......');
+      }
+
+  }
+  const change=(e)=>{
+    const { id, value } = e.target;
+    setComment((prev)=>({...prev,[id]:value}))
+
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
     setregisterinfo(prev => ({ ...prev, [name]: value }));
@@ -50,10 +76,10 @@ export default function Events(props) {
         navigate('/');
       }
       else {
-        if (result.errors) {
-          setErrors(result.errors);
+        if (res.errors) {
+          setErrors(res.errors);
         } else {
-          setErrors([result.message || 'Registration Failed']);
+          setErrors([res.message || 'Registration Failed']);
         }
       }
     } catch (err) {
@@ -170,6 +196,29 @@ export default function Events(props) {
                     >
                       Join Event
                     </button>
+                    <form id={event.id} onSubmit={(e)=>{
+                      e.preventDefault();
+                       if (props.issignup) {
+                        
+                         handlecomment(e);
+                        } else {
+                          navigate('/signup');
+                          alert('Please verify your email to continue.');
+                        }
+                    }} className='flex flex-row m-10'>
+                       <img src={commentlogo} className={`cursor-pointer w-10 h-10 invert `} />
+                      <input type="text" id={event.id} onChange={change} value={Comment[event.id]||''} placeholder='Add a Comment' className='text-black bg-white  rounded-2xl ' />
+                      <button type='submit' className='text-white font-bold cursor-pointer'>Submit</button>
+                    </form>
+                    <div className='overflow-y-scroll scrollbar-hidden '>
+                    {event.comments.map((com)=>(
+                      <div>
+                        <p>{com.emailid}</p>
+                        <p>{com.comment}</p>
+                      </div>
+
+                    ))}
+                    </div>
                   </div>
                 </div>
               </div>

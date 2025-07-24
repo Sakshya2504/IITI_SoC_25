@@ -91,7 +91,7 @@ import { useParams } from 'react-router-dom';
     fetchclubinfo();}
 
   },[_id]);
-const [liked,setliked]=useState(false);
+// const [liked,setliked]=useState(false);
   const [register,setregister]=useState(false);
       const [registerinfo, setregisterinfo] = useState({
           Name: "",
@@ -186,8 +186,6 @@ const [liked,setliked]=useState(false);
               >
                 Join Event
               </button>
-              <div className={`cursor-pointer w-10 h-10 ${liked?'bg-pink-500':'bg-white'} [clip-path:polygon(50%_15%,_61%_5%,_75%_10%,_85%_25%,_85%_40%,_50%_75%,_15%_40%,_15%_25%,_25%_10%,_39%_5%)]`} onClick={()=>setliked(!liked)}></div>
-
               </div>
               </div>
           </div>

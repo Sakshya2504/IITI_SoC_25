@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 
+const commentschema= new mongoose.Schema({
+  emailid:{type:String,required:true},
+  comment:{type:String,required:true}
+})
 const EventSchema = new mongoose.Schema({
   EventName: {
     type: String,
@@ -28,7 +32,9 @@ const EventSchema = new mongoose.Schema({
   Eventlogo: {
     type: Object,
     required: [true, 'Event logo must be provided']
-  }
+  },
+  
+  comments:[commentschema]
 }, { timestamps: true });
 
 export const event_ = mongoose.model('Event', EventSchema);

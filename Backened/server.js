@@ -132,7 +132,7 @@ app.get('/notification', async (req, res) => {
     app.post('/Createevent', async (req, res) => {
         console.log("Incoming body:", req.body);
         try {
-            const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo} = req.body;
+            const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo,comments} = req.body;
 
             // Create and save the new event
             const newEvent = new event_({
@@ -140,7 +140,8 @@ app.get('/notification', async (req, res) => {
                 EventDateAndTime,
                 ConductedBy,
                 EventInfo,
-                Eventlogo
+                Eventlogo,
+                comments
             });
 
             await newEvent.save();
@@ -271,7 +272,24 @@ console.log(err)
 
 });
 
+app.post('/api/comment/:_id', async (req, res)=>{
+    const {_id} = req.params; 
+    const {emailid,comment}=req.body;  
+    try{
+        const event = await event_.findOne({_id});
+        console.log(event);
+        if(event){
+            event.comments.push({emailid,comment})
+            event.save();
+        }
+   
+    }
+    catch(err){
+console.log(err)
+    res.status(500).json({ error: 'Could not retrieve clubdata' });
+    }
 
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

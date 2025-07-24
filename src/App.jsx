@@ -47,7 +47,7 @@ function App() {
         />
         {isOpen && <Set changestatus={changestatus} setissignup={setissignup} issignup={issignup} personinfo={personinfo} setpersoninfo={setpersoninfo} closeset={closeset} isOpen={isOpen} />}
         <Routes>
-          <Route path="/" element={<Events issignup={issignup} searchQuery={searchQuery}
+          <Route path="/" element={<Events issignup={issignup} personinfo={personinfo} searchQuery={searchQuery}
           />} />
           <Route path="/clubselection" element={<Clubselection />} />
           <Route path="/clubs/:clubtype" element={<ClubPage />} />

@@ -14,14 +14,14 @@ function Createevent() {
   const { clubname,_id } = useParams();
   const club_name = decodeURIComponent(clubname);
   const [errors, setErrors] = useState([]);
-  console.log(club_name);
   const [eventlogo, seteventlogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({
     EventName: "",
     EventDateAndTime: "",
     ConductedBy: club_name,
     EventInfo: "",
-    Eventlogo: eventlogo 
+    Eventlogo: eventlogo ,
+    comments:[]
   })
 
 
@@ -117,7 +117,8 @@ function Createevent() {
           EventDateAndTime: "",
           ConductedBy: "",
           EventInfo: club_name,
-          Eventlogo: eventlogo 
+          Eventlogo: eventlogo ,
+          comments:[]
         });
        
       } else {
