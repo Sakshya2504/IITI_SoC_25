@@ -31,7 +31,7 @@ export default function Events(props) {
     const emailid = props.personinfo.email;
     setComment(prev => ({ ...prev, [_id]: '' }));
     try{
-    const res = await fetch(`http://localhost:3000/api/comment/${_id}`, {
+        await fetch(`http://localhost:3000/api/comment/${_id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({emailid,comment}),
@@ -39,7 +39,7 @@ export default function Events(props) {
     }
       catch(err){
         console.error(err);
-      alert('Something went wrong......');
+      // alert('Something went wrong......');
       }
 
   }
