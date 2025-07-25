@@ -142,6 +142,7 @@ function Createevent() {
       <div className="createvent w-full h-full flex justify-center items-center bg-gradient-to-b from-[#01011b] to-[#0a0a2e]">
         <div className="createevent_con relative flex flex-col w-[90%] md:w-[400px] m-6 p-6 bg-gradient-to-r from-cyan-700/30 to-blue-700/30 border border-cyan-300 rounded-xl shadow-md hover:shadow-[0_0_25px_#00ffff66] transition-shadow duration-300">
 
+
           <button
             className="back absolute top-2 right-2 w-[30px] h-[30px] rounded-md hover:bg-red-500 flex items-center justify-center text-white font-bold"
             onClick={() => navigate(-1)}
@@ -157,10 +158,7 @@ function Createevent() {
             <h2 className="text-white font-bold text-2xl py-4">Event Details</h2>
 
 
-          {/* <form  onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'> */}
 
-
-            {/* <h2 className='text-white font-bold text-[22px] '>Event Detailes</h2> */}
 
             {errors.length > 0 && (
               <div className="w-full flex justify-center mb-4">
