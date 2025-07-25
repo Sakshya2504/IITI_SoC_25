@@ -1,0 +1,1177 @@
+[{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a82e"
+  },
+  "name": "Astronomy Club",
+  "heading": "Stargazing & Astronomy",
+  "info": "Astronomy Club promotes interest in celestial phenomena and organizes stargazing events.",
+  "logo": "/Club-logo/AstronomyClub.png",
+  "clubHead": [
+    {
+      "name": "Parul Pahurkar",
+      "role": "Head",
+      "image": "/Club-logo/AstronomyClub.png",
+      "linkedin": "https://www.linkedin.com/company/the-astronomy-club-iit-indore/",
+      "instagram": "https://www.instagram.com/astronomyclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a82f"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/astronomyclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a830"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a831"
+  },
+  "name": "The Aeromodelling Club",
+  "heading": "Aviation & Design",
+  "info": "The Aeromodelling Club builds and flies model aircrafts, promoting aerospace knowledge.",
+  "logo": "/Club-logo/AeromodellingClub.png",
+  "clubHead": [
+    {
+      "name": "Sibasish Barik",
+      "role": "Head",
+      "image": "/Club-logo/AeromodellingClub.png",
+      "linkedin": "https://www.linkedin.com/company/aeromodelling-club-iit-indore/",
+      "instagram": "https://www.instagram.com/aeroclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a832"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/aeroclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a833"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a834"
+  },
+  "name": "CAE",
+  "heading": "Computer-Aided Engineering",
+  "info": "CAE Club focuses on simulation, design and engineering through software tools.",
+  "logo": "/Club-logo/CAE.275cafb6.png",
+  "clubHead": [
+    {
+      "name": "Adinath Apte",
+      "role": "President",
+      "image": "/Club-logo/CAE.275cafb6.png",
+      "linkedin": "https://www.linkedin.com/company/cae-club-iit-indore/",
+      "instagram": "https://www.instagram.com/caeclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a835"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/caeclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a836"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a837"
+  },
+  "name": "Concreate",
+  "heading": "Civil & Structural Design",
+  "info": "Concreate is a civil engineering-based club involved in construction, architecture and practical design.",
+  "logo": "/Club-logo/Concreate.png",
+  "clubHead": [
+    {
+      "name": "Rajnish Bairwa",
+      "role": "Head",
+      "image": "/Club-logo/Concreate.png",
+      "linkedin": "https://www.linkedin.com/company/concreate-club-iit-indore/",
+      "instagram": "https://www.instagram.com/concreate_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a838"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/concreate_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a839"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a83a"
+  },
+  "name": "Cynaptics",
+  "heading": "Cultural Expression & Dance",
+  "info": "Cynaptics is the cultural dance club. It performs classical and contemporary forms at events and fests.",
+  "logo": "/Club-logo/Cynaptics.png",
+  "clubHead": [
+    {
+      "name": "Harshvardhan Choudhary",
+      "role": "President",
+      "image": "/Club-logo/Cynaptics.png",
+      "linkedin": "https://www.linkedin.com/company/cynaptics-club-iit-indore/",
+      "instagram": "https://www.instagram.com/cynapticsclubiiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a83b"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/cynapticsclubiiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a83c"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a83d"
+  },
+  "name": "Electronics Club",
+  "heading": "Electronics and Embedded Systems",
+  "info": "The Electronics Club focuses on hands-on learning of circuits, IoT, and embedded systems.",
+  "logo": "/Club-logo/electronics club .66884efa.png",
+  "clubHead": [
+    {
+      "name": "Advay Kunte",
+      "role": "President",
+      "image": "/Club-logo/electronics club .66884efa.png",
+      "linkedin": "https://www.linkedin.com/company/elecclub-iit-indore/mycompany/",
+      "instagram": "https://www.instagram.com/electronics_club_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a83e"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/electronics_club_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a83f"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a840"
+  },
+  "name": "GDSC",
+  "heading": "Google Developer Student Club",
+  "info": "GDSC at IIT Indore helps students explore technology, contribute to open source, and build innovative solutions.",
+  "logo": "/Club-logo/GDSC-IITI-Logo.e90dc451.png",
+  "clubHead": [
+    {
+      "name": "Vedant Dinkar",
+      "role": "Lead",
+      "image": "/Club-logo/GDSC-IITI-Logo.e90dc451.jpg",
+      "linkedin": "https://gdsc.community.dev/indian-institute-of-technology-indore-india/",
+      "instagram": "https://www.instagram.com/gdsc.iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a841"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/gdsc.iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a842"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a843"
+  },
+  "name": "IVDC",
+  "heading": "Intelligent Vehicle Design Club",
+  "info": "IVDC focuses on smart vehicle technology, automation, and robotics integration.",
+  "logo": "/Club-logo/IVDC.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/ivdc_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a844"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a845"
+  },
+  "name": "Robotics Club",
+  "heading": "Mechanical and Robotics Engineering",
+  "info": "The Robotics Club builds and programs robots for national and international competitions.",
+  "logo": "/Club-logo/Robotics.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/roboticsclub_iitindore/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a846"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a847"
+  },
+  "name": "The Programming Club",
+  "heading": "Competitive Programming & Software Dev",
+  "info": "The Programming Club helps students with problem solving, DSA, and CP contests.",
+  "logo": "/Club-logo/Pclub.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Website",
+      "link": "http://progclub.iiti.ac.in/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a848"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a849"
+  },
+  "name": "Aaina Club",
+  "heading": "Dramatics and Theatre",
+  "info": "Aaina Club is IIT Indore’s dramatics club known for plays, street performances and theatrical arts.",
+  "logo": "/Club-logo/AAINA.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/dramaticsclubiiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a84a"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a84b"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a84c"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a84d"
+  },
+  "name": "Avana Club",
+  "heading": "Social Welfare & Volunteering",
+  "info": "Avana Club drives social change through volunteering, awareness campaigns and community service.",
+  "logo": "/Club-logo/AVANA.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/avana_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a84e"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a84f"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a850"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a851"
+  },
+  "name": "Cinephiles",
+  "heading": "Film Appreciation & Media",
+  "info": "Cinephiles is a film club for cinema enthusiasts, screenings, discussions and filmmaking activities.",
+  "logo": "/Club-logo/CINEPHILES.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/cinephiles_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a852"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a853"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a854"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a855"
+  },
+  "name": "D' Alpha Crewz",
+  "heading": "Hip-Hop & Street Dance",
+  "info": "D' Alpha Crewz is a hip-hop and street-style dance crew showcasing vibrant, urban dance performances.",
+  "logo": "/Club-logo/ALPHA.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/d_alphazcrew/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a856"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a857"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a858"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a859"
+  },
+  "name": "The Debating Society",
+  "heading": "Debate & Public Speaking",
+  "info": "The Debating Society promotes logical reasoning and public discourse through MUNs and debates.",
+  "logo": "/Club-logo/DEBSOC.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/debsociiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a85a"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a85b"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a85c"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a85d"
+  },
+  "name": "EBSB Club",
+  "heading": "Cultural Exchange",
+  "info": "Ek Bharat Shreshtha Bharat (EBSB) Club fosters unity through inter-state cultural exchange.",
+  "logo": "/Club-logo/EBSB.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/ebsbclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a85e"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a85f"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a860"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a861"
+  },
+  "name": "Gaming Club",
+  "heading": "Esports & Game Culture",
+  "info": "Gaming Club hosts LAN events and competitive tournaments to promote gaming and esports.",
+  "logo": "/Club-logo/Gaming.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/gamingclubiiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a862"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a863"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a864"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a865"
+  },
+  "name": "Literary Club",
+  "heading": "Creative Writing & Literature",
+  "info": "The Literary Club encourages expression through poetry, writing, storytelling, and open mics.",
+  "logo": "/Club-logo/LIT.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/thelitclub.iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a866"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a867"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a868"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.659Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a869"
+  },
+  "name": "Mystic Hues",
+  "heading": "Fine Arts & Design",
+  "info": "Mystic Hues is a visual arts club focusing on sketching, painting, and creative installations.",
+  "logo": "/Club-logo/MYSTIC.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/mystichues/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a86a"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a86b"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a86c"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a86d"
+  },
+  "name": "Music Club",
+  "heading": "Musical Talent & Performance",
+  "info": "The Music Club of IIT Indore brings together vocalists and instrumentalists to create soulful tunes.",
+  "logo": "/Club-logo/MUSIC.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/themusicclub.iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a86e"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a86f"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a870"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a871"
+  },
+  "name": "Prakriti",
+  "heading": "Environment & Sustainability",
+  "info": "Prakriti Club works on environment-friendly initiatives like clean-up drives and green awareness.",
+  "logo": "/Club-logo/PRAKRITI.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/prakriti.iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a872"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a873"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a874"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a875"
+  },
+  "name": "The Quiz Club",
+  "heading": "Knowledge & Quizzing",
+  "info": "The Quiz Club of IIT Indore nurtures curiosity with quizzes across genres and competitive events.",
+  "logo": "/Club-logo/QUIZ.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/thequizclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a876"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a877"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a878"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a879"
+  },
+  "name": "Srijan",
+  "heading": "Innovation & Creation",
+  "info": "Srijan is a creative ideation club that hosts workshops, hackathons and invention challenges.",
+  "logo": "/Club-logo/SRIJAN.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/srijan_iit_indore/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a87a"
+      }
+    }
+  ],
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a87b"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a87c"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a87d"
+  },
+  "name": "VLR Club",
+  "heading": "Virtual Labs & Research",
+  "info": "VLR Club bridges research and simulation through virtual labs and practical learning modules.",
+  "logo": "/Club-logo/VLR.png",
+  "clubHead": [],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/vlr_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a87e"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a87f"
+  },
+  "heading": "",
+  "events": [
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a880"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a881"
+      },
+      "createdAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      },
+      "updatedAt": {
+        "$date": "2025-07-19T03:31:20.660Z"
+      }
+    }
+  ],
+  "clubHead": [],
+  "social": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a882"
+  },
+  "name": "Athletics Club",
+  "heading": "Run, Jump, Throw – Push Your Limits!",
+  "info": "Focuses on track & field events like sprints, long-distance runs, jumps, and throws. Encourages endurance and peak performance.",
+  "logo": "/_next/static/media/ath.386b5660.png",
+  "clubHead": [
+    {
+      "name": "Sanjay S",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a883"
+      }
+    }
+  ],
+  "social": [],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a884"
+  },
+  "name": "Aquatics Club",
+  "heading": "Dive In – Make Waves at IITI!",
+  "info": "Home for swimming lovers. Offers training for various strokes and prepares for Inter-IIT competitions.",
+  "logo": "/_next/static/media/aquatics.ed7d0f06.jpg",
+  "clubHead": [
+    {
+      "name": "Ommkar Sahoo",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a885"
+      }
+    }
+  ],
+  "social": [],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a886"
+  },
+  "name": "Badminton Club",
+  "heading": "Fast Rallies & Feather Smashes!",
+  "info": "Trains for singles and doubles games. Welcomes beginners and pros to improve agility and skills.",
+  "logo": "/_next/static/media/Badminton_club_logo.4228f2e8.png",
+  "clubHead": [
+    {
+      "name": "Siddhant Gupta",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a887"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/badmintonclub_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a888"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a889"
+  },
+  "name": "Basketball Club",
+  "heading": "Dribble. Dunk. Dominate.",
+  "info": "Builds skills in shooting, passing, and teamwork. Prepares students for Inter-IIT and local tournaments.",
+  "logo": "/_next/static/media/bb.cf35d768.png",
+  "clubHead": [
+    {
+      "name": "Rahul",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a88a"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/club_basketball_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a88b"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a88c"
+  },
+  "name": "Chess Club",
+  "heading": "Outsmart. Outplay. Outlast.",
+  "info": "Sharpens minds through regular matches and tactics sessions. Hosts online and offline chess battles.",
+  "logo": "/_next/static/media/chess.581fc5c4.jpg",
+  "clubHead": [
+    {
+      "name": "Sarang Jagdish",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a88d"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/theberserkers_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a88e"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a88f"
+  },
+  "name": "Cricket Club",
+  "heading": "Pitch Perfect Passion!",
+  "info": "Builds teamwork, technique, and sportsmanship. Represents IITI in cricket tournaments and hosts CPL.",
+  "logo": "/_next/static/media/cc.afd84e15.jpg",
+  "clubHead": [
+    {
+      "name": "Monik Dodiya",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a890"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/cricket_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a891"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a892"
+  },
+  "name": "Football Club",
+  "heading": "Play the Beautiful Game!",
+  "info": "One of the most energetic clubs on campus. Conducts regular practices and fun leagues.",
+  "logo": "/_next/static/media/football.7788b263.jpg",
+  "clubHead": [
+    {
+      "name": "Muhamed Nihal",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a893"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/football_club_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a894"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a895"
+  },
+  "name": "Tennis Club",
+  "heading": "Game. Set. Match.",
+  "info": "Promotes tennis on campus with singles and doubles training sessions. Welcomes both newcomers and pros.",
+  "logo": "/_next/static/media/tc.0ff8bf54.jpg",
+  "clubHead": [
+    {
+      "name": "Akarsh",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a896"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/tennis_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a897"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a898"
+  },
+  "name": "Table Tennis Club",
+  "heading": "Spin It Like A Pro!",
+  "info": "Builds precision, reaction time, and confidence in ping pong matches. Frequent tournaments and team events.",
+  "logo": "/_next/static/media/tt.895dfa13.png",
+  "clubHead": [
+    {
+      "name": "Club Head Name",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a899"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/table_tennis_iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a89a"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687b118861a97c9f18b6a89b"
+  },
+  "name": "Volleyball Club",
+  "heading": "Serve. Set. Spike!",
+  "info": "Enthusiastic community for volleyball players. Hosts matches under floodlights and major competitions.",
+  "logo": "/_next/static/media/vb.9fd99c1b.png",
+  "clubHead": [
+    {
+      "name": "Club Head Name",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a89c"
+      }
+    }
+  ],
+  "social": [
+    {
+      "platform": "Instagram",
+      "link": "https://www.instagram.com/volleyball.iiti/",
+      "_id": {
+        "$oid": "687b118861a97c9f18b6a89d"
+      }
+    }
+  ],
+  "events": [],
+  "__v": 0
+}]

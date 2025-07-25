@@ -92,40 +92,82 @@ function Signup(props) {
 
   return (
 
-    <div className="signup w-full h-full flex justify-center items-center bg-[rbga(1,1,27)]">
-      <div className="signupcontainer flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212,0.3),_rgba(59,130,246,0.3))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)] hover:shadow-[0_0_25px_#00ffff66]">
-
-
+    <div className="signup w-full h-full flex justify-center items-center bg-gradient-to-b from-[#01011b] to-[#0a0a2e]">
+      <div className="signupcontainer flex flex-col w-[90%] md:w-[400px] m-6 p-6 bg-gradient-to-r from-cyan-700/30 to-blue-700/30 border border-cyan-300 rounded-xl shadow-md hover:shadow-[0_0_25px_#00ffff66] transition-shadow duration-300">
         <form onSubmit={handlesignup}>
-          <div className='signupform flex flex-col items-center justify-center  w-[100%] h-[100%]'>
-            <h2 className=' text-xl text-white font-bold py-10'>
+          <div className="signupform flex flex-col items-center justify-center w-full h-full">
+            <h2 className="text-2xl text-white font-extrabold py-6 tracking-wide animate-fade-in-up drop-shadow-[0_0_6px_cyan]">
               CREATE ACCOUNT
             </h2>
+
             {errors.length > 0 && (
-              <div className="w-full flex justify-center mb-4">
+              <div className="w-full flex justify-center mb-6">
                 {errors.map((msg, idx) => (
-                  <div key={idx} className="text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-md shadow-lg animate-fade-in">{msg}</div>
+                  <div key={idx} className="text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-md shadow-lg animate-fade-in">
+                    {msg}
+                  </div>
                 ))}
               </div>
             )}
-            <input type="text" className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]" name='name' placeholder='Username' value={logininfo.name} id="Inputusername" onChange={change} required />
 
-            <input type="email" placeholder='Email' className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]" name='email' value={logininfo.email} id="InputEmail1" onChange={change} required />
-            <input type="password" className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]" name='password' placeholder='Password' value={logininfo.password} id="InputPassword1" onChange={change} required />
-            {/* <input type="password" className="confirmpassword1" placeholder='Confirm Password' value={logininfo.confirmpassword1} id="InputPassword2" onChange={change}/>   */}
-            <div className='flex justify-around items-center gap-15 py-2'>
-              <h2 className='text-white font-bold '>User Photo :</h2>
-              <label className='w-20 h-20  rounded-1xl overflow-clip flex items-center cursor-pointer' >
-                <img src={userphoto} className=' w-full h-full object-contain' alt="logo" />
-                <input type="file" accept='image/*' className='text-white font-bold hidden' onChange={handlelogochange} />
+            <input
+              type="text"
+              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_cyan] transition duration-300 placeholder:text-cyan-700"
+              name="name"
+              placeholder="Username"
+              value={logininfo.name}
+              id="Inputusername"
+              onChange={change}
+              required
+            />
+
+            <input
+              type="email"
+              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_cyan] transition duration-300 placeholder:text-cyan-700"
+              name="email"
+              placeholder="Email"
+              value={logininfo.email}
+              id="InputEmail1"
+              onChange={change}
+              required
+            />
+
+            <input
+              type="password"
+              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_cyan] transition duration-300 placeholder:text-cyan-700"
+              name="password"
+              placeholder="Password"
+              value={logininfo.password}
+              id="InputPassword1"
+              onChange={change}
+              required
+            />
+
+            <div className="flex justify-around items-center gap-6 py-4">
+              <h2 className="text-white font-bold">User Photo :</h2>
+              <label className="w-20 h-20 rounded-xl overflow-hidden flex items-center justify-center cursor-pointer bg-white shadow-md hover:shadow-lg transition">
+                <img src={userphoto} className="w-full h-full object-contain" alt="logo" />
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handlelogochange}
+                />
               </label>
             </div>
 
-            <button type="submit" className="signupsubmitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]" >SIGNUP</button>
+            <button
+              type="submit"
+              className="signupsubmitbutton w-[90%] md:w-[200px] py-3 text-white text-lg font-bold bg-gradient-to-r from-[#007bff] to-[#00c3ff] rounded-lg shadow-md hover:shadow-[0_0_20px_cyan] hover:scale-105 transition-all duration-300"
+            >
+              SIGNUP
+            </button>
           </div>
-          <p className='text-white '>Already have acoount?</p>
-          <Link to='/login' className='text-blue-500 font-bold hover:underline'>Login</Link>
 
+          <p className="text-white font-bold mt-4">Already have an account?</p>
+          <Link to="/login" className="text-cyan-300 font-bold hover:underline transition-colors duration-200">
+            Login
+          </Link>
         </form>
       </div>
     </div>
