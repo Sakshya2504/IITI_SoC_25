@@ -19,6 +19,7 @@ app.use(cors());
 app.use(express.json()); 
 
 // Connect to MongoDB with the validation using Mongoose
+
 await mongoose.connect("mongodb://localhost:27017/todo", {
     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine

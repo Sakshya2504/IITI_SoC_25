@@ -1,0 +1,29 @@
+{
+  "name": "campus announcements ",
+  "short_name": "IITI_Announce",
+  "start_url": "/",
+   "theme_color": "#080f31",
+  "background_color": "#09073d",
+  "id": "IITI",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "description": "Campus events and announcement official page ",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/Images/iiti.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/Images/iiti.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

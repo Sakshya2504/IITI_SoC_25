@@ -691,7 +691,9 @@
       }
     ],
      "events": ["Campus Premier League", "Box Cricket Night", "Inter-IIT Cricket"]
+
   }, 
+
   {
     "name": "Football Club",
     "heading": "Play the Beautiful Game!",
