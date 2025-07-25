@@ -119,7 +119,6 @@ export default function Events(props) {
 
   return (
     <>
-
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
