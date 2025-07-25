@@ -157,10 +157,10 @@ function Createevent() {
             <h2 className="text-white font-bold text-2xl py-4">Event Details</h2>
 
 
-          <form  onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
+          {/* <form  onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'> */}
 
 
-            <h2 className='text-white font-bold text-[22px] '>Event Detailes</h2>
+            {/* <h2 className='text-white font-bold text-[22px] '>Event Detailes</h2> */}
 
             {errors.length > 0 && (
               <div className="w-full flex justify-center mb-4">
