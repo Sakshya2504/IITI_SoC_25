@@ -57,7 +57,7 @@ import { useParams } from 'react-router-dom';
         const data = await res.json();
         console.log(data);
         
-        
+        console.log(data.clubHead);
         setclubdetailes({
   _id: data._id || '',
   name: data.name || '',

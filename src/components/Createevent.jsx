@@ -70,6 +70,12 @@ function Createevent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({...logininfo,_id})
       })
+      const data = await res.json();
+      if (!res.ok) {
+      alert('Update failed: ' + (data.error || 'Unknown error'));
+    } else {
+      console.log('Club updated successfully:', data.message);
+    }
     
   }
       catch(err){
@@ -106,17 +112,14 @@ function Createevent() {
 
       if (res.ok) {
         alert(result.message || 'Event creation successful');
-         navigate('/');
          await updateclubdetailes();
-       
-
-
+         navigate('/');
         seteventlogo(iiti);
         setlogininfo({
           EventName: "",
           EventDateAndTime: "",
-          ConductedBy: "",
-          EventInfo: club_name,
+          ConductedBy: {club_name},
+          EventInfo: "",
           Eventlogo: eventlogo ,
           comments:[]
         });
@@ -140,7 +143,7 @@ function Createevent() {
         <div className='createevent_con relative flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212,0.3),_rgba(59,130,246,0.3))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)] hover:shadow-[0_0_25px_#00ffff66]'>
           <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={() => navigate(-1)}> ❌ </button>
 
-          <form action="/individualclubpage" onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
+          <form  onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
 
 
             <h2 className='text-white font-bold text-[22px] '>Event Detailes</h2>

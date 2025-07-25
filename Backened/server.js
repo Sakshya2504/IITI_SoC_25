@@ -248,8 +248,8 @@ app.get('/api/:type',async(req,res)=>{
     }
 });
 app.post('/api/updateclubdetailes', async (req, res)=>{
-    const {    EventName ,EventDateAndTime ,ConductedBy ,EventInfo , Eventlogo,_id} = req.body;
-      
+    const {    EventName ,EventDateAndTime ,ConductedBy ,EventInfo , Eventlogo,comments,_id} = req.body;
+      console.log(_id)
       
     try{
         const club = await Clubs_.findOne({"_id":_id});
@@ -261,8 +261,13 @@ app.post('/api/updateclubdetailes', async (req, res)=>{
         info: EventInfo,
         image: Eventlogo
 });
+if (!club) {
+  return res.status(404).json({ error: 'Club not found with given _id' });
+}
+
 
 await club.save();
+ return res.status(200).json({ message: 'Club event updated successfully' });
 
         }
    
