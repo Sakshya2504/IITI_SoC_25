@@ -96,7 +96,7 @@ function Signup(props) {
       <div className="signupcontainer flex flex-col w-[90%] md:w-[400px] m-6 p-6 bg-gradient-to-r from-cyan-700/30 to-blue-700/30 border border-cyan-300 rounded-xl shadow-md hover:shadow-[0_0_25px_#00ffff66] transition-shadow duration-300">
         <form onSubmit={handlesignup}>
           <div className="signupform flex flex-col items-center justify-center w-full h-full">
-            <h2 className="text-2xl text-white font-extrabold py-6 tracking-wide animate-fade-in-up">
+            <h2 className="text-2xl text-white font-extrabold py-6 tracking-wide animate-fade-in-up drop-shadow-[0_0_6px_cyan]">
               CREATE ACCOUNT
             </h2>
 
