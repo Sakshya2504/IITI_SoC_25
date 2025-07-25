@@ -19,14 +19,11 @@ app.use(cors());
 app.use(express.json()); 
 
 // Connect to MongoDB with the validation using Mongoose
-// await mongoose.connect("mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.net/", {
-//     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
-//     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
-// });
-mongoose.connect('mongodb://localhost:27017/todo', {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-})
+
+await mongoose.connect("mongodb://localhost:27017/todo", {
+    // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
+    // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
+});
 
 // Signup route
 app.post('/api/signup', async (req, res) => {
@@ -136,7 +133,7 @@ app.get('/notification', async (req, res) => {
     app.post('/Createevent', async (req, res) => {
         console.log("Incoming body:", req.body);
         try {
-            const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo} = req.body;
+            const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo,comments} = req.body;
 
             // Create and save the new event
             const newEvent = new event_({
@@ -144,7 +141,8 @@ app.get('/notification', async (req, res) => {
                 EventDateAndTime,
                 ConductedBy,
                 EventInfo,
-                Eventlogo
+                Eventlogo,
+                comments
             });
 
             await newEvent.save();
@@ -222,11 +220,11 @@ app.get('/events/:eventId/registrations/count', async (req, res) => {
 });
 app.post('/api/findclub', async (req, res)=>{
     const {_id} = req.body;
-      console.log("Received findclub request:", req.body);
+     
       
     try{
-        const club = await Clubs_.findOne({_id});
-         console.log("Found club:", club)
+        const club = await Clubs_.findOne({"_id":_id});
+        
         if(club){
             res.status(201).json(club);
         }
@@ -238,18 +236,68 @@ console.log(err)
     }
 
 });
-app.get('/api/allclubs',async(req,res)=>{
+app.get('/api/:type',async(req,res)=>{
+    const {type} = req.params;
+    console.log(type);
     try{
-        const clubs = await Clubs_.find();
+        const clubs = await Clubs_.find({type});
         res.status(201).json(clubs);
     }
     catch(err){
         console.log(err);
         res.status(500).json({error: 'Could not retrieve clubdata'})
     }
-})
+});
+app.post('/api/updateclubdetailes', async (req, res)=>{
+    const {    EventName ,EventDateAndTime ,ConductedBy ,EventInfo , Eventlogo,comments,_id} = req.body;
+      console.log(_id)
+      
+    try{
+        const club = await Clubs_.findOne({"_id":_id});
+        if(club){
+            club.events.push({
+        name: EventName,
+        time: EventDateAndTime,
+        club: ConductedBy,
+        info: EventInfo,
+        image: Eventlogo
+});
+if (!club) {
+  return res.status(404).json({ error: 'Club not found with given _id' });
+}
 
 
+await club.save();
+ return res.status(200).json({ message: 'Club event updated successfully' });
+
+        }
+   
+    }
+    catch(err){
+console.log(err)
+    res.status(500).json({ error: 'Could not retrieve clubdata' });
+    }
+
+});
+
+app.post('/api/comment/:_id', async (req, res)=>{
+    const {_id} = req.params; 
+    const {emailid,comment}=req.body;  
+    try{
+        const event = await event_.findOne({_id});
+        console.log(event);
+        if(event){
+            event.comments.push({emailid,comment})
+            event.save();
+        }
+   
+    }
+    catch(err){
+console.log(err)
+    res.status(500).json({ error: 'Could not retrieve clubdata' });
+    }
+
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

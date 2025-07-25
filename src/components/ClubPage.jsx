@@ -1,15 +1,15 @@
 // src/components/ClubPage.jsx
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function ClubPage() {
-  
-
+  const {type} =useParams()
+console.log(type);
   const [Clubs,setClubs]=useState([]);
   useEffect( ()=>{
     const fetchclubs= async () =>{
     try{
-    const res =  await  fetch('http://localhost:3000/api/allclubs');
+    const res =  await  fetch(`http://localhost:3000/api/${type}`);
     const data = await res.json();
     console.log(data);
     setClubs(data);
@@ -21,8 +21,10 @@ function ClubPage() {
       alert('Something went wrong. Please try again.');
     }
   }
-  fetchclubs();
-},[])
+   if (type) {
+    fetchclubs();
+  }
+},[type]);
 
   return (
     <div id="council" className="flex mt-0 xs:mt-30 flex-wrap place-content-center gap-0.5">

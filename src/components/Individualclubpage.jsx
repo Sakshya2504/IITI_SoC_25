@@ -10,40 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import exampleImage from "../Images/image.png"; // relative to Events.jsx
-const events = [
-  {
-    id: 1,
-    time: "6pm today",
-    location: "Near tea post",
-    name: "Nukkad Natak",
-    club: "Avana and Aaina collab",
-    image: exampleImage,
-    info: "An online hackathon by Nuvepro with 400+ participants and 50 teams developing blockchain-based solutions The event featured expert-led workshops, coding sessions, and industry interactions. Total prize pool was 40k INR",
-  },
-  {
-    id: 2,
-    time: "6pm today",
-    location: "Near tea post",
-    name: "Nukkad Natak",
-    club: "Avana and Aaina collab",
-    image: exampleImage,
-    info: "An online hackathon by Nuvepro with 400+ participants and 50 teams developing blockchain-based solutions The event featured expert-led workshops, coding sessions, and industry interactions. Total prize pool was 40k INR",
-  },
-  {
-    id: 3,
-    time: "6pm today",
-    location: "Near tea post",
-    name: "Nukkad Natak",
-    club: "Avana and Aaina collab",
-    image: exampleImage,
-    info: "An online hackathon by Nuvepro with 400+ participants and 50 teams developing blockchain-based solutions The event featured expert-led workshops, coding sessions, and industry interactions. Total prize pool was 40k INR",
-  },
-];
-
-
-
-
 
 
  function  Individualclubpage(props) {
@@ -92,7 +58,6 @@ const events = [
         const data = await res.json();
         console.log(data);
 
-
         setclubdetailes({
   _id: data._id || '',
   name: data.name || '',
@@ -126,7 +91,7 @@ const events = [
     fetchclubinfo();}
 
   },[_id]);
-
+// const [liked,setliked]=useState(false);
   const [register,setregister]=useState(false);
       const [registerinfo, setregisterinfo] = useState({
           Name: "",
@@ -152,13 +117,13 @@ const events = [
   return (
     <>
       <div>
-        <div className='clubbody'>
-            <img src={clubdetailes.logo||'#'} alt="cynapticlogo" className='clubimage' />
+        <div className='clubbody h-80'>
+            <img src={clubdetailes.logo||'#'} alt="cynapticlogo" className='clubimage  object-contain' />
         </div>
         <div className="button_con">
           <button
             className="createeventbutton"
-            onClick={() => navigate(`/createevent/${clubname}`)}
+            onClick={() => navigate(`/createevent/${clubname}/${_id}`)}
           >
             Create Event
           </button>
@@ -183,9 +148,9 @@ const events = [
           </h1>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {events.map((event) => (
+            {clubdetailes.events.map((event,index) => (
               <div
-                key={event.id}
+                key={index}
                 className="event-detail  rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-3 border-[#87CEEB]
             hover:border-[#33bbcf] hover:-translate-y-3 "
               >
@@ -202,7 +167,7 @@ const events = [
               />
             </div>
               <p className="text-white font-medium">🕒 Time: {event.time}</p>
-              <p className="text-white font-medium">📍 Location: {event.location}</p>
+              <p className="text-white font-medium">📍 Location: {event.info}</p>
               <p className="text-white font-semibold">🎭 Event: {event.name}</p>
               <p className="text-white font-semibold">Conducted by: {event.club}</p>
               </div>
@@ -211,7 +176,7 @@ const events = [
                 <p> {event.info} </p>
                  <button
                 className="my-10 bg-blue-500 cursor-pointer text-white px-4 py-2  rounded hover:bg-blue-700 transition"
-                id={`joinEvent${event.id}`}
+                id={`joinEvent${index}`}
                 onClick={()=>
                  { if(props.issignup){setregister(true)}
                    else{navigate('/signup')

@@ -148,13 +148,16 @@ function Announce() {
               className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
             />
 
-            <input
+            <textarea
               type="text"
+             
               placeholder="Announcement Info"
               name="info"
               value={logininfo.info}
               onChange={handleChange}
+
               className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
+
             />
 
             <div className="flex justify-around items-center gap-6 py-4">

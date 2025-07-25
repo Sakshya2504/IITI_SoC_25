@@ -11,17 +11,17 @@ function Createevent() {
   // This component allows users to create an event for a club
   // It includes a form where users can input the event name, date and time, conducted by, and event info
   // useState is used to manage the state of the event information
-  const { clubname } = useParams();
+  const { clubname,_id } = useParams();
   const club_name = decodeURIComponent(clubname);
   const [errors, setErrors] = useState([]);
-  console.log(club_name);
   const [eventlogo, seteventlogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({
     EventName: "",
     EventDateAndTime: "",
     ConductedBy: club_name,
     EventInfo: "",
-    Eventlogo: { eventlogo }
+    Eventlogo: eventlogo ,
+    comments:[]
   })
 
 
@@ -63,6 +63,27 @@ function Createevent() {
       return false;
     }
   };
+  const updateclubdetailes = async ()=>{
+    try{
+    const res = await fetch('http://localhost:3000/api/updateclubdetailes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({...logininfo,_id})
+      })
+      const data = await res.json();
+      if (!res.ok) {
+      alert('Update failed: ' + (data.error || 'Unknown error'));
+    } else {
+      console.log('Club updated successfully:', data.message);
+    }
+    
+  }
+      catch(err){
+        console.log(err);
+      
+      }
+
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,15 +112,18 @@ function Createevent() {
 
       if (res.ok) {
         alert(result.message || 'Event creation successful');
+         await updateclubdetailes();
+         navigate('/');
         seteventlogo(iiti);
         setlogininfo({
           EventName: "",
           EventDateAndTime: "",
-          ConductedBy: "",
-          EventInfo: club_name,
-          Eventlogo: { eventlogo }
+          ConductedBy: {club_name},
+          EventInfo: "",
+          Eventlogo: eventlogo ,
+          comments:[]
         });
-        navigate('/');
+       
       } else {
         if (result.errors) {
           setErrors(result.errors);
@@ -131,6 +155,12 @@ function Createevent() {
             className="flex flex-col items-center justify-center w-full h-full"
           >
             <h2 className="text-white font-bold text-2xl py-4">Event Details</h2>
+
+
+          <form  onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
+
+
+            <h2 className='text-white font-bold text-[22px] '>Event Detailes</h2>
 
             {errors.length > 0 && (
               <div className="w-full flex justify-center mb-4">
@@ -185,6 +215,7 @@ function Createevent() {
                   className="hidden"
                   onChange={handlelogochange}
                 />
+
               </label>
             </div>
 

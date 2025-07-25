@@ -2,7 +2,7 @@
 import { useEffect, useState, React } from 'react';
 import './Animation.css'
 import { useNavigate } from 'react-router-dom';
-
+import commentlogo from '../Images/comment.png'
 export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
@@ -22,6 +22,32 @@ export default function Events(props) {
     PhoneNumber: "",
 
   })
+  const [Comment,setComment] =useState({});
+  const handlecomment =async (e) =>{
+    e.preventDefault();
+    const _id =e.target.id;
+    console.log(_id);
+    const comment = Comment[_id];
+    const emailid = props.personinfo.email;
+    setComment(prev => ({ ...prev, [_id]: '' }));
+    try{
+        await fetch(`http://localhost:3000/api/comment/${_id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({emailid,comment}),
+      });
+    }
+      catch(err){
+        console.error(err);
+      // alert('Something went wrong......');
+      }
+
+  }
+  const change=(e)=>{
+    const { id, value } = e.target;
+    setComment((prev)=>({...prev,[id]:value}))
+
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
     setregisterinfo(prev => ({ ...prev, [name]: value }));
@@ -50,10 +76,10 @@ export default function Events(props) {
         navigate('/');
       }
       else {
-        if (result.errors) {
-          setErrors(result.errors);
+        if (res.errors) {
+          setErrors(res.errors);
         } else {
-          setErrors([result.message || 'Registration Failed']);
+          setErrors([res.message || 'Registration Failed']);
         }
       }
     } catch (err) {
@@ -93,7 +119,7 @@ export default function Events(props) {
     };
 
     fetchEvents();
-  }, []);
+  }, [selectedEventId]);
 
   useEffect(() => {
     if (!props.searchQuery) {
@@ -146,6 +172,49 @@ export default function Events(props) {
                       className="h-[90px] w-[90px] object-contain"
                     />
                   </div>
+
+                  <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
+                    <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
+                    <p className='text-white font-bold'> {event.EventInfo}</p>
+                    <button
+                      className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                      id={`joinEvent${event.id}`} onClick={() => {
+                        if (props.issignup) {
+                          setSelectedEventId(event.id);
+                          setregister(true);
+                        } else {
+                          navigate('/signup');
+                          alert('Please verify your email to continue.');
+                        }
+                      }}
+                    >
+                      Join Event
+                    </button>
+                    <form id={event.id}  onSubmit={(e)=>{
+                      e.preventDefault();
+                       if (props.issignup) {
+                         setSelectedEventId(event.id);
+                         handlecomment(e);
+                        } else {
+                          navigate('/signup');
+                          alert('Please verify your email to continue.');
+                        }
+                    }} className='flex flex-row m-10 w-[100%] justify-between items-center'>
+                       <img src={commentlogo} className={`cursor-pointer w-8 h-8 invert `} />
+                      <input type="text" id={event.id} onChange={change} value={Comment[event.id]||''} placeholder='Add a Comment' className='text-black bg-white  rounded-2xl w-auto ' />
+                      <button type='submit' className='text-white font-bold cursor-pointer'>Submit</button>
+                    </form>
+                    <div className='overflow-y-scroll scrollbar-hidden '>
+                    {event.comments.map((com,index)=>(
+                      <div key={index}>
+                        <p className='text-sm'>{com.emailid}</p>
+                        <p>{com.comment}</p>
+                      </div>
+
+                    ))}
+                    </div>
+                  </div>
+
                   <p className="text-white text-sm md:text-base font-medium">
                     🕒 Time: {event.EventDateAndTime}
                   </p>
@@ -185,6 +254,7 @@ export default function Events(props) {
                   >
                     Join Event
                   </button>
+
                 </div>
               </div>
             </div>
