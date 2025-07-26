@@ -155,7 +155,7 @@ function Createevent() {
             onSubmit={handleSubmit}
             className="flex flex-col items-center justify-center w-full h-full"
           >
-            {/* <h2 className="text-white font-bold text-2xl py-4">Event Details</h2>
+            {/* <h2 className="text-white font-bold text-2xl py-4">Event Details</h2>*/}
 
 
 
