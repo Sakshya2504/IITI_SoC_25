@@ -163,6 +163,7 @@ export default function Events(props) {
                 className={`card relative grid transform transition-transform duration-500 transform-style-preserve-3d ${
                   flippedEventId === event.id ? "rotate-y-180" : ""
                 }`}
+                  onClick={() => toggleFlip(event.id)}
               >
                 {/* FRONT SIDE */}
                 <div
@@ -196,7 +197,7 @@ export default function Events(props) {
 
                 {/* BACK SIDE */}
 
-                  <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
+                  <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden  '>
                     <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
                     <p className='text-white font-bold'> {event.EventInfo}</p>
 
@@ -278,7 +279,7 @@ export default function Events(props) {
                 </div>
 
                 {/* BACK SIDE */}
-                <div className="absolute inset-0 flex flex-col justify-center items-center rotate-y-180 backface-hidden">
+                <div className="absolute inset-0 flex flex-col justify-center items-center rotate-y-180 backface-hidden rotate-y-180">
                   <h1 className="text-[#11E3FB] font-bold text-2xl py-2 text-center">
                     {event.EventName}
                   </h1>
