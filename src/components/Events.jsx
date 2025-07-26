@@ -145,7 +145,7 @@ export default function Events(props) {
 
   return (
     <>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-4  ">
         {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
@@ -173,6 +173,24 @@ export default function Events(props) {
                     />
                   </div>
 
+
+                  <p className="text-white text-sm md:text-base font-medium">
+                    🕒 Time: {event.EventDateAndTime}
+                  </p>
+                  <p className="text-white text-sm md:text-base font-medium">
+                    📍 Info: {event.EventInfo}
+                  </p>
+                  <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
+                  <p className="text-white font-semibold">
+                    📋 Registered: {registrationCounts[event._id] ?? '...'} students
+                  </p>
+                  <p className="text-white font-semibold">
+                    🧑‍💼 Conducted by: {event.ConductedBy}
+                  </p>
+                </div>
+
+                {/* BACK SIDE */}
+                
                   <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
                     <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
                     <p className='text-white font-bold'> {event.EventInfo}</p>
@@ -214,48 +232,6 @@ export default function Events(props) {
                     ))}
                     </div>
                   </div>
-
-                  <p className="text-white text-sm md:text-base font-medium">
-                    🕒 Time: {event.EventDateAndTime}
-                  </p>
-                  <p className="text-white text-sm md:text-base font-medium">
-                    📍 Info: {event.EventInfo}
-                  </p>
-                  <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
-                  <p className="text-white font-semibold">
-                    📋 Registered: {registrationCounts[event._id] ?? '...'} students
-                  </p>
-                  <p className="text-white font-semibold">
-                    🧑‍💼 Conducted by: {event.ConductedBy}
-                  </p>
-                </div>
-
-                {/* BACK SIDE */}
-                <div className="absolute inset-0 flex flex-col justify-center items-center rotate-y-180 backface-hidden">
-                  <h1 className="text-[#11E3FB] font-bold text-2xl py-2 text-center">
-                    {event.EventName}
-                  </h1>
-                  <p className="text-white text-center font-medium px-4">
-                    {event.EventInfo}
-                  </p>
-                  <button
-                    className="mt-6 bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 rounded-lg font-bold shadow-md hover:shadow-lg hover:scale-105 "
-                    id={`joinEvent${event.id}`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (props.issignup) {
-                        setSelectedEventId(event.id);
-                        setregister(true);
-                      } else {
-                        navigate('/signup');
-                        alert('Please verify your email to continue.');
-                      }
-                    }}
-                  >
-                    Join Event
-                  </button>
-
-                </div>
               </div>
             </div>
           </div>
