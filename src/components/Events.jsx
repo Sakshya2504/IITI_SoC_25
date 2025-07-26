@@ -150,7 +150,7 @@ export default function Events(props) {
         {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
-            className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.06] "
+            className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.05] "
           >
             {filteredEvents.length === 0 && props.searchQuery && (
               <p className="text-white text-center mt-4 animate-fade-in">
@@ -167,13 +167,13 @@ export default function Events(props) {
                 {/* FRONT SIDE */}
                 <div
                   className="event-description col-start-1 row-start-1 space-y-3 relative backface-hidden"
-                  onClick={() => toggleFlip(event.id)}
+              
                 >
                   <div className="event-logo flex justify-center items-center mb-2">
                     <img
                       alt="Event Logo"
                       src={event.Eventlogo}
-                      className="h-[90px] w-[90px] object-contain"
+                      className="h-[90px] w-[90px] object-contain hover:scale-[2] "
                     />
                   </div>
 
