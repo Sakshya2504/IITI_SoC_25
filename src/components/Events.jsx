@@ -146,7 +146,7 @@ export default function Events(props) {
 
   return (
     <>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-4  ">
         {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
@@ -167,7 +167,7 @@ export default function Events(props) {
                 {/* FRONT SIDE */}
                 <div
                   className="event-description col-start-1 row-start-1 space-y-3 relative backface-hidden"
-              
+
                 >
                   <div className="event-logo flex justify-center items-center mb-2">
                     <img
@@ -177,14 +177,29 @@ export default function Events(props) {
                     />
                   </div>
 
-                  <div
-                    id="back"
-                    className=" absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 "
-                  >
-                    <h1 className="text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]">
-                      {event.EventName}
-                    </h1>
-                    <p className="text-white font-bold"> {event.EventInfo}</p>
+
+
+                  <p className="text-white text-sm md:text-base font-medium">
+                    🕒 Time: {event.EventDateAndTime}
+                  </p>
+                  <p className="text-white text-sm md:text-base font-medium">
+                    📍 Info: {event.EventInfo}
+                  </p>
+                  <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
+                  <p className="text-white font-semibold">
+                    📋 Registered: {registrationCounts[event._id] ?? '...'} students
+                  </p>
+                  <p className="text-white font-semibold">
+                    🧑‍💼 Conducted by: {event.ConductedBy}
+                  </p>
+                </div>
+
+                {/* BACK SIDE */}
+
+                  <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
+                    <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
+                    <p className='text-white font-bold'> {event.EventInfo}</p>
+
                     <button
                       className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
                       id={`joinEvent${event.id}`}
@@ -243,6 +258,7 @@ export default function Events(props) {
                     </div>
                   </div>
 
+
                   <p className="text-white text-sm md:text-base font-medium">
                     🕒 Time: {event.EventDateAndTime}
                   </p>
@@ -286,12 +302,13 @@ export default function Events(props) {
                     Join Event
                   </button>
                 </div>
+
               </div>
             </div>
-          </div>
-        ))}
-      </div>
 
+        ))}
+
+ </div>
       {register && (
         <div className="fixed top-0 z-1000 w-[100%] h-[100%] flex justify-center items-center ">
           <div className=" fixed flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212),_rgba(59,130,246))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)]  hover:shadow-[0_0_25px_#00ffff66]">

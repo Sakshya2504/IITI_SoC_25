@@ -15,7 +15,7 @@ function Clubselection() {
 
       <h1 className="text-5xl font-bold text-[#00EAFF] mb-14 drop-shadow-md">Choose Club</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 px-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 px-6  ">
         {clubs.map((club) => (
           <Link
             key={club.name}

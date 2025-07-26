@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom';
 
 
 
- function  Individualclubpage(props) {
+ function  Individualclubpage() {
   const {clubname,_id} = useParams();
   console.log(_id);
 
@@ -77,9 +77,6 @@ import { useParams } from 'react-router-dom';
     }],
   events: data.events || []
  });
-
-
-
       }
       catch(err){
          console.error(err);
@@ -91,237 +88,110 @@ import { useParams } from 'react-router-dom';
     fetchclubinfo();}
 
   },[_id]);
-// const [liked,setliked]=useState(false);
-  const [register,setregister]=useState(false);
-      const [registerinfo, setregisterinfo] = useState({
-          Name: "",
-          EmailAddress: "",
-          RollNumber:"",
-          Program:"",
-          Branch:"",
-          PhoneNumber: "",
-
-        })
-        const handleChange = (e) => {
-        const { name, value } = e.target;
-        setregisterinfo(prev => ({ ...prev, [name]: value }));
-      };
-
-      const handleSubmit = async (e) => {
-        // This function handles the form submission
-        // It prevents the default form submission behavior, sends the data to the server,
-        e.preventDefault();
-      }
 
    const navigate =useNavigate();
   return (
-    <>
-      <div>
-        <div className='clubbody h-80'>
-            <img src={clubdetailes.logo||'#'} alt="cynapticlogo" className='clubimage  object-contain' />
-        </div>
-        <div className="button_con">
-          <button
-            className="createeventbutton"
-            onClick={() => navigate(`/createevent/${clubname}/${_id}`)}
+  <>
+  <div className="bg-[#01011b] text-white">
+    {/* Club Logo */}
+    <div className="h-80 flex items-center justify-center">
+      <img
+        src={clubdetailes.logo || '#'}
+        alt="cynapticlogo"
+        className="object-contain h-full"
+      />
+    </div>
+
+    {/* Action Buttons */}
+    <div className="flex flex-col md:flex-row gap-4 justify-center my-8 mx-4 md:mx-0 ">
+      <button
+        className="px-6 py-3 text-white font-bold rounded bg-gradient-to-r from-blue-500 to-cyan-500 hover:scale-105 transition transform duration-200"
+        onClick={() => navigate(`/createevent/${clubname}/${_id}`)}
+      >
+        Create Event
+      </button>
+      <button
+        className="px-6 py-3 text-white font-bold rounded bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105 transition transform duration-200"
+        onClick={() => navigate(`/announce/${clubname}`)}
+      >
+        Announce
+      </button>
+    </div>
+
+    {/* About Club */}
+    <div className="text-center">
+      <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF]">About Club</h1>
+      <p className="font-semibold px-6 my-6">{clubdetailes.info}</p>
+    </div>
+
+    {/* Events Section */}
+    <div className="py-10 min-h-10">
+      <h1 className="text-4xl font-extrabold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF]">Club Events</h1>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 px-4">
+        {clubdetailes.events.map((event, index) => (
+          <div
+            key={index}
+            className="rounded-2xl border-4 border-[#87CEEB] hover:border-[#33bbcf] bg-gradient-to-r from-cyan-500/10 to-blue-500/10 shadow-lg p-4 transform hover:-translate-y-2 transition duration-300"
           >
-            Create Event
-          </button>
-
-          <button
-            className="announcebutton"
-            onClick={() => {
-              navigate(`/announce/${clubname}`);
-            }}
-          >
-            Announce
-          </button>
-        </div>
-        <div>
-          <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold text-center'>About Club</h1>
-          <p className='club-info text-white font-bold px-5 my-10'>{clubdetailes.info}</p>
-        </div>
-
-        <div className="p-4 bg-[#01011b] min-h-screen">
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] mb-6 text-center">
-            Club Events
-          </h1>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {clubdetailes.events.map((event,index) => (
-              <div
-                key={index}
-                className="event-detail  rounded-2xl shadow-md p-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3 border-3 border-[#87CEEB]
-            hover:border-[#33bbcf] hover:-translate-y-3 "
-              >
-
-
-         <div className='box'>
-          <div className='card'>
-            <div id='front' className="event-description space-y-1">
-              <div className="event-logo flex items-center justify-center">
-              <img
-                alt="Event Logo"
-                src={event.image||'#'}
-                className="h-100 w-100"
-              />
+            <div className="space-y-2">
+              <div className="flex justify-center">
+                <img src={event.image || '#'} alt="Event Logo" className="w-full h-40 object-contain" />
+              </div>
+              <p>🕒 <span className="font-medium">{event.time}</span></p>
+              <p>📍 <span className="font-medium">{event.info}</span></p>
+              <p className="font-semibold">🎭 Event: {event.name}</p>
+              <p className="font-semibold">Conducted by: {event.club}</p>
+              <div className="mt-4">
+                <h2 className="text-xl font-bold">{event.name}</h2>
+                <p>{event.info}</p>
+              </div>
             </div>
-              <p className="text-white font-medium">🕒 Time: {event.time}</p>
-              <p className="text-white font-medium">📍 Location: {event.info}</p>
-              <p className="text-white font-semibold">🎭 Event: {event.name}</p>
-              <p className="text-white font-semibold">Conducted by: {event.club}</p>
-              </div>
-              <div id='back'>
-                <h1 >{event.name}</h1>
-                <p> {event.info} </p>
-                 <button
-                className="my-10 bg-blue-500 cursor-pointer text-white px-4 py-2  rounded hover:bg-blue-700 transition"
-                id={`joinEvent${index}`}
-                onClick={()=>
-                 { if(props.issignup){setregister(true)}
-                   else{navigate('/signup')
-                    alert('Please verify your email to continue.')
-                   }
-                }}
-              >
-                Join Event
-              </button>
-              </div>
-              </div>
           </div>
-      </div>
         ))}
       </div>
-      <div className='clubhead'>
-       <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] font-bold  py-8 text-center'> Club Head</h1>
-       <div className='text-white w-70 lg:w-90 border-4 rounded-2xl shadow-md p-4  bg-gradient-to-r from-cyan-500/5 to-blue-500/5 space-y-3  border-[#87CEEB]
-            hover:border-[#33bbcf] hover:-translate-y-3  '>
-        <img src={clubdetailes.clubHead[0].image||iiti} alt="Club Head Photo" className='text-center'/>
-        <p className='text-center font-bold'>{clubdetailes.clubHead[0].name}</p>
-        <h2 className='font-bold'>About</h2>
+    </div>
+
+    {/* Club Head Section */}
+    <div className="py-4 px-4 md:px-0 ">
+      <h1 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] mb-6">Club Head</h1>
+      <div className="mx-auto max-w-xl border-4 rounded-2xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-6 shadow-lg hover:border-[#33bbcf] hover:shadow-xl transition">
+        <img src={clubdetailes.clubHead[0].image || iiti} alt="Club Head Photo" className="w-1xl  object-contain mb-4" />
+        <p className="text-center font-bold text-lg">{clubdetailes.clubHead[0].name}</p>
+        <h2 className="font-bold mt-4">About</h2>
         <p>{clubdetailes.clubHead[0].role}</p>
-        <h2 className='font-bold'>Contact</h2>
-
-           <a
-        href={clubdetailes.clubHead[0].linkedin}
-         target="_blank"
-         rel="noopener noreferrer"
-         >
-         <img src={linkedIn} alt="linkedin" className="w-5 h-5 my-2" />
-          </a>
-          <p className='py-2'>📧 cse240001068@iiti.ac.in</p>
-
-            </div>
-          </div>
-
-        </div>
-
-
-        <footer className="bg-[rgba(1,1,27)] border border-t-[#3f3e45] text-white  bottom-0 py-10">
-          <div className='footer'>
-            <div>© 2023 The Cynaptics Club — @IITI</div>
-            <a
-              href="https://www.instagram.com/cynapticsclubiiti"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={insta} alt="Instagram" className="imagelogo" />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/cynaptics-club-iiti-indore/mycompany/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={linkedIn} alt="linkedin" className="imagelogo" />
-            </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={facebook} alt="facebook" className="imagelogo" />
-            </a>
-          </div>
-        </footer>
+        <h2 className="font-bold mt-4">Contact</h2>
+        <a
+          href={clubdetailes.clubHead[0].linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex justify-center items-center my-2"
+        >
+          <img src={linkedIn} alt="LinkedIn" className="w-6 h-6" />
+        </a>
+        <p className="py-2 text-center">📧 cse240001068@iiti.ac.in</p>
       </div>
-      {register && (
-        <div className="fixed top-0 z-1000 w-[100%] h-[100%] flex justify-center items-center ">
-          <div className=" fixed flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212),_rgba(59,130,246))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)]  hover:shadow-[0_0_25px_#00ffff66]">
-            <button
-              className="back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 "
-              onClick={() => setregister(false)}
-            >
-              {" "}
-              ❌{" "}
-            </button>
+    </div>
 
-            <form
-              action="/"
-              onSubmit={handleSubmit}
-              className="flex flex-col items-center justify-center  w-[100%] h-[100%]"
-            >
-              <h2 className="text-white font-bold text-[22px] ">
-                Event Registration
-              </h2>
-              <input
-                type="text"
-                placeholder=" Name"
-                className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]"
-                name="Name"
-                value={registerinfo.Name}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                placeholder="EmailAddress"
-                className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]"
-                name="EmailAddress"
-                value={registerinfo.EmailAddress}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                placeholder="RollNumber"
-                className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]"
-                name="RollNumber"
-                value={registerinfo.RollNumber}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                placeholder="Program"
-                className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]"
-                name="Program"
-                value={registerinfo.Program}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                placeholder="Branch"
-                className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]"
-                name="Branch"
-                value={registerinfo.Branch}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                placeholder="PhoneNumber"
-                name="PhoneNumber"
-                className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]"
-                value={registerinfo.PhoneNumber}
-                onChange={handleChange}
-              />
-              <button
-                type="submit"
-                className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]"
-              >
-                Register
-              </button>
-            </form>
-          </div>
+    {/* Footer */}
+    <footer className="border-t border-[#3f3e45] py-8 text-sm text-center bg-[#01011b]">
+      <div className="flex flex-col md:flex-row justify-center gap-4 items-center">
+        <span className='font-bold'>{`© 2025 ${clubdetailes.name} — @IITI`}</span>
+        <div className='flex flex-row gap-4'>
+        <a href="https://www.instagram.com/cynapticsclubiiti" target="_blank" rel="noopener noreferrer">
+          <img src={insta} alt="Instagram" className="w-5 h-5" />
+        </a>
+        <a href="https://www.linkedin.com/company/cynaptics-club-iiti-indore/mycompany/" target="_blank" rel="noopener noreferrer">
+          <img src={linkedIn} alt="LinkedIn" className="w-5 h-5" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src={facebook} alt="Facebook" className="w-5 h-5" />
+        </a>
         </div>
-      )}
-    </>
+      </div>
+    </footer>
+  </div>
+
+</>
   );
 }
 
