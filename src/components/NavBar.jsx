@@ -98,23 +98,41 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
             </div>
           }
           {isuserinfoopen && (
-            <div className='w-80 hidden md:block absolute border border-radius-2 top-32 right-3 z-100 bg-white rounded-md '>
-              <div className='flex flex-col items-center my-5 mx-5 border rounded bg-gray-300' >
-                <img src={props.personinfo.userphoto} alt="user" className='w-15 h-15 my-2 ' />
-                <h2 className='font-bold py-1'>{props.personinfo?.name || 'No name'}</h2>
-                <h2>{props.personinfo?.email || 'No email '}</h2>
-              </div>
-              <button className='logout text-red-500 font-bold cursor-pointer pl-[17px] mb-[10px] hover:opacity-75' onClick={() => {
-                if (window.confirm('Do you want to logout?')) {
-                  localStorage.removeItem('personinfo');
-                  props.setissignup(false);
-                  props.setpersoninfo(null);
-                  setisuserinfoopen(false);
-                  navigate('/signup');
-                }
-              }}>🔓 Logout
-              </button>
-            </div>
+           <div className="w-80 hidden md:block absolute top-32 right-3 z-[100] bg-white rounded-xl shadow-lg border">
+  <div className="flex flex-col items-center text-center m-5 p-4 bg-gray-100 rounded-lg">
+    <img
+      src={props.personinfo?.userphoto}
+      alt="User"
+      className="w-20 h-20 rounded-full shadow-md mb-3 object-cover"
+    />
+
+    {/* Animated gradient username */}
+    <h2 className="text-lg font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient">
+      {props.personinfo?.name || 'No name'}
+    </h2>
+
+    <p className="text-sm text-gray-600">{props.personinfo?.email || 'No email'}</p>
+  </div>
+
+  <div className="px-5 pb-4">
+    <button
+      className="w-full flex items-center justify-center gap-2 py-2 text-red-600 font-medium border border-red-200 rounded-lg hover:bg-red-50 transition duration-200"
+      onClick={() => {
+        if (window.confirm('Do you want to logout?')) {
+          localStorage.removeItem('personinfo');
+          props.setissignup(false);
+          props.setpersoninfo(null);
+          setisuserinfoopen(false);
+          navigate('/signup');
+        }
+      }}
+    >
+      🔓 Logout
+    </button>
+  </div>
+</div>
+
+
           )}
 
 

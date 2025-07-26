@@ -146,7 +146,7 @@ export default function Events(props) {
 
   return (
     <>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-4  ">
         {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
@@ -177,14 +177,29 @@ export default function Events(props) {
                     />
                   </div>
 
-                  <div
-                    id="back"
-                    className=" absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 "
-                  >
-                    <h1 className="text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]">
-                      {event.EventName}
-                    </h1>
-                    <p className="text-white font-bold"> {event.EventInfo}</p>
+
+
+                  <p className="text-white text-sm md:text-base font-medium">
+                    🕒 Time: {event.EventDateAndTime}
+                  </p>
+                  <p className="text-white text-sm md:text-base font-medium">
+                    📍 Info: {event.EventInfo}
+                  </p>
+                  <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
+                  <p className="text-white font-semibold">
+                    📋 Registered: {registrationCounts[event._id] ?? '...'} students
+                  </p>
+                  <p className="text-white font-semibold">
+                    🧑‍💼 Conducted by: {event.ConductedBy}
+                  </p>
+                </div>
+
+                {/* BACK SIDE */}
+                
+                  <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
+                    <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
+                    <p className='text-white font-bold'> {event.EventInfo}</p>
+
                     <button
                       className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
                       id={`joinEvent${event.id}`}
@@ -243,6 +258,7 @@ export default function Events(props) {
                     </div>
                   </div>
 
+
                   <p className="text-white text-sm md:text-base font-medium">
                     🕒 Time: {event.EventDateAndTime}
                   </p>
@@ -286,6 +302,7 @@ export default function Events(props) {
                     Join Event
                   </button>
                 </div>
+
               </div>
             </div>
           </div>
