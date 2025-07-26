@@ -260,7 +260,7 @@ export default function Events(props) {
                   </div>
 
 
-                  <p className="text-white text-sm md:text-base font-medium">
+                  {/* <p className="text-white text-sm md:text-base font-medium">
                     🕒 Time: {event.EventDateAndTime}
                   </p>
                   <p className="text-white text-sm md:text-base font-medium">
@@ -275,11 +275,11 @@ export default function Events(props) {
                   </p>
                   <p className="text-white font-semibold">
                     🧑‍💼 Conducted by: {event.ConductedBy}
-                  </p>
+                  </p> */}
                 </div>
 
                 {/* BACK SIDE */}
-                <div className="absolute inset-0 flex flex-col justify-center items-center rotate-y-180 backface-hidden rotate-y-180">
+                {/* <div className="absolute inset-0 flex flex-col justify-center items-center rotate-y-180 backface-hidden">
                   <h1 className="text-[#11E3FB] font-bold text-2xl py-2 text-center">
                     {event.EventName}
                   </h1>
@@ -302,7 +302,7 @@ export default function Events(props) {
                   >
                     Join Event
                   </button>
-                </div>
+                </div> */}
 
               </div>
             </div>
