@@ -149,7 +149,7 @@ export default function Events(props) {
         {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
-            className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.06] "
+            className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
           >
             {filteredEvents.length === 0 && props.searchQuery && (
               <p className="text-white text-center mt-4 animate-fade-in">
@@ -157,19 +157,18 @@ export default function Events(props) {
               </p>
             )}
 
-            <div className="box block perspective-[1200px]">
+            <div className="box ">
               <div
-                className={`card relative grid transform transition-transform duration-500 transform-style-preserve-3d ${flippedEventId === event.id ? 'rotate-y-180' : ''
-                  }`}
+                className={`card  ${flippedEventId === event.id ? 'boxrotate' : '' }`}
                 onClick={() => toggleFlip(event.id)}
               >
                 {/* FRONT SIDE */}
-                <div className="event-description col-start-1 row-start-1 space-y-3 relative backface-hidden">
+                <div id='front' className="event-description  space-y-3 ">
                   <div className="event-logo flex justify-center items-center mb-2">
                     <img
                       alt="Event Logo"
                       src={event.Eventlogo}
-                      className="h-[90px] w-[90px] object-contain"
+                      className="h-[90px] w-[90px] object-contain hover:scale-[5] hover:translate-y-25 "
                     />
                   </div>
 
@@ -191,7 +190,7 @@ export default function Events(props) {
 
                 {/* BACK SIDE */}
                 
-                  <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden rotate-y-180 '>
+                  <div id='back' className='  '>
                     <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
                     <p className='text-white font-bold'> {event.EventInfo}</p>
                     <button
@@ -217,16 +216,16 @@ export default function Events(props) {
                           navigate('/signup');
                           alert('Please verify your email to continue.');
                         }
-                    }} className='flex flex-row m-10 w-[100%] justify-between items-center'>
+                    }} className='flex flex-row m-1 w-[100%] justify-between items-center'>
                        <img src={commentlogo} className={`cursor-pointer w-8 h-8 invert `} />
-                      <input type="text" id={event.id} onChange={change} value={Comment[event.id]||''} placeholder='Add a Comment' className='text-black bg-white  rounded-2xl w-auto ' />
+                      <input type="text" id={event.id} onChange={change} value={Comment[event.id]||''} placeholder='Add a Comment' className='text-black bg-white  rounded-2xl w-auto ' onClick={() => toggleFlip(event.id)} />
                       <button type='submit' className='text-white font-bold cursor-pointer'>Submit</button>
                     </form>
                     <div className='overflow-y-scroll scrollbar-hidden '>
                     {event.comments.map((com,index)=>(
                       <div key={index}>
-                        <p className='text-sm'>{com.emailid}</p>
-                        <p>{com.comment}</p>
+                        <p className='text-sm text-white'>{com.emailid}</p>
+                        <p className='text-white font-bold'>{com.comment}</p>
                       </div>
 
                     ))}
