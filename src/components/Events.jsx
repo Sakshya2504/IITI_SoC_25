@@ -195,88 +195,7 @@ export default function Events(props) {
                   </p>
                 </div>
 
-                {/* BACK SIDE */}
-
-                  <div id='back' className=' absolute col-start-1 row-start-1 flex flex-col justify-center items-center top-0 left-0 w-[100%] h-[100%] backface-hidden  '>
-                    <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
-                    <p className='text-white font-bold'> {event.EventInfo}</p>
-
-                    <button
-                      className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                      id={`joinEvent${event.id}`}
-                      onClick={() => {
-                        if (props.issignup) {
-                          setSelectedEventId(event.id);
-                          setregister(true);
-                        } else {
-                          navigate("/signup");
-                          alert("Please verify your email to continue.");
-                        }
-                      }}
-                    >
-                      Join Event
-                    </button>
-                    <form
-                      id={event.id}
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        if (props.issignup) {
-                          setSelectedEventId(event.id);
-                          handlecomment(e);
-                        } else {
-                          navigate("/signup");
-                          alert("Please verify your email to continue.");
-                        }
-                      }}
-                      className="flex flex-row m-10 w-[100%] justify-between items-center"
-                    >
-                      <img
-                        src={commentlogo}
-                        className={`cursor-pointer w-8 h-8 invert `}
-                      />
-                      <input
-                        type="text"
-                        id={event.id}
-                        onChange={change}
-                        value={Comment[event.id] || ""}
-                        placeholder="Add a Comment"
-                        className="text-black bg-white  rounded-2xl w-auto "
-                      />
-                      <button
-                        type="submit"
-                        className="text-white font-bold cursor-pointer"
-                      >
-                        Submit
-                      </button>
-                    </form>
-                    <div className="overflow-y-scroll scrollbar-hidden ">
-                      {event.comments.map((com, index) => (
-                        <div key={index}>
-                          <p className="text-sm">{com.emailid}</p>
-                          <p>{com.comment}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-
-                  <p className="text-white text-sm md:text-base font-medium">
-                    🕒 Time: {event.EventDateAndTime}
-                  </p>
-                  <p className="text-white text-sm md:text-base font-medium">
-                    📍 Info: {event.EventInfo}
-                  </p>
-                  <p className="text-white font-semibold">
-                    🎭 Event: {event.EventName}
-                  </p>
-                  <p className="text-white font-semibold">
-                    📋 Registered: {registrationCounts[event._id] ?? "..."}{" "}
-                    students
-                  </p>
-                  <p className="text-white font-semibold">
-                    🧑‍💼 Conducted by: {event.ConductedBy}
-                  </p>
-                </div>
+                
 
                 {/* BACK SIDE */}
                 <div className="absolute inset-0 flex flex-col justify-center items-center rotate-y-180 backface-hidden">
@@ -305,6 +224,7 @@ export default function Events(props) {
                 </div>
 
               </div>
+            </div>
             </div>
 
         ))}
