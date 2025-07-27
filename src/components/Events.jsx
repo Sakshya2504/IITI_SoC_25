@@ -10,9 +10,11 @@ export default function Events(props) {
   const [errors, setErrors] = useState([]);
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
+  const [comments,setcomments]=useState([]);
   const [registrationCounts, setRegistrationCounts] = useState({});
   const [register, setregister] = useState(false);
   const [filteredEvents, setFilteredEvents] = useState([]);
+  const [commenteventid,setcommenteventid]=useState(null);
   const [registerinfo, setregisterinfo] = useState({
     Name: "",
     EmailAddress: "",
@@ -52,6 +54,25 @@ export default function Events(props) {
     const { name, value } = e.target;
     setregisterinfo(prev => ({ ...prev, [name]: value }));
   };
+    useEffect(() => {
+    const fetchcomments = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/Events/${commenteventid}`);
+        const data = await res.json();
+        console.log(data);
+        if(res.ok){
+
+        const updatedcomments = data.map(eve => ({
+          ...eve
+        }));
+
+        setcomments(updatedcomments);}
+      } catch (err) {
+        console.error("Failed to load comments:", err);
+      }
+    };
+(commenteventid?fetchcomments():'')
+  }, [commenteventid]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -136,9 +157,13 @@ export default function Events(props) {
   }, [props.searchQuery, events]);
 
   const [flippedEventId, setFlippedEventId] = useState(null);
+  
 
   const toggleFlip = (id) => {
     setFlippedEventId((prev) => (prev === id ? null : id));
+  };
+   const showcomment = (id) => {
+    setcommenteventid((prev) => (prev === id ? null : id));
   };
 
 
@@ -193,8 +218,9 @@ export default function Events(props) {
                   <div id='back' className='  '>
                     <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
                     <p className='text-white font-bold'> {event.EventInfo}</p>
+                    <div className='flex flex-row gap-5 justify-center items-center mt-10'>
                     <button
-                      className="mt-10 bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                      className=" bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
                       id={`joinEvent${event.id}`} onClick={() => {
                         if (props.issignup) {
                           setSelectedEventId(event.id);
@@ -207,40 +233,98 @@ export default function Events(props) {
                     >
                       Join Event
                     </button>
-                    <form id={event.id}  onSubmit={(e)=>{
-                      e.preventDefault();
-                       if (props.issignup) {
-                         setSelectedEventId(event.id);
-                         handlecomment(e);
-                        } else {
-                          navigate('/signup');
-                          alert('Please verify your email to continue.');
-                        }
-                    }} className='flex flex-row m-1 w-[100%] justify-between items-center'>
-                       <img src={commentlogo} className={`cursor-pointer w-8 h-8 invert `} />
-                      <input type="text" id={event.id} onChange={change} value={Comment[event.id]||''} placeholder='Add a Comment' className='text-black bg-white  rounded-2xl w-auto ' onClick={() => toggleFlip(event.id)} />
-                      <button type='submit' className='text-white font-bold cursor-pointer'>Submit</button>
-                    </form>
-                    <div className='overflow-y-scroll scrollbar-hidden '>
-                    {event.comments.map((com,index)=>(
-                      <div key={index}>
-                        <p className='text-sm text-white'>{com.emailid}</p>
-                        <p className='text-white font-bold'>{com.comment}</p>
-                      </div>
-
-                    ))}
-                    </div>
+                    <div className='flex gap-1'>
+                  <img src={commentlogo} onClick={() => {showcomment(event.id);
+                        toggleFlip(event.id)
+                       }} className={`cursor-pointer w-8 h-8 invert `} /> 
+                       <p className='text-white font-bold'>Comment</p>
+                       </div>    
+                  </div>
                   </div>
               </div>
             </div>
           </div>
+         
         ))}
       </div>
+           {commenteventid  &&
+            (<div
+  className='fixed bottom-0 left-0 md:w-[30%] right-0 md:right-auto z-30  bg-[#2A2A2A]
+              rounded-t-2xl shadow-lg transition-transform duration-300 ease-in-out 
+              h-[60%] md:h-[calc(100%-120px)] border border-[#2A2A2A] flex flex-col sliding-animation '
+>
+  {/* Header and Close */}
+  <div className="flex-shrink-0">
+    <button
+      className="text-white font-bold cursor-pointer flex items-center"
+      onClick={() => showcomment(null)}
+    >
+      {/* Left Arrow Icon */}
+      <svg
+        className="w-6 h-6 mr-2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
+    <h2 className="text-xl text-white font-bold text-center my-3">Comments</h2>
+  </div>
+
+  {/* Scrollable Comment List */}
+  <div className="flex-1 overflow-y-auto px-10 py-3 border-b space-y-3">
+    {comments.map((com, index) => (
+      <div key={index}>
+        <p className="text-sm text-[#A8A8A8]">{com.emailid}</p>
+        <p className="text-white font-bold">{com.comment}</p>
+      </div>
+    ))}
+  </div>
+
+  {/* Fixed Bottom Form */}
+  <form
+    id={commenteventid}
+    onSubmit={(e) => {
+      e.preventDefault();
+      if (props.issignup) {
+        setSelectedEventId(commenteventid);
+        handlecomment(e);
+      } else {
+        navigate('/signup');
+        alert('Please verify your email to continue.');
+      }
+    }}
+    className="flex-shrink-0 flex items-center justify-between px-4 py-3 border-t"
+  >
+    <img
+      src={commentlogo}
+      onClick={() => showcomment(commenteventid)}
+      alt="Toggle comment section"
+      className="cursor-pointer w-8 h-8 invert"
+    />
+    <input
+      type="text"
+      id={commenteventid}
+      onChange={change}
+      value={Comment[commenteventid] || ''}
+      placeholder="Add a Comment"
+      className="text-black bg-white rounded-2xl px-4 py-1 w-full mx-2"
+    />
+    <button type="submit" className="text-white font-bold">
+      Submit
+    </button>
+  </form>
+</div>
+)}
 
       {register &&
 
         <div className='fixed top-0 z-1000 w-[100%] h-[100%] flex justify-center items-center '>
-          <div className=' fixed flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212),_rgba(59,130,246))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)]  hover:shadow-[0_0_25px_#00ffff66]'>
+          <div className=' fixed flex flex-col w-[90%] md:w-[400px] m-[30px]  bg-[linear-gradient(to_right,_rgba(6,182,212),_rgba(59,130,246))]  border-1 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)]  hover:shadow-[0_0_25px_#00ffff66]'>
             <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={() => setregister(false)}> ❌ </button>
 
             <form

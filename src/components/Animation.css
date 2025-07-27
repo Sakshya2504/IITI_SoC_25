@@ -3,6 +3,18 @@
   animation: slideright 0.3s ease 0s 1;
 
 }
+.sliding-animation {
+
+  animation: slideright 0.3s ease 0s 1;
+
+}
+@media(max-width:480px){
+.sliding-animation {
+
+  animation: slideup 0.3s ease 0s 1;
+
+}
+}
 
 
 @keyframes slideright {
@@ -13,6 +25,17 @@
 
   to {
     transform: translateX(0px);
+  }
+}
+
+@keyframes slideup {
+  from {
+    transform: translatey(75%);
+
+  }
+
+  to {
+    transform: translatey(0px);
   }
 }
 

@@ -11,7 +11,7 @@ function Clubselection() {
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center w-full h-[calc(100vh-130px)] bg-[#0A0F1C] text-white">
+    <section className="flex flex-col items-center justify-center w-full h-[calc(100vh-130px)] from-[#01011b] via-[#0a0a2e] to-[#01011b] text-white">
 
       <h1 className="text-5xl font-bold text-[#00EAFF] mb-14 drop-shadow-md">Choose Club</h1>
 
