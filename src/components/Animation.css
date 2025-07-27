@@ -28,6 +28,7 @@
   }
 }
 
+
 @keyframes slideup {
   from {
     transform: translatey(75%);
@@ -38,6 +39,7 @@
     transform: translatey(0px);
   }
 }
+
 
 
 

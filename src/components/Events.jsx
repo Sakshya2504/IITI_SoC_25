@@ -1,8 +1,7 @@
-
-import { useEffect, useState, React } from 'react';
-import './Animation.css'
-import { useNavigate } from 'react-router-dom';
-import commentlogo from '../Images/comment.png'
+import { useEffect, useState, React } from "react";
+import "./Animation.css";
+import { useNavigate } from "react-router-dom";
+import commentlogo from "../Images/comment.png";
 export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
@@ -22,37 +21,33 @@ export default function Events(props) {
     Program: "",
     Branch: "",
     PhoneNumber: "",
-
-  })
-  const [Comment,setComment] =useState({});
-  const handlecomment =async (e) =>{
+  });
+  const [Comment, setComment] = useState({});
+  const handlecomment = async (e) => {
     e.preventDefault();
-    const _id =e.target.id;
+    const _id = e.target.id;
     console.log(_id);
     const comment = Comment[_id];
     const emailid = props.personinfo.email;
-    setComment(prev => ({ ...prev, [_id]: '' }));
-    try{
-        await fetch(`http://localhost:3000/api/comment/${_id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({emailid,comment}),
+    setComment((prev) => ({ ...prev, [_id]: "" }));
+    try {
+      await fetch(`http://localhost:3000/api/comment/${_id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ emailid, comment }),
       });
-    }
-      catch(err){
-        console.error(err);
+    } catch (err) {
+      console.error(err);
       // alert('Something went wrong......');
-      }
-
-  }
-  const change=(e)=>{
+    }
+  };
+  const change = (e) => {
     const { id, value } = e.target;
-    setComment((prev)=>({...prev,[id]:value}))
-
-  }
+    setComment((prev) => ({ ...prev, [id]: value }));
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setregisterinfo(prev => ({ ...prev, [name]: value }));
+    setregisterinfo((prev) => ({ ...prev, [name]: value }));
   };
     useEffect(() => {
     const fetchcomments = async () => {
@@ -78,57 +73,59 @@ export default function Events(props) {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:3000/events/${selectedEventId}/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(registerinfo),
-      });
+      const res = await fetch(
+        `http://localhost:3000/events/${selectedEventId}/register`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(registerinfo),
+        }
+      );
       if (res.ok) {
-        alert('Registered successfully!');
+        alert("Registered successfully!");
         setregister(false);
         setregisterinfo({
-          Name: '',
-          EmailAddress: '',
-          RollNumber: '',
-          Program: '',
-          Branch: '',
-          PhoneNumber: ''
+          Name: "",
+          EmailAddress: "",
+          RollNumber: "",
+          Program: "",
+          Branch: "",
+          PhoneNumber: "",
         });
-        navigate('/');
-      }
-      else {
+        navigate("/");
+      } else {
         if (res.errors) {
           setErrors(res.errors);
         } else {
-          setErrors([res.message || 'Registration Failed']);
+          setErrors([res.message || "Registration Failed"]);
         }
       }
     } catch (err) {
       console.error(err);
-      alert('Something went wrong. Please try again.');
+      alert("Something went wrong. Please try again.");
     }
   };
-
-
 
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch('http://localhost:3000/Events');
+        const res = await fetch("http://localhost:3000/Events");
         const data = await res.json();
 
-        const updatedEvents = data.map(eve => ({
+        const updatedEvents = data.map((eve) => ({
           ...eve,
-          id: eve._id
+          id: eve._id,
         }));
 
         setEvents(updatedEvents);
 
         const counts = {};
         for (const event of updatedEvents) {
-          const response = await fetch(`http://localhost:3000/events/${event._id}/registrations/count`);
+          const response = await fetch(
+            `http://localhost:3000/events/${event._id}/registrations/count`
+          );
           const { count } = await response.json();
           counts[event._id] = count;
         }
@@ -142,15 +139,21 @@ export default function Events(props) {
     fetchEvents();
   }, [selectedEventId]);
 
+
   useEffect(() => {
     if (!props.searchQuery) {
       setFilteredEvents([]);
       return;
     }
 
-    const filtered = events.filter(event =>
-      event.EventName.toLowerCase().includes(props.searchQuery.toLowerCase()) ||
-      event.ConductedBy.toLowerCase().includes(props.searchQuery.toLowerCase())
+    const filtered = events.filter(
+      (event) =>
+        event.EventName.toLowerCase().includes(
+          props.searchQuery.toLowerCase()
+        ) ||
+        event.ConductedBy.toLowerCase().includes(
+          props.searchQuery.toLowerCase()
+        )
     );
 
     setFilteredEvents(filtered);
@@ -175,6 +178,7 @@ export default function Events(props) {
           <div
             key={event.id}
             className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
+            className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
           >
             {filteredEvents.length === 0 && props.searchQuery && (
               <p className="text-white text-center mt-4 animate-fade-in">
@@ -182,6 +186,7 @@ export default function Events(props) {
               </p>
             )}
 
+            <div className="box ">
             <div className="box ">
               <div
                 className={`card  ${flippedEventId === event.id ? 'boxrotate' : '' }`}
@@ -194,8 +199,10 @@ export default function Events(props) {
                       alt="Event Logo"
                       src={event.Eventlogo}
                       className="h-[90px] w-[90px] object-contain hover:scale-[5] hover:translate-y-25 "
+                      className="h-[90px] w-[90px] object-contain hover:scale-[5] hover:translate-y-25 "
                     />
                   </div>
+
 
 
                   <p className="text-white text-sm md:text-base font-medium">
@@ -216,6 +223,7 @@ export default function Events(props) {
                 {/* BACK SIDE */}
                 
                   <div id='back' className='  '>
+                  <div id='back' className='  '>
                     <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
                     <p className='text-white font-bold'> {event.EventInfo}</p>
                     <div className='flex flex-row gap-5 justify-center items-center mt-10'>
@@ -226,8 +234,8 @@ export default function Events(props) {
                           setSelectedEventId(event.id);
                           setregister(true);
                         } else {
-                          navigate('/signup');
-                          alert('Please verify your email to continue.');
+                          navigate("/signup");
+                          alert("Please verify your email to continue.");
                         }
                       }}
                     >
