@@ -152,25 +152,33 @@ import { useParams } from 'react-router-dom';
     </div>
 
     {/* Club Head Section */}
-    <div className="py-4 px-4 md:px-0 ">
-      <h1 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] mb-6">Club Head</h1>
-      <div className="mx-auto max-w-xl border-4 rounded-2xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-6 shadow-lg hover:border-[#33bbcf] hover:shadow-xl transition">
-        <img src={clubdetailes.clubHead[0].image || iiti} alt="Club Head Photo" className="w-1xl  object-contain mb-4" />
-        <p className="text-center font-bold text-lg">{clubdetailes.clubHead[0].name}</p>
-        <h2 className="font-bold mt-4">About</h2>
-        <p>{clubdetailes.clubHead[0].role}</p>
-        <h2 className="font-bold mt-4">Contact</h2>
-        <a
-          href={clubdetailes.clubHead[0].linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex justify-center items-center my-2"
-        >
-          <img src={linkedIn} alt="LinkedIn" className="w-6 h-6" />
-        </a>
-        <p className="py-2 text-center">📧 cse240001068@iiti.ac.in</p>
-      </div>
-    </div>
+        <div className="py-3 px-4 md:px-0">
+          <h1 className="text-xl md:text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#00EAFF] via-[#4DD9FF] to-[#AAF0FF] mb-4">
+            Club Head
+          </h1>
+          <div className="mx-auto max-w-sm border-2 flex flex-col rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-4 shadow-md hover:border-[#33bbcf] hover:shadow-lg transition duration-300 ease-in-out">
+            <img
+              src={clubdetailes.clubHead[0].image || iiti}
+              alt="Club Head Photo"
+              className="w-full max-h-40 object-contain rounded mb-3"
+            />
+            <p className="text-center font-semibold text-base">{clubdetailes.clubHead[0].name}</p>
+
+            <h2 className="text-sm font-semibold mt-3 text-[#4DD9FF] uppercase tracking-wider text-center">About</h2>
+            <p className="text-sm text-center">{clubdetailes.clubHead[0].role}</p>
+
+            <h2 className="text-sm font-semibold mt-3 text-[#4DD9FF] uppercase tracking-wider text-center">Contact</h2>
+            <a
+              href={clubdetailes.clubHead[0].linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex justify-center items-center my-1 transition-transform hover:scale-110"
+            >
+              <img src={linkedIn} alt="LinkedIn" className="w-4 h-4" />
+            </a>
+            <p className="text-xs text-center mt-1">📧 cse240001068@iiti.ac.in</p>
+          </div>
+        </div>
 
     {/* Footer */}
     <footer className="border-t border-[#3f3e45] py-8 text-sm text-center bg-[#01011b]">
