@@ -54,7 +54,6 @@ export default function Events(props) {
       try {
         const res = await fetch(`http://localhost:3000/Events/${commenteventid}`);
         const data = await res.json();
-        console.log(data);
         if(res.ok){
 
         const updatedcomments = data.map(eve => ({
@@ -173,11 +172,10 @@ export default function Events(props) {
 
   return (
     <>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-4  ">
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-4  ">
         {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
-            className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
             className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
           >
             {filteredEvents.length === 0 && props.searchQuery && (
@@ -186,7 +184,7 @@ export default function Events(props) {
               </p>
             )}
 
-            <div className="box ">
+          
             <div className="box ">
               <div
                 className={`card  ${flippedEventId === event.id ? 'boxrotate' : '' }`}
@@ -198,7 +196,6 @@ export default function Events(props) {
                     <img
                       alt="Event Logo"
                       src={event.Eventlogo}
-                      className="h-[90px] w-[90px] object-contain hover:scale-[5] hover:translate-y-25 "
                       className="h-[90px] w-[90px] object-contain hover:scale-[5] hover:translate-y-25 "
                     />
                   </div>
@@ -222,7 +219,7 @@ export default function Events(props) {
 
                 {/* BACK SIDE */}
                 
-                  <div id='back' className='  '>
+                 
                   <div id='back' className='  '>
                     <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
                     <p className='text-white font-bold'> {event.EventInfo}</p>
@@ -253,8 +250,9 @@ export default function Events(props) {
             </div>
           </div>
          
+         
         ))}
-      </div>
+    </div>
            {commenteventid  &&
             (<div
   className='fixed bottom-0 left-0 md:w-[30%] right-0 md:right-auto z-30  bg-[#2A2A2A]
