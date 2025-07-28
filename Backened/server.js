@@ -26,6 +26,15 @@ await mongoose.connect("mongodb://localhost:27017/todo", {
     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
 
+// mongoose.connection.once('open', async () => {
+//     try {
+//         await mongoose.model('Regis').syncIndexes();
+//         console.log('Indexes synced successfully');
+//     } catch (err) {
+//         console.error('Index sync error:', err);
+//     }
+// });
+
 // Signup route
 app.post('/api/signup', async (req, res) => {
     const { name, email, password, userphoto } = req.body;
@@ -221,11 +230,15 @@ app.post('/events/:eventId/register', async (req, res) => {
         await registration.save();
         res.status(200).json({ message: 'Registered successfully' });
     } catch (err) {
+        if (err.code === 11000) {
+            return res.status(400).json({ errors: ['You have already registered for this event.'] });
+        }
         if (err.name === 'ValidationError') {
             const messages = Object.values(err.errors).map(e => e.message);
             return res.status(400).json({ errors: messages });
         }
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error saving registration:', err.message);
+        res.status(500).json({ errors: ['Internal Server Error'] });
     }
 });
 

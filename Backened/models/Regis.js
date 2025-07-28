@@ -10,14 +10,15 @@ const RegisSchema = new Schema({
     },
     EmailAddress: {
         type: String,
-        required: [true, 'Email is required'],
-        unique: true,
-        match: [/^[\w.-]+@iiti\.ac\.in$/, 'Email must be a valid @iiti.ac.in address']
+        required: true,
+        lowercase: true, // ensures casing doesn't mess up uniqueness
+        match: [/^[\w.-]+@iiti\.ac\.in$/, 'Must be a valid @iiti.ac.in email']
     },
+
     RollNumber: {
         type: String,
         required: [true, 'Roll number is required'],
-        unique: true,
+       unique: false,
         minlength: [9, 'Roll number must be at least 9 characters'],
         maxlength: [12, 'Roll number must be at most 12 characters'],
         trim: true
@@ -33,7 +34,7 @@ const RegisSchema = new Schema({
     PhoneNumber: {
         type: String,
         required: [true, 'Phone number is required'],
-        unique: true,
+       unique: false,
         match: [/^[0-9]\d{9}$/, 'Enter a valid 10-digit mobile number']
     },
     eventId: {
@@ -46,6 +47,8 @@ const RegisSchema = new Schema({
         default: Date.now,
     },
 });
+
+// RegisSchema.index({ EmailAddress: 1, eventId: 1 }, { unique: true });
 
 const Regis = mongoose.model("Regis", RegisSchema);
 export { Regis };

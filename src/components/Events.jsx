@@ -80,6 +80,9 @@ export default function Events(props) {
           body: JSON.stringify(registerinfo),
         }
       );
+
+      const data = await res.json(); // Extract response data
+
       if (res.ok) {
         alert("Registered successfully!");
         setregister(false);
@@ -91,13 +94,10 @@ export default function Events(props) {
           Branch: "",
           PhoneNumber: "",
         });
+        setErrors([]); // Clear previous errors
         navigate("/");
       } else {
-        if (res.errors) {
-          setErrors(res.errors);
-        } else {
-          setErrors([res.message || "Registration Failed"]);
-        }
+        setErrors(data.errors || [data.message || "Registration Failed"]);
       }
     } catch (err) {
       console.error(err);
@@ -230,6 +230,7 @@ export default function Events(props) {
                         if (props.issignup) {
                           setSelectedEventId(event.id);
                           setregister(true);
+                          handleSubmit(event);
                         } else {
                           navigate("/signup");
                           alert("Please verify your email to continue.");
