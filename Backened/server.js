@@ -249,7 +249,7 @@ app.post('/events/:eventId/register', async (req, res) => {
             return res.status(400).json({ errors: messages });
         }
 
-        // ⚠️ Handle duplicate registration (unique index violation)
+        //  Handle duplicate registration (unique index violation)
         if (err.code === 11000) {
             return res.status(409).json({ errors: ['You have already registered for this event.'] });
         }
@@ -257,7 +257,7 @@ app.post('/events/:eventId/register', async (req, res) => {
         console.error('Registration error:', err);
         res.status(500).json({ message: 'Something went wrong' });
     }
-    
+
 });
 
 
