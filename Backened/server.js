@@ -25,6 +25,8 @@ await mongoose.connect("mongodb://localhost:27017/todo", {
     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
+await mongoose.model('Regis').syncIndexes();  //  Sync updated indexes
+console.log('Indexes synced for Regis schema');
 
 // mongoose.connection.once('open', async () => {
 //     try {
@@ -216,31 +218,48 @@ app.post('/api/verifyadmin', async (req, res) => {
 
 
 
-
 app.post('/events/:eventId/register', async (req, res) => {
     const { eventId } = req.params;
-    const formData = req.body;
-    if (!mongoose.Types.ObjectId.isValid(eventId)) {
-  return res.status(400).json({ error: 'Invalid event ID' });
-}
-
-
+    const { Name, EmailAddress, RollNumber, Program, Branch, PhoneNumber } = req.body;
     try {
-        const registration = new Regis({ eventId, ...formData });
-        await registration.save();
-        res.status(200).json({ message: 'Registered successfully' });
-    } catch (err) {
-        if (err.code === 11000) {
-            return res.status(400).json({ errors: ['You have already registered for this event.'] });
+        // Check if the event exists
+        const event = await event_.findById(eventId);
+        if (!event) {
+            return res.status(404).json({ message: 'Event not found' });
         }
+
+        
+
+        // Create a new registration
+        const registration = new Regis({
+            Name,
+            EmailAddress,
+            RollNumber,
+            Program,
+            Branch,
+            PhoneNumber,
+            eventId
+        });
+
+        await registration.save();
+        res.status(201).json({ message: 'Registration successful', registration });
+    } catch (err) {
         if (err.name === 'ValidationError') {
             const messages = Object.values(err.errors).map(e => e.message);
             return res.status(400).json({ errors: messages });
         }
-        console.error('Error saving registration:', err.message);
-        res.status(500).json({ errors: ['Internal Server Error'] });
+
+        // ⚠️ Handle duplicate registration (unique index violation)
+        if (err.code === 11000) {
+            return res.status(409).json({ errors: ['You have already registered for this event.'] });
+        }
+
+        console.error('Registration error:', err);
+        res.status(500).json({ message: 'Something went wrong' });
     }
+    
 });
+
 
 app.get('/events/:eventId/registrations/count', async (req, res) => {
     const { eventId } = req.params;

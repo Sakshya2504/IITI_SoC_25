@@ -18,7 +18,6 @@ const RegisSchema = new Schema({
     RollNumber: {
         type: String,
         required: [true, 'Roll number is required'],
-       unique: false,
         minlength: [9, 'Roll number must be at least 9 characters'],
         maxlength: [12, 'Roll number must be at most 12 characters'],
         trim: true
@@ -34,7 +33,6 @@ const RegisSchema = new Schema({
     PhoneNumber: {
         type: String,
         required: [true, 'Phone number is required'],
-       unique: false,
         match: [/^[0-9]\d{9}$/, 'Enter a valid 10-digit mobile number']
     },
     eventId: {
@@ -47,8 +45,8 @@ const RegisSchema = new Schema({
         default: Date.now,
     },
 });
+RegisSchema.index({ EmailAddress: 1, eventId: 1 }, { unique: true });
 
-// RegisSchema.index({ EmailAddress: 1, eventId: 1 }, { unique: true });
 
 const Regis = mongoose.model("Regis", RegisSchema);
 export { Regis };
