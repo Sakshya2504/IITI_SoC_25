@@ -138,7 +138,7 @@ import { useParams } from 'react-router-dom';
                 <img src={event.image || '#'} alt="Event Logo" className="w-full h-40 object-contain" />
               </div>
               <p>🕒 <span className="font-medium">{event.time}</span></p>
-              <p>📍 <span className="font-medium">{event.info}</span></p>
+              {/* <p>📍 <span className="font-medium">{event.info}</span></p> */}
               <p className="font-semibold">🎭 Event: {event.name}</p>
               <p className="font-semibold">Conducted by: {event.club}</p>
               <div className="mt-4">

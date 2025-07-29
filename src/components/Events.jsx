@@ -199,9 +199,7 @@ export default function Events(props) {
                   <p className="text-white text-sm md:text-base font-medium">
                     🕒 Time: {event.EventDateAndTime}
                   </p>
-                  <p className="text-white text-sm md:text-base font-medium">
-                    📍 Info: {event.EventInfo}
-                  </p>
+                  
                   <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
                   <p className="text-white font-semibold">
                     📋 Registered: {registrationCounts[event._id] ?? '...'} students
