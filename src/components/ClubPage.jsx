@@ -1,9 +1,10 @@
 // src/components/ClubPage.jsx
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 
 function ClubPage() {
   const {type} =useParams()
+  const navigation = useNavigate();
 console.log(type);
   const [Clubs,setClubs]=useState([]);
   useEffect( ()=>{
@@ -27,11 +28,31 @@ console.log(type);
 },[type]);
 
   return (
+    <>
+     <button
+      className="text-white sticky top-[125px] z-100 font-bold cursor-pointer flex items-center"
+      onClick={() => navigation(-1)}
+    >
+      {/* Left Arrow Icon */}
+      <svg
+        className="w-6 h-6 mr-2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
     <div id="council" className="flex mt-0 xs:mt-30 flex-wrap place-content-center  gap-5 mx-2">
+     
       {Clubs.map((club) => (
         <ClubCard key={club.name} {...club} />
       ))}
     </div>
+    </>
   );
 }
 

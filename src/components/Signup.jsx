@@ -3,13 +3,14 @@ import React,
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import user from '../Images/user.png';
-
+import {ClipLoader} from "react-spinners"
 function Signup(props) {
   // This component allows users to sign up for an account
   // It includes a form where users can input their name, email, and password
   const navigate = useNavigate();
   const [userphoto, setuserphoto] = useState(user);
   const [errors, setErrors] = useState([]);
+  const [loading,setloading]=useState(false);
   const [logininfo, setlogininfo] = useState({
     name: "",
     email: "",
@@ -45,7 +46,7 @@ function Signup(props) {
     // This function handles the signup form submission
     // It prevents the default form submission behavior, sends the data to the server,
     e.preventDefault();
-
+setloading(true);
     //Fetch API is used to send a POST request to the server with the signup data 
     try {
       const res = await fetch('http://localhost:3000/api/signup', {
@@ -85,6 +86,8 @@ function Signup(props) {
     catch (error) {
       console.log(error);
       alert('signup failed');
+    }finally{
+      setloading(false);
     }
   }
 
@@ -110,6 +113,7 @@ function Signup(props) {
             hover:scale-[1.02] transition-transform duration-500">
                CREATE ACCOUNT 
             </h2>
+            {loading&&<ClipLoader color="#36d7b7" loading={loading} size={50} />}
 
             {errors.length > 0 && (
               <div className="w-full flex justify-center mb-6">

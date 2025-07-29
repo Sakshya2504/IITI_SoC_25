@@ -93,6 +93,23 @@ import { useParams } from 'react-router-dom';
   return (
   <>
   <div className="bg-[#01011b] text-white">
+       <button
+      className="text-white sticky top-[125px] z-100 font-bold cursor-pointer flex items-center"
+      onClick={() => navigate(-1)}
+    >
+      {/* Left Arrow Icon */}
+      <svg
+        className="w-6 h-6 mr-2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
     {/* Club Logo */}
     <div className="h-80 flex items-center justify-center">
       <img

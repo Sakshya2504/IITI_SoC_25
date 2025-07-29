@@ -262,7 +262,7 @@ export default function Events(props) {
   {/* Header and Close */}
   <div className="flex-shrink-0">
     <button
-      className="text-white font-bold cursor-pointer flex items-center"
+      className="text-white  font-bold cursor-pointer flex items-center"
       onClick={() => showcomment(null)}
     >
       {/* Left Arrow Icon */}
