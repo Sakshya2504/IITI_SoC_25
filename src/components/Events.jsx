@@ -107,10 +107,12 @@ export default function Events(props) {
         const res = await fetch("http://localhost:3000/Events");
         const data = await res.json();
 
-        const updatedEvents = data.map((eve) => ({
-          ...eve,
-          id: eve._id,
-        }));
+        const updatedEvents = data
+          .map((eve) => ({
+            ...eve,
+            id: eve._id,
+          }))
+          .reverse();
 
         setEvents(updatedEvents);
 
