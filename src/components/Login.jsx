@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
-
+import LoadingSpinner from './Loading';
 function Login(props) {
   // This component allows users to log in to their account
   // It includes a form where users can input their email and password
@@ -35,9 +35,10 @@ function Login(props) {
         }
       );
       const result = await res.json();
-      //For fetching the data for profile name 
+      //For fetching the data for profile name
 
       if (res.ok) {
+        <LoadingSpinner />
         alert(result.message || 'Login successful!');
         localStorage.setItem('personinfo', JSON.stringify(result.user));
         props.setpersoninfo(result.user);
@@ -46,16 +47,20 @@ function Login(props) {
           email: "",
           password: ""
         });
-        // After a successful login, the user is redirected to the home page  
+        // After a successful login, the user is redirected to the home page
         navigate('/');
       }
       else {
+        <LoadingSpinner />
+
         alert(result.message || 'Invalid credentials');
       }
 
     }
     catch (error) {
       console.error(error);
+        <LoadingSpinner />
+
       alert('Something went wrong');
 
     }
