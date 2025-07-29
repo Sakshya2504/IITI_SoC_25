@@ -14,11 +14,13 @@ export default function Notification() {
         const data = await res.json();
 
         // Augment each announcement with a static image
-        const filled = data.map(ann => ({
-          anouncment_photo: ann.announcelogo,
-          anouncement_heading: ann.heading,
-          anouncment_info: ann.info
-        }));
+        const filled = data
+          .map(ann => ({
+            anouncment_photo: ann.announcelogo,
+            anouncement_heading: ann.heading,
+            anouncment_info: ann.info
+          }))
+          .reverse();
         setNotifi(filled);
       } catch (err) {
         console.error("Failed to load notifications:", err);
