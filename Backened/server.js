@@ -10,6 +10,7 @@ import {Regis} from './models/Regis.js'
 import {Clubs_} from './models/Club.js'
 
 
+
 const app = express();
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -19,10 +20,22 @@ app.use(cors());
 app.use(express.json()); 
 
 // Connect to MongoDB with the validation using Mongoose
+
 await mongoose.connect("mongodb://localhost:27017/todo", {
     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
+await mongoose.model('Regis').syncIndexes();  //  Sync updated indexes
+console.log('Indexes synced for Regis schema');
+
+// mongoose.connection.once('open', async () => {
+//     try {
+//         await mongoose.model('Regis').syncIndexes();
+//         console.log('Indexes synced successfully');
+//     } catch (err) {
+//         console.error('Index sync error:', err);
+//     }
+// });
 
 // Signup route
 app.post('/api/signup', async (req, res) => {
@@ -167,6 +180,23 @@ app.get('/Events', async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch Events' });
     }
 });
+app.get('/Events/:commenteventid', async (req, res) => {
+    const {commenteventid}=req.params;
+    if (!mongoose.Types.ObjectId.isValid(commenteventid)) {
+        return res.status(400).json({ message: 'Invalid event ID format' });
+    }
+    try {
+        const Events = await event_.findById(commenteventid);
+         if (!Events) {
+            return res.status(404).json({ message: 'Event not found' });
+        }
+
+        res.status(200).json(Events.comments || []);
+    } catch (err) {
+        console.error('Error fetching Events:', err);
+        res.status(500).json({ message: 'Failed to fetch Events' });
+    }
+});
 
 app.post('/api/verifyadmin', async (req, res) => {
     const { email } = req.body;
@@ -188,23 +218,48 @@ app.post('/api/verifyadmin', async (req, res) => {
 
 
 
-
 app.post('/events/:eventId/register', async (req, res) => {
     const { eventId } = req.params;
-    const formData = req.body;
-
+    const { Name, EmailAddress, RollNumber, Program, Branch, PhoneNumber } = req.body;
     try {
-        const registration = new Regis({ eventId, ...formData });
+        // Check if the event exists
+        const event = await event_.findById(eventId);
+        if (!event) {
+            return res.status(404).json({ message: 'Event not found' });
+        }
+
+        
+
+        // Create a new registration
+        const registration = new Regis({
+            Name,
+            EmailAddress,
+            RollNumber,
+            Program,
+            Branch,
+            PhoneNumber,
+            eventId
+        });
+
         await registration.save();
-        res.status(200).json({ message: 'Registered successfully' });
+        res.status(201).json({ message: 'Registration successful', registration });
     } catch (err) {
         if (err.name === 'ValidationError') {
             const messages = Object.values(err.errors).map(e => e.message);
             return res.status(400).json({ errors: messages });
         }
-        res.status(500).json({ error: 'Internal Server Error' });
+
+        //  Handle duplicate registration (unique index violation)
+        if (err.code === 11000) {
+            return res.status(409).json({ errors: ['You have already registered for this event.'] });
+        }
+
+        console.error('Registration error:', err);
+        res.status(500).json({ message: 'Something went wrong' });
     }
+
 });
+
 
 app.get('/events/:eventId/registrations/count', async (req, res) => {
     const { eventId } = req.params;

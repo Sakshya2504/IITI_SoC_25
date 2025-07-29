@@ -1,14 +1,5 @@
 
 import { useEffect, useState } from 'react';
-
-
-
-// const notifi =[{anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'},
-//   {anouncment_photo:image,anouncement_heading:'This is the heading',anouncment_info:'This is the first announcement.'}];
 export default function Notification() {
   // This component fetches and displays notifications
   // It uses the useState hook to manage the state of notifications
@@ -41,22 +32,25 @@ export default function Notification() {
 
   return( 
   <>
-    <div className="con flex flex-col bg-[rgba(1,1,27)] w-[100vw] justify-center items-center ">
-     { notifi.map((e,index)=>(
-      <div key={index} className="notifi flex flex-row justify-between h-auto items-center my-[7px] w-[90%] md:w-[80%] gap-auto bg-[linear-gradient(to bottom right,rgba(10, 10, 46, 0.9),
-  rgba(1, 1, 27, 0.95))] border-1 border-[#80d6e3] rounded-2xl md:rounded-[40px] hover:scale-[1.05] hover:border-2 hover:border-[#33bbcf]  "> 
-    
-        <div className='notifi_info my-1 ml-5 md:ml-20'>
-        <h2 className='text-1xl md:text-2xl font-[500] text-white '>{e.anouncement_heading}</h2>
-        <p className='text-white text-sm'>{e.anouncment_info}</p>
-        </div>
-        <div className='image_con '>
-         <img src={e.anouncment_photo} alt="image" className= ' h-[45px] md:h-[60px] w-[55px] md:w-[70px] object-fill border rounded-[10%] my-5 mr-5 md:mr-20 '  />
-         </div>
-      </div>
-
+      <div className="con flex flex-col w-full min-h-screen bg-gradient-to-b from-[#01011b] via-[#0a0a2e] to-[#01011b] items-center py-8 px-4 space-y-6">
+        {notifi.map((e, index) => (
+          <div
+            key={index}
+            className="notifi w-full md:w-[80%] flex justify-between items-center gap-4 bg-gradient-to-br from-[#0a0a2e] to-[#01011b] rounded-2xl md:rounded-[40px] border border-cyan-400 shadow-md hover:shadow-[0_0_20px_cyan] hover:border-cyan-500 transition-transform duration-300 hover:scale-105 p-4 md:p-6"
+          >
+            <div className="notifi_info flex-1">
+              <h2 className="text-white text-lg md:text-2xl font-semibold mb-2">{e.anouncement_heading}</h2>
+              <p className="text-white text-sm md:text-base">{e.anouncment_info}</p>
+            </div>
+            <div className="image_con flex-shrink-0">
+              <img
+                src={e.anouncment_photo}
+                alt="announcement"
+                className="h-[45px] md:h-[60px] w-[55px] md:w-[70px] object-cover rounded-lg border border-cyan-300 shadow-sm hover:shadow-md transition duration-300"
+              />
+            </div>
+          </div>
         ))}
-
       </div>
     </>
   );

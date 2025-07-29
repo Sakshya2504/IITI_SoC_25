@@ -3,6 +3,18 @@
   animation: slideright 0.3s ease 0s 1;
 
 }
+.sliding-animation {
+
+  animation: slideright 0.3s ease 0s 1;
+
+}
+@media(max-width:480px){
+.sliding-animation {
+
+  animation: slideup 0.3s ease 0s 1;
+
+}
+}
 
 
 @keyframes slideright {
@@ -16,20 +28,20 @@
   }
 }
 
-.card:hover {
-  animation: rotate 0.3s ease 0s 1;
-}
 
-
-@keyframes rotate {
+@keyframes slideup {
   from {
-    transform: rotateY(0);
+    transform: translatey(75%);
+
   }
 
   to {
-    transform: rotateY(180deg);
+    transform: translatey(0px);
   }
 }
+
+
+
 
 @keyframes appear {
   0% {
@@ -89,3 +101,69 @@
   animation-timeline: view();
   animation-range: entry 0% cover 46%;
 }
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradientAnimation 5s ease infinite;
+}
+ .box {
+     display: block;
+     perspective: 1000px;
+     transform-style: preserve-3d;
+ }
+
+ .card {
+     display: grid;
+     position: relative;
+     transform-style: preserve-3d;
+
+ }
+ #front {
+     position: relative;
+     backface-visibility: hidden;
+     grid-area: 1 / 1;
+ }
+
+ #back {
+     position: absolute;
+     grid-area: 1 / 1;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     backface-visibility: hidden;
+     transform: rotateY(180deg);
+
+ }
+
+ .boxrotate {
+     transform: rotateY(180deg);
+     transition-delay: 0.3s;
+ }
+ @keyframes rotate {
+     from {
+         transform: rotateY(0);
+     }
+
+     to {
+         transform: rotateY(180deg);
+     }
+ }
+ .boxrotate {
+     animation: rotate 0.3s ease 0s 1;
+
+ } 

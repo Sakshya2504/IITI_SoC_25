@@ -139,14 +139,27 @@ function Createevent() {
 
   return (
     <>
-      <div className='createvent w-full h-full flex justify-center items-center bg-[rbga(1,1,27)]'>
-        <div className='createevent_con relative flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212,0.3),_rgba(59,130,246,0.3))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)] hover:shadow-[0_0_25px_#00ffff66]'>
-          <button className='back absolute top-[2px] right-[2px] cursor-pointer w-[30px] h-[30px] rounded-[5px] hover:bg-red-500 ' onClick={() => navigate(-1)}> ❌ </button>
-
-          <form  onSubmit={handleSubmit} className='flex flex-col items-center justify-center  w-[100%] h-[100%]'>
+      <div className="createvent w-full h-full flex justify-center items-center bg-gradient-to-b from-[#01011b] to-[#0a0a2e]">
+        <div className="createevent_con relative flex flex-col w-[90%] md:w-[400px] m-6 p-6 bg-gradient-to-r from-cyan-700/30 to-blue-700/30 border border-cyan-300 rounded-xl shadow-md hover:shadow-[0_0_25px_#00ffff66] transition-shadow duration-300">
 
 
-            <h2 className='text-white font-bold text-[22px] '>Event Detailes</h2>
+          <button
+            className="back absolute top-2 right-2 w-[30px] h-[30px] rounded-md hover:bg-red-500 flex items-center justify-center text-white font-bold"
+            onClick={() => navigate(-1)}
+          >
+            ❌
+          </button>
+
+          <form
+            action="/individualclubpage"
+            onSubmit={handleSubmit}
+            className="flex flex-col items-center justify-center w-full h-full"
+          >
+            <h2 className="text-white font-bold text-2xl py-4">Event Details</h2>
+
+
+
+
             {errors.length > 0 && (
               <div className="w-full flex justify-center mb-4">
                 <div className="text-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-md shadow-lg animate-fade-in">
@@ -156,22 +169,61 @@ function Createevent() {
                 </div>
               </div>
             )}
-            <input type="text" placeholder='Event Name' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventName' value={logininfo.EventName} onChange={handleChange} />
-            <input type="text" placeholder='Event Date And Time' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' name='EventDateAndTime' value={logininfo.EventDateAndTime} onChange={handleChange} />
-            <input type="text" placeholder='Conducted By' name='ConductedBy' className='text-black font-bold block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]' value={logininfo.ConductedBy} />
-            <textarea type="text" placeholder='Event Info' name='EventInfo' className='text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[80px] m-[10px]' value={logininfo.EventInfo} onChange={handleChange} />
-            <div className='flex justify-around items-center gap-17 py-2'>
-              <h2 className='text-white font-bold '>Event logo :</h2>
-              <label className='w-20 h-20 border-2 rounded-2xl overflow-clip flex items-center cursor-pointer bg-white ' >
-                <img src={eventlogo} className=' w-full h-full object-cover' alt="logo" />
-                <input type="file" accept='image/*' className='text-white font-bold hidden' onChange={handlelogochange} />
+
+            <input
+              type="text"
+              placeholder="Event Name"
+              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
+              name="EventName"
+              value={logininfo.EventName}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Event Date And Time"
+              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
+              name="EventDateAndTime"
+              value={logininfo.EventDateAndTime}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Conducted By"
+              name="ConductedBy"
+              className="bg-white/90 text-black font-bold w-[90%] md:w-[75%] h-[50px] px-4 mb-4 rounded-lg shadow-md"
+              value={logininfo.ConductedBy}
+              readOnly
+            />
+            <input
+              type="text"
+              placeholder="Event Info"
+              name="EventInfo"
+              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
+              value={logininfo.EventInfo}
+              onChange={handleChange}
+            />
+
+            <div className="flex justify-around items-center gap-6 py-4">
+              <h2 className="text-white font-bold">Event logo :</h2>
+              <label className="w-20 h-20 border border-cyan-300 rounded-xl overflow-hidden flex items-center justify-center cursor-pointer bg-white shadow hover:shadow-lg transition">
+                <img src={eventlogo} className="w-full h-full object-cover" alt="logo" />
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handlelogochange}
+                />
+
               </label>
             </div>
-            <button type="submit" className="submitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]">Submit</button>
 
+            <button
+              type="submit"
+              className="submitbutton w-[90%] md:w-[200px] py-3 text-white text-lg font-bold bg-gradient-to-r from-[#007bff] to-[#00c3ff] rounded-lg shadow-md hover:shadow-[0_0_20px_cyan] hover:scale-105 transition duration-300"
+            >
+              Submit
+            </button>
           </form>
-
-
         </div>
       </div>
     </>

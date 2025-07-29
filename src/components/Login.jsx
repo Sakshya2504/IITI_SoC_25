@@ -67,25 +67,50 @@ function Login(props) {
   }
   return (
     <>
-      <div className=" login w-full h-full flex justify-center items-center bg-[rbga(1,1,27)]">
-        <div className="logincontainer flex flex-col w-[90%] md:w-[400px] m-[30px] p-[20px] bg-[linear-gradient(to_right,_rgba(6,182,212,0.3),_rgba(59,130,246,0.3))]  border-2 rounded-[10px] border-black  shadow-[0px_4px_15px_rgba(0, 0, 0, 0.1)] hover:shadow-[0_0_25px_#00ffff66]  ">
-
+      <div className="login w-full h-full flex justify-center items-center bg-gradient-to-b from-[#01011b] to-[#0a0a2e] animate-fade-in">
+        <div className="logincontainer flex flex-col w-[90%] md:w-[400px] m-6 p-6 bg-gradient-to-r from-cyan-700/30 to-blue-700/30 border border-cyan-300 rounded-xl shadow-md hover:shadow-[0_0_25px_#00ffff66] transition-shadow duration-300">
 
           <form onSubmit={handlelogin}>
-            <div className='loginform flex flex-col items-center justify-center  w-[100%] h-[100%] '>
-              <h2 className=' text-xl text-white font-bold py-10'>
+            <div className="loginform flex flex-col items-center justify-center w-full h-full">
+              <h2 className="text-2xl text-white font-extrabold py-6 tracking-wide animate-fade-in-up">
                 SIGN IN
               </h2>
-              <input type="email" placeholder='Email' value={logininfo.email} className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px] " name='email' id="InputEmail1" onChange={change} />
 
-              <input type="password" placeholder='Password' value={logininfo.password} className="text-black block bg-white border rounded-[10px] w-[90%] md:w-[75%] h-[50px] m-[10px]" name='password' id="InputPassword1" onChange={change} />
+              <input
+                type="email"
+                placeholder="Email"
+                value={logininfo.email}
+                name="email"
+                id="InputEmail1"
+                onChange={change}
+                className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-5 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_cyan] transition-all duration-300 placeholder:text-cyan-700"
+              />
 
+              <input
+                type="password"
+                placeholder="Password"
+                value={logininfo.password}
+                name="password"
+                id="InputPassword1"
+                onChange={change}
+                className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:shadow-[0_0_10px_cyan] transition-all duration-300 placeholder:text-cyan-700"
+              />
 
-              <button type="submit" className="loginsubmitbutton block w-[90%] md:w-[200px] m-[20px] p-[12px] text-white text-[18px] font-bold bg-[linear-gradient(to_right,_#007bff,_#00c3ff)] border-none rounded-[8px] cursor-pointer hover:bg-[linear-gradient(to_right,_#0056b3,_#0097d1)] hover:scale-105 transition-[background,transform] duration-[300ms,200ms]" >login</button>
+              <button
+                type="submit"
+                className="loginsubmitbutton w-[90%] md:w-[200px] py-3 text-white text-lg font-bold bg-gradient-to-r from-[#007bff] to-[#00c3ff] rounded-lg shadow-md hover:shadow-[0_0_20px_cyan] hover:scale-105 transition-all duration-300"
+              >
+                Login
+              </button>
             </div>
-            <p className='text-white font-bold'>Don’t have acount?</p>
-            <Link to='/signup' className='text-blue-500 font-bold hover:underline' >Signup</Link>
 
+            <p className="text-white font-bold mt-4">Don’t have an account?</p>
+            <Link
+              to="/signup"
+              className="text-cyan-300 font-bold hover:underline transition-colors duration-200"
+            >
+              Signup
+            </Link>
           </form>
         </div>
       </div>
