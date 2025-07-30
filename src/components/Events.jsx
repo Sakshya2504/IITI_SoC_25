@@ -59,7 +59,7 @@ export default function Events(props) {
 
         const updatedcomments = data.map(eve => ({
           ...eve
-        }));
+        })).reverse();
 
         setcomments(updatedcomments);}
       } catch (err) {

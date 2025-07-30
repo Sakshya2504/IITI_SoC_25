@@ -13,7 +13,7 @@ export default function Notification() {
           anouncment_photo: ann.announcelogo,
           anouncement_heading: ann.heading,
           anouncment_info: ann.info
-        }));
+        })).reverse();
         setNotifi(filled);
       } catch (err) {
         console.error("Failed to load notifications:", err);

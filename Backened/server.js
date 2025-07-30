@@ -28,15 +28,6 @@ await mongoose.connect("mongodb://localhost:27017/todo", {
 await mongoose.model('Regis').syncIndexes();  //  Sync updated indexes
 console.log('Indexes synced for Regis schema');
 
-// mongoose.connection.once('open', async () => {
-//     try {
-//         await mongoose.model('Regis').syncIndexes();
-//         console.log('Indexes synced successfully');
-//     } catch (err) {
-//         console.error('Index sync error:', err);
-//     }
-// });
-
 // Signup route
 app.post('/api/signup', async (req, res) => {
     const { name, email, password, userphoto } = req.body;
