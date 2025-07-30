@@ -9,11 +9,13 @@ export default function Notification() {
         const res = await fetch('http://localhost:3000/notification');
         const data = await res.json();
 
+
         const filled = data.map(ann => ({
           anouncment_photo: ann.announcelogo,
           anouncement_heading: ann.heading,
           anouncment_info: ann.info
         })).reverse();
+
         setNotifi(filled);
       } catch (err) {
         console.error("Failed to load notifications:", err);

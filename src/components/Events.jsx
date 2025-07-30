@@ -107,10 +107,12 @@ export default function Events(props) {
         const res = await fetch("http://localhost:3000/Events");
         const data = await res.json();
 
-        const updatedEvents = data.map((eve) => ({
-          ...eve,
-          id: eve._id,
-        }));
+        const updatedEvents = data
+          .map((eve) => ({
+            ...eve,
+            id: eve._id,
+          }))
+          .reverse();
 
         setEvents(updatedEvents);
 
@@ -166,6 +168,7 @@ export default function Events(props) {
 
   return (
     <>
+
     <div className="grid bg-gradient-to-b from-[#01011b] via-[#0a0a2e] to-[#01011b] gap-8 md:grid-cols-2 lg:grid-cols-3 mx-4 my-6 ">
       {events.length===0?(
  <div className="col-span-full flex flex-col items-center  text-white text-center mt-12 space-y-4 w-full h-screen">

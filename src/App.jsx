@@ -103,7 +103,7 @@ function App() {
     {/* Middle Section: Contact */}
     <div className="flex flex-col space-y-3">
       <h2 className="text-2xl font-bold text-[#00EAFF] hover:underline">Contact Us</h2>
-      <p className="text-base font-semibold text-gray-300">✉️ cse240001068@iiti.ac.in</p>
+      <p className="text-base font-semibold text-gray-300">✉️ sse240021015@iiti.ac.in</p>
     </div>
 
     {/* Right Section: Share */}
