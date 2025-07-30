@@ -2,6 +2,7 @@ import { useEffect, useState, React } from "react";
 import "./Animation.css";
 import { useNavigate } from "react-router-dom";
 import commentlogo from "../Images/comment.png";
+import { event_ } from "../../Backened/models/Event";
 export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
@@ -68,43 +69,36 @@ export default function Events(props) {
 (commenteventid?fetchcomments():'')
   }, [commenteventid]);
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const eventId = selectedEventId || e.target.id;
+  
     try {
-      const res = await fetch(
-        `http://localhost:3000/events/${selectedEventId}/register`,
+      const response = await fetch(`http://localhost:3000/events/${selectedEventId}/register`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(registerinfo),
         }
       );
-      if (res.ok) {
-        alert("Registered successfully!");
+
+     
+      if (response.ok) {
+        const data = await response.json();
+        setErrors([]);
         setregister(false);
-        setregisterinfo({
-          Name: "",
-          EmailAddress: "",
-          RollNumber: "",
-          Program: "",
-          Branch: "",
-          PhoneNumber: "",
-        });
-        navigate("/");
+        setSelectedEventId(null);
+        alert("Registration successful!");
       } else {
-        if (res.errors) {
-          setErrors(res.errors);
-        } else {
-          setErrors([res.message || "Registration Failed"]);
-        }
+        const errorData = await response.json();
+        setErrors(errorData.errors || ["Registration failed. Please try again."]);
       }
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Please try again.");
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setErrors(["Registration failed. Please try again."]);
     }
   };
-
+ 
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
   useEffect(() => {
@@ -205,9 +199,7 @@ export default function Events(props) {
                   <p className="text-white text-sm md:text-base font-medium">
                     🕒 Time: {event.EventDateAndTime}
                   </p>
-                  <p className="text-white text-sm md:text-base font-medium">
-                    📍 Info: {event.EventInfo}
-                  </p>
+                  
                   <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
                   <p className="text-white font-semibold">
                     📋 Registered: {registrationCounts[event._id] ?? '...'} students
@@ -230,6 +222,7 @@ export default function Events(props) {
                         if (props.issignup) {
                           setSelectedEventId(event.id);
                           setregister(true);
+                         
                         } else {
                           navigate("/signup");
                           alert("Please verify your email to continue.");
