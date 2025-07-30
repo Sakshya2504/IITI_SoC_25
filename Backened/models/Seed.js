@@ -6,7 +6,7 @@ dotenv.config();
 
 const seedClubs = async () => {
   try {
-    const MONGO_URL = "mongodb+srv://anand9675vivek:1223@iiti.wglwzc9.mongodb.net/" ;
+    const MONGO_URL = "mongodb+srv://IITI_SoC:1234abcd@campus-announcement.hrc6rs9.mongodb.net/" ;
     await mongoose.connect(MONGO_URL);
     console.log("✅ Connected to MongoDB");
 
