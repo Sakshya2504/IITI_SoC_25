@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import iiti from '../Images/iiti.png';
 import { useParams } from 'react-router-dom';
+import {ClipLoader} from "react-spinners"
 function Announce() {
   // This component allows users to create an announcement for a club
   // It includes a form where users can input the club name, announcement heading, and announcement
@@ -9,6 +10,7 @@ function Announce() {
   const club_name = decodeURIComponent(clubname);
   const navigate = useNavigate();
    const [errors, setErrors] = useState([]);
+      const [loading,setloading]=useState(false);
   const [announcelogo, setannouncelogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({
     clubname: club_name,
@@ -60,7 +62,7 @@ function Announce() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setloading(true);
     const email = prompt("Enter your email to verify admin access:");
     if (!email) {
       alert("Email is required.");
@@ -99,6 +101,9 @@ function Announce() {
       console.error("Submit error:", err);
       alert("Something went wrong: " + (err.message || err));
     }
+    finally{
+      setloading(false);
+    }
   };
 
 
@@ -119,6 +124,7 @@ function Announce() {
             onSubmit={handleSubmit}
             className="flex flex-col items-center justify-center w-full h-full"
           >
+            {loading&&<ClipLoader color="#36d7b7" loading={loading} size={50} />}
             <h2 className="text-white font-bold text-2xl py-4">Announcement Details</h2>
 
             {errors.length > 0 && (

@@ -39,7 +39,6 @@ setloading(true);
       //For fetching the data for profile name
 
       if (res.ok) {
-        <LoadingSpinner />
         alert(result.message || 'Login successful!');
         localStorage.setItem('personinfo', JSON.stringify(result.user));
         props.setpersoninfo(result.user);
