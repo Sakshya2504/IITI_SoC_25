@@ -162,7 +162,7 @@ function Announce() {
               value={logininfo.info}
               onChange={handleChange}
 
-              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
+              className="bg-white/90  text-black w-[90%] md:w-[75%] h-[100px] px-4 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
 
             />
 

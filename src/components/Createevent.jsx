@@ -199,11 +199,11 @@ setloading(true);
               value={logininfo.ConductedBy}
               readOnly
             />
-            <input
+            <textarea
               type="text"
               placeholder="Event Info"
               name="EventInfo"
-              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
+              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[100px] px-4 mb-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
               value={logininfo.EventInfo}
               onChange={handleChange}
             />
