@@ -5,7 +5,7 @@ import Individualclubpage from './components/Individualclubpage';
 import ClubPage from './components/ClubPage';
 import Notification from './components/Notification';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import insta from './Images/Insta.png';
+import insta from './Images/insta.png';
 import linkedIn from './Images/linkedIn.png';
 import twitter from './Images/twitter.png';
 import facebook from './Images/facebook.png';
@@ -52,14 +52,14 @@ function App() {
           <Route path="/clubselection" element={<Clubselection />} />
           <Route path="/clubs/:type" element={<ClubPage />} />
 
-        
+
            <Route path="/notification" element={<Notification />} />
 
           <Route path="/signup" element={<Signup setissignup={setissignup}  setpersoninfo={setpersoninfo} />} />
           <Route path="/login" element={<Login setissignup={setissignup}  setpersoninfo={setpersoninfo} />} />
-          
-          
-          
+
+
+
           <Route path="/individualclubpage/:clubname/:_id" element={<Individualclubpage issignup={issignup} />} />
           <Route path="/createevent/:clubname/:_id" element={<Createevent/>} />
 
