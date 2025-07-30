@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import iiti from '../Images/iiti.png';
-import './Individualclubpage.css';
 import insta from '../Images/insta.png';
 import linkedIn from '../Images/linkedIn.png';
 import facebook from '../Images/facebook.png';
