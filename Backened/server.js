@@ -28,15 +28,6 @@ await mongoose.connect("mongodb://localhost:27017/todo", {
 await mongoose.model('Regis').syncIndexes();  //  Sync updated indexes
 console.log('Indexes synced for Regis schema');
 
-// mongoose.connection.once('open', async () => {
-//     try {
-//         await mongoose.model('Regis').syncIndexes();
-//         console.log('Indexes synced successfully');
-//     } catch (err) {
-//         console.error('Index sync error:', err);
-//     }
-// });
-
 // Signup route
 app.post('/api/signup', async (req, res) => {
     const { name, email, password, userphoto } = req.body;
@@ -106,7 +97,6 @@ app.post('/api/login', async (req, res) => {
 // Announcement routes
 // This route is used to create a new announcement
 app.post('/announce', async (req, res) => {
-    console.log("Incoming body:", req.body);
     try {
         const { clubname, heading, info ,announcelogo} = req.body;
 
@@ -143,7 +133,6 @@ app.get('/notification', async (req, res) => {
 // Event routes
 // This route is used to create a new event
     app.post('/Createevent', async (req, res) => {
-        console.log("Incoming body:", req.body);
         try {
             const { EventName, EventDateAndTime, ConductedBy, EventInfo ,Eventlogo,comments} = req.body;
 
@@ -292,7 +281,6 @@ console.log(err)
 });
 app.get('/api/:type',async(req,res)=>{
     const {type} = req.params;
-    console.log(type);
     try{
         const clubs = await Clubs_.find({type});
         res.status(201).json(clubs);
@@ -304,7 +292,6 @@ app.get('/api/:type',async(req,res)=>{
 });
 app.post('/api/updateclubdetailes', async (req, res)=>{
     const {    EventName ,EventDateAndTime ,ConductedBy ,EventInfo , Eventlogo,comments,_id} = req.body;
-      console.log(_id)
       
     try{
         const club = await Clubs_.findOne({"_id":_id});

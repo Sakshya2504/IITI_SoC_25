@@ -1,9 +1,10 @@
 // src/components/ClubPage.jsx
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 
 function ClubPage() {
   const {type} =useParams()
+  const navigation = useNavigate();
 console.log(type);
   const [Clubs,setClubs]=useState([]);
   useEffect( ()=>{
@@ -27,10 +28,30 @@ console.log(type);
 },[type]);
 
   return (
+    <div className='bg-gradient-to-b from-[#01011b] via-[#0a0a2e] to-[#01011b]'>
+     <button
+      className="text-white sticky top-[125px] z-100 font-bold cursor-pointer flex items-center"
+      onClick={() => navigation(-1)}
+    >
+      {/* Left Arrow Icon */}
+      <svg
+        className="w-6 h-6 mr-2"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
     <div id="council" className="flex mt-0 xs:mt-30 flex-wrap place-content-center  gap-5 mx-2">
+     
       {Clubs.map((club) => (
         <ClubCard key={club.name} {...club} />
       ))}
+    </div>
     </div>
   );
 }
@@ -38,7 +59,7 @@ console.log(type);
 function ClubCard({ name,logo,_id }) {
   return (
 
-    <div className=" clubpage bg-gradient-to-r from-cyan-500/5 to-blue-500/5 border-2 border-[#87CEEB]  pt-20 flex flex-col items-center pb-10 sm:w-[25vh] h-[35vh] w-[80%] sm:h-[40vw] md:w-[35vh] md:h-[40vw] lg:w-[50vh] lg:h-[30vw] ">
+    <div className=" clubpage my-4 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 border-2 border-[#87CEEB]  pt-20 flex flex-col items-center pb-10 sm:w-[25vh] h-[35vh] w-[80%] sm:h-[40vw] md:w-[35vh] md:h-[40vw] lg:w-[50vh] lg:h-[30vw] ">
       <div className="img-cont lg:w-52 lg:h-52 md:w-40 md:h-40 sm:w-30 sm:h-40 flex items-center justify-center lg:mb-5 md:m-2 xs:w-40 xs:h-40 cursor-pointer hover:shadow-xl xxs:h-40">
         <img
           src={logo}

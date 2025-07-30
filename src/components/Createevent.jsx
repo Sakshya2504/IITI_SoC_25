@@ -3,7 +3,7 @@ import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import iiti from '../Images/iiti.png';
 import { useParams } from 'react-router-dom';
-
+import {ClipLoader} from "react-spinners"
 function Createevent() {
 
   const navigate = useNavigate();
@@ -13,6 +13,7 @@ function Createevent() {
   // useState is used to manage the state of the event information
   const { clubname,_id } = useParams();
   const club_name = decodeURIComponent(clubname);
+     const [loading,setloading]=useState(false);
   const [errors, setErrors] = useState([]);
   const [eventlogo, seteventlogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({
@@ -87,7 +88,7 @@ function Createevent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+setloading(true);
     const email = prompt("Enter your email to verify admin access:");
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
       alert("Invalid or missing email.");
@@ -135,6 +136,9 @@ function Createevent() {
       console.error('Error submitting event:', error);
       alert('Event submission failed');
     }
+    finally{
+      setloading(false);
+    }
   };
 
   return (
@@ -155,6 +159,7 @@ function Createevent() {
             onSubmit={handleSubmit}
             className="flex flex-col items-center justify-center w-full h-full"
           >
+            {loading&&<ClipLoader color="#36d7b7" loading={loading} size={50} />}
             <h2 className="text-white font-bold text-2xl py-4">Event Details</h2>
 
 
@@ -194,11 +199,11 @@ function Createevent() {
               value={logininfo.ConductedBy}
               readOnly
             />
-            <input
+            <textarea
               type="text"
               placeholder="Event Info"
               name="EventInfo"
-              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
+              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[100px] px-4 mb-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
               value={logininfo.EventInfo}
               onChange={handleChange}
             />

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
-
+import {ClipLoader} from "react-spinners"
 function Login(props) {
   // This component allows users to log in to their account
   // It includes a form where users can input their email and password
   const navigate = useNavigate();
+   const [loading,setloading]=useState(false);
   const [logininfo, setlogininfo] = useState({
     email: "",
     password: ""
@@ -23,7 +24,7 @@ function Login(props) {
     // This function handles the login form submission
     // It prevents the default form submission behavior, sends the data to the server,
     e.preventDefault();
-
+setloading(true);
     //Fetch API is used to send a POST request to the server with the login data
     // The server will then process this data and authenticate the user
     try {
@@ -35,7 +36,7 @@ function Login(props) {
         }
       );
       const result = await res.json();
-      //For fetching the data for profile name 
+      //For fetching the data for profile name
 
       if (res.ok) {
         alert(result.message || 'Login successful!');
@@ -46,27 +47,34 @@ function Login(props) {
           email: "",
           password: ""
         });
-        // After a successful login, the user is redirected to the home page  
+        // After a successful login, the user is redirected to the home page
         navigate('/');
       }
       else {
+        <LoadingSpinner />
+
         alert(result.message || 'Invalid credentials');
       }
 
     }
     catch (error) {
       console.error(error);
+        <LoadingSpinner />
+
       alert('Something went wrong');
 
+    }finally{
+      setloading(false);
     }
   }
   return (
     <>
       <div className="login w-full h-full flex justify-center items-center bg-gradient-to-b from-[#01011b] to-[#0a0a2e] animate-fade-in">
         <div className="logincontainer flex flex-col w-[90%] md:w-[400px] m-6 p-6 bg-gradient-to-r from-cyan-700/30 to-blue-700/30 border border-cyan-300 rounded-xl shadow-md hover:shadow-[0_0_25px_#00ffff66] transition-shadow duration-300">
-
+           
           <form onSubmit={handlelogin}>
             <div className="loginform flex flex-col items-center justify-center w-full h-full">
+              {loading&&<ClipLoader color="#36d7b7" loading={loading} size={50} />}
               <h2 className="text-2xl text-white font-extrabold py-6 tracking-wide animate-fade-in-up">
                 SIGN IN
               </h2>

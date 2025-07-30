@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import iiti from '../Images/iiti.png';
 import { useParams } from 'react-router-dom';
+import {ClipLoader} from "react-spinners"
 function Announce() {
   // This component allows users to create an announcement for a club
   // It includes a form where users can input the club name, announcement heading, and announcement
@@ -9,6 +10,7 @@ function Announce() {
   const club_name = decodeURIComponent(clubname);
   const navigate = useNavigate();
    const [errors, setErrors] = useState([]);
+      const [loading,setloading]=useState(false);
   const [announcelogo, setannouncelogo] = useState(iiti);
   const [logininfo, setlogininfo] = useState({
     clubname: club_name,
@@ -60,7 +62,7 @@ function Announce() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setloading(true);
     const email = prompt("Enter your email to verify admin access:");
     if (!email) {
       alert("Email is required.");
@@ -99,6 +101,9 @@ function Announce() {
       console.error("Submit error:", err);
       alert("Something went wrong: " + (err.message || err));
     }
+    finally{
+      setloading(false);
+    }
   };
 
 
@@ -119,6 +124,7 @@ function Announce() {
             onSubmit={handleSubmit}
             className="flex flex-col items-center justify-center w-full h-full"
           >
+            {loading&&<ClipLoader color="#36d7b7" loading={loading} size={50} />}
             <h2 className="text-white font-bold text-2xl py-4">Announcement Details</h2>
 
             {errors.length > 0 && (
@@ -156,7 +162,7 @@ function Announce() {
               value={logininfo.info}
               onChange={handleChange}
 
-              className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
+              className="bg-white/90  text-black w-[90%] md:w-[75%] h-[100px] px-4 mb-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-300"
 
             />
 
