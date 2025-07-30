@@ -15,6 +15,7 @@ const RegisSchema = new Schema({
         match: [/^[\w.-]+@iiti\.ac\.in$/, 'Must be a valid @iiti.ac.in email']
     },
 
+    
     RollNumber: {
         type: String,
         required: [true, 'Roll number is required'],
