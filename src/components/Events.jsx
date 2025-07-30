@@ -166,11 +166,26 @@ export default function Events(props) {
 
   return (
     <>
-    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-4  ">
-        {(filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
+    <div className="grid bg-gradient-to-b from-[#01011b] via-[#0a0a2e] to-[#01011b] gap-8 md:grid-cols-2 lg:grid-cols-3 mx-4 my-6 ">
+      {events.length===0?(
+ <div className="col-span-full flex flex-col items-center  text-white text-center mt-12 space-y-4 w-full h-screen">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png"
+        alt="No events"
+        className="w-32 h-32 "
+      />
+      <p className="text-xl font-semibold">No events found.</p>
+      {props.searchQuery && (
+        <p className="text-sm text-white">
+          No results for "<span className="italic">{props.searchQuery}</span>"
+        </p>
+      )}
+    </div>
+      ):
+        ((filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
             key={event.id}
-            className="event-detail rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
+            className="event-detail  rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
           >
             {filteredEvents.length === 0 && props.searchQuery && (
               <p className="text-white text-center mt-4 animate-fade-in">
@@ -244,7 +259,7 @@ export default function Events(props) {
           </div>
          
          
-        ))}
+        )))}
     </div>
            {commenteventid  &&
             (<div
