@@ -24,10 +24,7 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2",
-<<<<<<< HEAD
-=======
     "react-spinner": "^0.2.7",
->>>>>>> d7958278e961d82cdb1bf66d9f8de91d7b927424
     "react-spinners": "^0.17.0",
     "react-toastify": "^11.0.5",
     "tailwind-scrollbar": "^4.0.2"
