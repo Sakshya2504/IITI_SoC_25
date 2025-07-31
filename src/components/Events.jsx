@@ -243,7 +243,7 @@ export default function Events(props) {
                           setregister(true);
 
                         } else {
-                          navigate("/#/signup");
+                          navigate("/signup");
                           alert("Please verify your email to continue.");
                         }
                       }}
@@ -312,7 +312,7 @@ export default function Events(props) {
         setSelectedEventId(commenteventid);
         handlecomment(e);
       } else {
-        navigate('/#/signup');
+        navigate('/signup');
         alert('Please verify your email to continue.');
       }
     }}

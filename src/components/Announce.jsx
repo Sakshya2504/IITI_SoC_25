@@ -72,7 +72,7 @@ function Announce() {
     const authorized = await handleVerification(email);
     if (!authorized) {
       alert("You're not authorized to make announcements.");
-      navigate('/#/individualclubpage');
+      navigate('/individualclubpage');
       return;
     }
 
