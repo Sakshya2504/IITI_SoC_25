@@ -123,15 +123,33 @@ export default function Events(props) {
 
         const counts = {};
         for (const event of updatedEvents) {
-          const response = await fetch(
-            `${import.meta.env.VITE_BACKEND_URL}/events/${
-              event._id
-            }/registrations/count`
-          );
-          const { count } = await response.json();
-          counts[event._id] = count;
-        }
+          // ✅ Validate event._id before making the fetch call
+          if (!event._id || event._id === "undefined" || event._id === "null") {
+            console.warn("Skipping invalid event ID:", event._id);
+            continue;
+          }
 
+          try {
+            const response = await fetch(
+              `${import.meta.env.VITE_BACKEND_URL}/events/${
+                event._id
+              }/registrations/count`
+            );
+
+            if (!response.ok) {
+              console.warn(`Count fetch failed for event ${event._id}`);
+              continue;
+            }
+
+            const { count } = await response.json();
+            counts[event._id] = count;
+          } catch (error) {
+            console.error(
+              `Error fetching count for event ${event._id}:`,
+              error
+            );
+          }
+        }
         setRegistrationCounts(counts);
       } catch (err) {
         console.error("Failed to load events or counts:", err);
