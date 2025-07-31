@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function NotFound() {
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-white text-gray-800 p-4">
+    <div className="h-screen flex flex-col items-center justify-center bg-black text-gray-800 p-4">
       <svg
         width="200"
         height="200"
