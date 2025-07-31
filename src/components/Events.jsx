@@ -119,6 +119,8 @@ export default function Events(props) {
           }))
           .reverse();
 
+        setEvents(updatedEvents);
+
         const counts = {};
         for (const event of updatedEvents) {
           const response = await fetch(
