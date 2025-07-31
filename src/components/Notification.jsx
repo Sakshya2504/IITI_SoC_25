@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import iiti from '../Images/iiti.png';
 export default function Notification() {
   const [notifi, setNotifi] = useState([]);
 
@@ -11,7 +11,7 @@ export default function Notification() {
 
 
         const filled = data.map(ann => ({
-          anouncment_photo: ann.announcelogo,
+          anouncment_photo: ann.announcelogo||iiti,
           anouncement_heading: ann.heading,
           anouncment_info: ann.info
         })).reverse();
