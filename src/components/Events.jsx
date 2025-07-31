@@ -32,7 +32,7 @@ export default function Events(props) {
     const emailid = props.personinfo.email;
     setComment((prev) => ({ ...prev, [_id]: "" }));
     try {
-      await fetch(`http://localhost:3000/api/comment/${_id}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/comment/${_id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ emailid, comment }),
@@ -53,7 +53,7 @@ export default function Events(props) {
     useEffect(() => {
     const fetchcomments = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/Events/${commenteventid}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`);
         const data = await res.json();
         if(res.ok){
 
@@ -72,9 +72,9 @@ export default function Events(props) {
  const handleSubmit = async (e) => {
     e.preventDefault();
     const eventId = selectedEventId || e.target.id;
-  
+
     try {
-      const response = await fetch(`http://localhost:3000/events/${selectedEventId}/register`,
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/events/${selectedEventId}/register`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -82,7 +82,7 @@ export default function Events(props) {
         }
       );
 
-     
+
       if (response.ok) {
         const data = await response.json();
         setErrors([]);
@@ -98,13 +98,13 @@ export default function Events(props) {
       setErrors(["Registration failed. Please try again."]);
     }
   };
- 
+
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:3000/Events");
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`);
         const data = await res.json();
 
         const updatedEvents = data
@@ -119,7 +119,7 @@ export default function Events(props) {
         const counts = {};
         for (const event of updatedEvents) {
           const response = await fetch(
-            `http://localhost:3000/events/${event._id}/registrations/count`
+            `${import.meta.env.VITE_BACKEND_URL}/events/${event._id}/registrations/count`
           );
           const { count } = await response.json();
           counts[event._id] = count;
@@ -155,7 +155,7 @@ export default function Events(props) {
   }, [props.searchQuery, events]);
 
   const [flippedEventId, setFlippedEventId] = useState(null);
-  
+
 
   const toggleFlip = (id) => {
     setFlippedEventId((prev) => (prev === id ? null : id));
@@ -196,7 +196,7 @@ export default function Events(props) {
               </p>
             )}
 
-          
+
             <div className="box ">
               <div
                 className={`card  ${flippedEventId === event.id ? 'boxrotate' : '' }`}
@@ -217,7 +217,7 @@ export default function Events(props) {
                   <p className="text-white text-sm md:text-base font-medium">
                     🕒 Time: {event.EventDateAndTime}
                   </p>
-                  
+
                   <p className="text-white font-semibold">🎭 Event: {event.EventName}</p>
                   <p className="text-white font-semibold">
                     📋 Registered: {registrationCounts[event._id] ?? '...'} students
@@ -228,8 +228,8 @@ export default function Events(props) {
                 </div>
 
                 {/* BACK SIDE */}
-                
-                 
+
+
                   <div id='back' className='  '>
                     <h1 className='text-[#11E3FB] font-bold text-[32px] pt-[10px] pb-[10px]'>{event.EventName}</h1>
                     <p className='text-white font-bold'> {event.EventInfo}</p>
@@ -240,7 +240,7 @@ export default function Events(props) {
                         if (props.issignup) {
                           setSelectedEventId(event.id);
                           setregister(true);
-                         
+
                         } else {
                           navigate("/signup");
                           alert("Please verify your email to continue.");
@@ -252,22 +252,22 @@ export default function Events(props) {
                     <div className='flex gap-1'>
                   <img src={commentlogo} onClick={() => {showcomment(event.id);
                         toggleFlip(event.id)
-                       }} className={`cursor-pointer w-8 h-8 invert `} /> 
+                       }} className={`cursor-pointer w-8 h-8 invert `} />
                        <p className='text-white font-bold'>Comment</p>
-                       </div>    
+                       </div>
                   </div>
                   </div>
               </div>
             </div>
           </div>
-         
-         
+
+
         )))}
     </div>
            {commenteventid  &&
             (<div
   className='fixed bottom-0 left-0 md:w-[30%] right-0 md:right-auto z-30  bg-[#2A2A2A]
-              rounded-t-2xl shadow-lg transition-transform duration-300 ease-in-out 
+              rounded-t-2xl shadow-lg transition-transform duration-300 ease-in-out
               h-[60%] md:h-[calc(100%-120px)] border border-[#2A2A2A] flex flex-col sliding-animation '
 >
   {/* Header and Close */}
