@@ -69,6 +69,27 @@ export default function Events(props) {
     };
 (commenteventid?fetchcomments():'')
   }, [commenteventid]);
+useEffect(() => {
+  if (!selectedEventId) return; // 🚫 don't fetch if ID is null
+
+  fetch(`https://announcementiiti.onrender.com/Events/${selectedEventId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      // Optional: check if data is an array
+      if (Array.isArray(data)) {
+        setEvents(data);
+      } else {
+        console.error("Expected array but got:", data);
+        setEvents([]); // fallback to empty
+      }
+    })
+    .catch((err) => {
+      console.error("Fetch error:", err);
+    });
+}, [selectedEventId]); // 🔁 refetch when selectedEventId changes
+if (!selectedEventId) return <div>Please select an event.</div>;
+
+if (events.length === 0) return <div>No events found.</div>;
 
  const handleSubmit = async (e) => {
     e.preventDefault();
