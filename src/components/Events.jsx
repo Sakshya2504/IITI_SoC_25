@@ -67,41 +67,43 @@ export default function Events(props) {
     };
     fetchcomments();
   }, [commenteventid]);
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const eventId = selectedEventId || e.target.id;
+  const eventId = selectedEventId || e.target.id; // This is correct
+  if (!eventId) {
+    console.error("❌ No event ID provided for registration.");
+    setErrors(["Invalid event. Please try again."]);
+    return;
+  }
 
-    try {
-      const response = await fetch(
-        `${
-          import.meta.env.VITE_BACKEND_URL
-        }/events/${selectedEventId}/register`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(registerinfo),
-        }
-      );
-
-      if (response.ok) {
-        const data = await response.json();
-        setErrors([]);
-        setregister(false);
-        setSelectedEventId(null);
-        alert("Registration successful!");
-      } else {
-        const errorData = await response.json();
-        setErrors(
-          errorData.errors || ["Registration failed. Please try again."]
-        );
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/events/${eventId}/register`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(registerinfo),
       }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      setErrors(["Registration failed. Please try again."]);
-    }
-  };
+    );
 
+    if (response.ok) {
+      const data = await response.json();
+      setErrors([]);
+      setregister(false);
+      setSelectedEventId(null);
+      alert("Registration successful!");
+    } else {
+      const errorData = await response.json();
+      setErrors(
+        errorData.errors || ["Registration failed. Please try again."]
+      );
+    }
+  } catch (error) {
+    console.error("Error during registration:", error);
+    setErrors(["Registration failed. Please try again."]);
+  }
+};
   // useEffect is used to fetch the events from the server when the component mounts
   // It sends a GET request to the server to retrieve the events data
   useEffect(() => {
