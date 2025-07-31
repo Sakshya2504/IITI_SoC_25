@@ -5,7 +5,7 @@ import Individualclubpage from './components/Individualclubpage';
 import ClubPage from './components/ClubPage';
 import Notification from './components/Notification';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import insta from './Images/Insta.png';
+import insta from './Images/insta.png';
 import linkedIn from './Images/linkedIn.png';
 import twitter from './Images/twitter.png';
 import facebook from './Images/facebook.png';
