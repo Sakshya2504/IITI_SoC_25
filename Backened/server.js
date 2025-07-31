@@ -10,7 +10,9 @@ import {Regis} from './models/Regis.js'
 import {Clubs_} from './models/Club.js'
 import dotenv from 'dotenv';
 dotenv.config();
+import jwt from 'jsonwebtoken';
 
+dotenv.config();
 
 
 const app = express();
@@ -28,11 +30,16 @@ app.use(express.json());
 
 // Connect to MongoDB with the validation using Mongoose
 
-// await mongoose.connect("mongodb+srv://IITI_SoC:1234abcd@campus-announcement.hrc6rs9.mongodb.net/", {
-await mongoose.connect(process.env.MONGODB_URI, {
-    // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
-    // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
-});
+try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+        // useNewUrlParser: true,
+        // useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB');
+} catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1); // Exit the process if connection fails
+}
 await mongoose.model('Regis').syncIndexes();  //  Sync updated indexes
 console.log('Indexes synced for Regis schema');
 

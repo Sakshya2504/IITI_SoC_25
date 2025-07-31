@@ -111,7 +111,7 @@ export default function Events(props) {
           .map((eve) => ({
             ...eve,
             id: eve._id,
-          }))
+          })) 
           .reverse();
 
         setEvents(updatedEvents);
