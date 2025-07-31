@@ -104,7 +104,7 @@ export default function Events(props) {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/Events/${commenteventid}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`);
         const data = await res.json();
 
         const updatedEvents = data
