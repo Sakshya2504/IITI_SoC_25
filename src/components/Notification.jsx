@@ -6,7 +6,7 @@ export default function Notification() {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/notification`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/notification`);
         const data = await res.json();
 
 
