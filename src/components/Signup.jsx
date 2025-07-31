@@ -47,16 +47,16 @@ function Signup(props) {
     // It prevents the default form submission behavior, sends the data to the server,
     e.preventDefault();
 setloading(true);
-    //Fetch API is used to send a POST request to the server with the signup data 
+    //Fetch API is used to send a POST request to the server with the signup data
     try {
-      const res = await fetch('http://localhost:3000/api/signup', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/signup`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(logininfo)
       });
       const result = await res.json();
       console.log(result);
-      //For fetching the data for profile name 
+      //For fetching the data for profile name
 
       if (res.ok) {
         alert(result.message || 'signup successful');
@@ -94,33 +94,33 @@ setloading(true);
 
 
   return (
-    
-    <div className="signup w-full h-full flex justify-center items-center 
-    bg-gradient-to-b from-[#01011b] to-[#0a0a2e] 
+
+    <div className="signup w-full h-full flex justify-center items-center
+    bg-gradient-to-b from-[#01011b] to-[#0a0a2e]
     [background-size:400%_400%] animate-backgroundShift">
 
-      <div className="signupcontainer flex flex-col w-[90%] md:w-[400px] m-6 p-6 
-      bg-gradient-to-r from-cyan-700/30 to-blue-700/30 
-      backdrop-blur-md border border-cyan-300 rounded-xl 
-      shadow-md hover:shadow-[0_0_35px_#00ffff88] transition-shadow duration-500 
+      <div className="signupcontainer flex flex-col w-[90%] md:w-[400px] m-6 p-6
+      bg-gradient-to-r from-cyan-700/30 to-blue-700/30
+      backdrop-blur-md border border-cyan-300 rounded-xl
+      shadow-md hover:shadow-[0_0_35px_#00ffff88] transition-shadow duration-500
       ring-2 ring-offset-2 ring-cyan-600 animate-pulse">
 
         <form onSubmit={handlesignup}>
           <div className="signupform flex flex-col items-center justify-center w-full h-full">
 
-            <h2 className="text-3xl flex justify-center text-white font-extrabold py-6 tracking-widest 
-            animate-fade-in-up drop-shadow-[0_0_10px_cyan] 
+            <h2 className="text-3xl flex justify-center text-white font-extrabold py-6 tracking-widest
+            animate-fade-in-up drop-shadow-[0_0_10px_cyan]
             hover:scale-[1.02] transition-transform duration-500">
-               CREATE ACCOUNT 
+               CREATE ACCOUNT
             </h2>
             {loading&&<ClipLoader color="#36d7b7" loading={loading} size={50} />}
 
             {errors.length > 0 && (
               <div className="w-full flex justify-center mb-6">
                 {errors.map((msg, idx) => (
-                  <div key={idx} className="text-center px-6 py-3 
-                  bg-gradient-to-r from-pink-500 to-purple-600 
-                  text-white font-semibold rounded-md shadow-xl 
+                  <div key={idx} className="text-center px-6 py-3
+                  bg-gradient-to-r from-pink-500 to-purple-600
+                  text-white font-semibold rounded-md shadow-xl
                   animate-fade-in scale-105">
                     {msg}
                   </div>
@@ -137,18 +137,18 @@ setloading(true);
                 value={logininfo[field]}
                 onChange={change}
                 required
-                className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-5 
-                rounded-xl shadow-md placeholder:text-cyan-700 
-                focus:outline-none focus:ring-2 focus:ring-cyan-400 
-                focus:shadow-[0_0_15px_cyan] transition-all duration-300 
+                className="bg-white/90 text-black w-[90%] md:w-[75%] h-[50px] px-4 mb-5
+                rounded-xl shadow-md placeholder:text-cyan-700
+                focus:outline-none focus:ring-2 focus:ring-cyan-400
+                focus:shadow-[0_0_15px_cyan] transition-all duration-300
                 hover:scale-[1.03]"
               />
             ))}
 
             <div className="flex justify-around items-center gap-6 py-4">
               <h2 className="text-white font-bold">User Photo :</h2>
-              <label className="w-20 h-20 rounded-xl overflow-hidden flex items-center 
-              justify-center cursor-pointer bg-white shadow-md 
+              <label className="w-20 h-20 rounded-xl overflow-hidden flex items-center
+              justify-center cursor-pointer bg-white shadow-md
               hover:shadow-lg transition-transform duration-300 hover:scale-105">
                 <img src={userphoto} className="w-full h-full object-contain" alt="logo" />
                 <input type="file" accept="image/*" className="hidden" onChange={handlelogochange} />
@@ -157,9 +157,9 @@ setloading(true);
 
             <button
               type="submit"
-              className="signupsubmitbutton w-[90%] md:w-[200px] py-3 text-white text-lg font-bold 
-              bg-gradient-to-r from-[#007bff] to-[#00c3ff] rounded-xl 
-              shadow-md animate-glowPulse transition-transform duration-300 
+              className="signupsubmitbutton w-[90%] md:w-[200px] py-3 text-white text-lg font-bold
+              bg-gradient-to-r from-[#007bff] to-[#00c3ff] rounded-xl
+              shadow-md animate-glowPulse transition-transform duration-300
               hover:shadow-[0_0_25px_cyan] hover:scale-[1.07]">
               SIGNUP
             </button>
@@ -172,7 +172,7 @@ setloading(true);
         </form>
       </div>
     </div>
-   
+
 
   )
 }

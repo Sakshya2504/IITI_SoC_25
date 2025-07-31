@@ -28,7 +28,7 @@ setloading(true);
     //Fetch API is used to send a POST request to the server with the login data
     // The server will then process this data and authenticate the user
     try {
-      const res = await fetch('http://localhost:3000/api/login',
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/login`,
         {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
@@ -71,7 +71,7 @@ setloading(true);
     <>
       <div className="login w-full h-full flex justify-center items-center bg-gradient-to-b from-[#01011b] to-[#0a0a2e] animate-fade-in">
         <div className="logincontainer flex flex-col w-[90%] md:w-[400px] m-6 p-6 bg-gradient-to-r from-cyan-700/30 to-blue-700/30 border border-cyan-300 rounded-xl shadow-md hover:shadow-[0_0_25px_#00ffff66] transition-shadow duration-300">
-           
+
           <form onSubmit={handlelogin}>
             <div className="loginform flex flex-col items-center justify-center w-full h-full">
               {loading&&<ClipLoader color="#36d7b7" loading={loading} size={50} />}

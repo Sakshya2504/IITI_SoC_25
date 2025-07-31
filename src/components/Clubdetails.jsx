@@ -71,7 +71,7 @@ const [Clubs,setClubs]=useState();
   useEffect( ()=>{
     const fetchclubs= async () =>{
     try{
-    const res =  await  fetch('http://localhost:3000/api/allclubs');
+    const res =  await  fetch(`${import.meta.env.VITE_BACKEND_URL}/api/allclubs`);
     const data = await res.json();
     setClubs(data);
 

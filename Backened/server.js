@@ -1,27 +1,35 @@
 import mongoose from 'mongoose';
 import express from 'express';
 import cors from 'cors';
-import { User } from './models/UserSchema.js'; 
+import { User } from './models/UserSchema.js';
 import bcrypt from 'bcrypt';
-import { Announce_ } from './models/Announce.js'; 
+import { Announce_ } from './models/Announce.js';
 import {event_} from './models/Event.js'
 import { Admin_ } from './models/Admins.js'; // Import the Admin model
 import {Regis} from './models/Regis.js'
 import {Clubs_} from './models/Club.js'
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 
 const app = express();
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-const port = 3000;
+const port = process.env.PORT || 10000;
 
-app.use(cors());
-app.use(express.json()); 
+
+app.use(cors({
+  origin: 'https://announcementiiti-1.onrender.com',
+  credentials: true
+}));
+
+app.use(express.json());
 
 // Connect to MongoDB with the validation using Mongoose
 
-await mongoose.connect("mongodb+srv://IITI_SoC:1234abcd@campus-announcement.hrc6rs9.mongodb.net/", {
+// await mongoose.connect("mongodb+srv://IITI_SoC:1234abcd@campus-announcement.hrc6rs9.mongodb.net/", {
+await mongoose.connect(process.env.MONGODB_URI, {
     // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
     // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
 });
@@ -34,7 +42,7 @@ app.post('/api/signup', async (req, res) => {
     if (password.length < 6 || password.length > 10) {
         return res.status(400).json({ errors: ['Password must be between 6 and 10 characters long'] });
     }
-    
+
 
 
     try {
@@ -44,12 +52,12 @@ app.post('/api/signup', async (req, res) => {
         }
 
         const saltRounds = 10;
-        //We use bcrypt to hash the password before storing it in the database 
+        //We use bcrypt to hash the password before storing it in the database
         //To ensure that passwords are stored securely, we use bcrypt to hash the password before storing it in the database.
-        const hashedPassword = await bcrypt.hash(password, saltRounds); 
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         // Store hashed password
-        const newUser = new User({ name, email, password: hashedPassword, userphoto }); 
+        const newUser = new User({ name, email, password: hashedPassword, userphoto });
         await newUser.save();
 
         res.status(201).json({ message: 'User registered successfully!',user: {
@@ -217,7 +225,7 @@ app.post('/events/:eventId/register', async (req, res) => {
             return res.status(404).json({ message: 'Event not found' });
         }
 
-        
+
 
         // Create a new registration
         const registration = new Regis({
@@ -263,15 +271,15 @@ app.get('/events/:eventId/registrations/count', async (req, res) => {
 });
 app.post('/api/findclub', async (req, res)=>{
     const {_id} = req.body;
-     
-      
+
+
     try{
         const club = await Clubs_.findOne({"_id":_id});
-        
+
         if(club){
             res.status(201).json(club);
         }
-   
+
     }
     catch(err){
 console.log(err)
@@ -292,7 +300,7 @@ app.get('/api/:type',async(req,res)=>{
 });
 app.post('/api/updateclubdetailes', async (req, res)=>{
     const {    EventName ,EventDateAndTime ,ConductedBy ,EventInfo , Eventlogo,comments,_id} = req.body;
-      
+
     try{
         const club = await Clubs_.findOne({"_id":_id});
         if(club){
@@ -312,7 +320,7 @@ await club.save();
  return res.status(200).json({ message: 'Club event updated successfully' });
 
         }
-   
+
     }
     catch(err){
 console.log(err)
@@ -322,8 +330,8 @@ console.log(err)
 });
 
 app.post('/api/comment/:_id', async (req, res)=>{
-    const {_id} = req.params; 
-    const {emailid,comment}=req.body;  
+    const {_id} = req.params;
+    const {emailid,comment}=req.body;
     try{
         const event = await event_.findOne({_id});
         console.log(event);
@@ -331,7 +339,7 @@ app.post('/api/comment/:_id', async (req, res)=>{
             event.comments.push({emailid,comment})
             event.save();
         }
-   
+
     }
     catch(err){
 console.log(err)

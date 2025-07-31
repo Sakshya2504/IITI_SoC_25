@@ -18,7 +18,7 @@
     "dotenv": "^17.2.1",
     "express": "^4.21.2",
     "lucide-react": "^0.515.0",
-    "mongoose": "^8.16.0",
+    "mongoose": "^8.17.0",
     "nodemon": "^3.1.10",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -42,5 +42,18 @@
     "postcss": "^8.5.4",
     "tailwindcss": "^4.1.8",
     "vite": "^6.3.5"
-  }
+  },
+  "description": "Frontend (React)\r Post and view announcements\r Explore and create events\r Flip-card interaction for events\r Signup / Login functionality\r Explore club profiles\r Responsive design using 'Tailwind CSS'",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sakshya2504/IITI_SoC_25.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sakshya2504/IITI_SoC_25/issues"
+  },
+  "homepage": "https://github.com/Sakshya2504/IITI_SoC_25#readme"
 }

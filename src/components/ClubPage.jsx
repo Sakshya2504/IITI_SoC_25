@@ -10,7 +10,7 @@ console.log(type);
   useEffect( ()=>{
     const fetchclubs= async () =>{
     try{
-    const res =  await  fetch(`http://localhost:3000/api/${type}`);
+    const res =  await  fetch(`${import.meta.env.VITE_BACKEND_URL}/api/${type}`);
     const data = await res.json();
     console.log(data);
     setClubs(data);
@@ -47,7 +47,7 @@ console.log(type);
       Back
     </button>
     <div id="council" className="flex mt-0 xs:mt-30 flex-wrap place-content-center  gap-5 mx-2">
-     
+
       {Clubs.map((club) => (
         <ClubCard key={club.name} {...club} />
       ))}
@@ -75,7 +75,7 @@ function ClubCard({ name,logo,_id }) {
       <div className="w-52 h-12 mb-10 mt-1 flex items-center justify-center cursor-pointer ">
         <Link
           to={`/individualclubpage/${encodeURIComponent(name)}/${_id}`}
-          
+
           className="px-4 py-2 max-sm:mb-8 xxs:text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-lg"
         >
           See more

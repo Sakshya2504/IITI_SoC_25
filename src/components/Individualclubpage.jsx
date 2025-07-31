@@ -38,7 +38,7 @@ function Individualclubpage() {
   useEffect(() => {
     const fetchclubinfo = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/findclub', {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/findclub`, {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ _id }),

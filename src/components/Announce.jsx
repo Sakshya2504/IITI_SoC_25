@@ -46,7 +46,7 @@ function Announce() {
 
   const handleVerification = async (email) => {
     try {
-      const res = await fetch('http://localhost:3000/api/verifyadmin', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/verifyadmin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
@@ -77,7 +77,7 @@ function Announce() {
     }
 
     try {
-      const res = await fetch('http://localhost:3000/announce', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/announce`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(logininfo)
@@ -156,7 +156,7 @@ function Announce() {
 
             <textarea
               type="text"
-             
+
               placeholder="Announcement Info"
               name="info"
               value={logininfo.info}

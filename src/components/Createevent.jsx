@@ -77,11 +77,11 @@ function Createevent() {
     } else {
       console.log('Club updated successfully:', data.message);
     }
-    
+
   }
       catch(err){
         console.log(err);
-      
+
       }
 
   }
@@ -103,7 +103,7 @@ setloading(true);
     }
 
     try {
-      const res = await fetch('http://localhost:3000/Createevent', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/Createevent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(logininfo)
@@ -124,7 +124,7 @@ setloading(true);
           Eventlogo: eventlogo ,
           comments:[]
         });
-       
+
       } else {
         if (result.errors) {
           setErrors(result.errors);

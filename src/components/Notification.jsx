@@ -6,7 +6,7 @@ export default function Notification() {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const res = await fetch('http://localhost:3000/notification');
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/notification`);
         const data = await res.json();
 
 
@@ -31,7 +31,7 @@ export default function Notification() {
         {notifi.length === 0 ? (
           <div className="flex flex-col items-center justify-center space-y-4 mt-12 text-white">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" 
+              src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png"
               alt="No notifications"
               className="w-24 h-24 md:w-32 md:h-32"
             />
