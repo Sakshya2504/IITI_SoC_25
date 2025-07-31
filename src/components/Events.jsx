@@ -2,7 +2,7 @@ import { useEffect, useState, React } from "react";
 import "./Animation.css";
 import { useNavigate } from "react-router-dom";
 import commentlogo from "../Images/comment.png";
-import { event_ } from "../../Backened/models/Event";
+// import { event_ } from "../../Backened/models/Event";
 export default function Events(props) {
   // This component fetches and displays a list of events
   // It uses the useState hook to manage the state of events
@@ -108,7 +108,7 @@ export default function Events(props) {
     const fetchEvents = async () => {
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`
+          `${import.meta.env.VITE_BACKEND_URL}/Events`
         );
         const data = await res.json();
 
