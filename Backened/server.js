@@ -10,8 +10,7 @@ import {Regis} from './models/Regis.js'
 import {Clubs_} from './models/Club.js'
 import dotenv from 'dotenv';
 dotenv.config();
-import jwt from 'jsonwebtoken';
-
+// import jwt from 'jsonwebtoken';
 dotenv.config();
 
 
