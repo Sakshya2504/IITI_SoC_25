@@ -123,7 +123,7 @@ export default function NavBar({ searchQuery, setSearchQuery, ...props }) {
           props.setissignup(false);
           props.setpersoninfo(null);
           setisuserinfoopen(false);
-          navigate('/signup');
+          navigate('/#/signup');
         }
       }}
     >
