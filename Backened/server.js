@@ -316,7 +316,7 @@ app.post("/api/findclub", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: "Could not retrieve clubdata" });
+    res.status(500).json({ error: "Could not retrieve clubdata find club" });
   }
 });
 app.get("/api/:type", async (req, res) => {
@@ -326,7 +326,7 @@ app.get("/api/:type", async (req, res) => {
     res.status(201).json(clubs);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: "Could not retrieve clubdata" });
+    res.status(500).json({ error: "Could not retrieve clubdata types" });
   }
 });
 app.post("/api/updateclubdetailes", async (req, res) => {
@@ -340,31 +340,40 @@ app.post("/api/updateclubdetailes", async (req, res) => {
     _id,
   } = req.body;
 
-  try {
-    const club = await Clubs_.findOne({ _id: _id });
-    if (club) {
-      club.events.push({
-        name: EventName,
-        time: EventDateAndTime,
-        club: ConductedBy,
-        info: EventInfo,
-        image: Eventlogo,
-        comments: comments,
-      });
-      if (!club) {
-        return res.status(404).json({ error: "Club not found with given _id" });
-      }
+  if (!_id) {
+    return res.status(400).json({ error: "Missing club _id in request body" });
+  }
 
-      await club.save();
-      return res
-        .status(200)
-        .json({ message: "Club event updated successfully" });
+  try {
+    const club = await Clubs_.findOne({ _id });
+
+    if (!club) {
+      return res.status(404).json({ error: "Club not found with given _id" });
     }
+
+    if (!Array.isArray(club.events)) {
+      club.events = [];
+    }
+
+    club.events.push({
+      name: EventName,
+      time: EventDateAndTime,
+      club: ConductedBy,
+      info: EventInfo,
+      image: Eventlogo,
+      comments: comments || [],
+    });
+
+    await club.save();
+    return res
+      .status(200)
+      .json({ message: "Club event updated successfully", club });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Could not retrieve clubdata" });
+    console.error("Error updating club details:", err);
+    res.status(500).json({ error: "Could not update club data", details: err });
   }
 });
+
 
 app.post("/api/comment/:_id", async (req, res) => {
   const { _id } = req.params;
@@ -378,7 +387,7 @@ app.post("/api/comment/:_id", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: "Could not retrieve clubdata" });
+    res.status(500).json({ error: "Could not retrieve clubdata comments" });
   }
 });
 
