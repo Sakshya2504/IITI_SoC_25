@@ -13,6 +13,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Clubselection from './components/Clubselection'
 import Createevent from './components/Createevent';
+import NotFound from './components/Notfound.jsx';
 import Announce from './components/Announce';
 import { useState } from 'react';
 import Set from './components/Set';
@@ -65,6 +66,7 @@ function App() {
           <Route path="/createevent/:clubname/:_id" element={<Createevent/>} />
 
            <Route path="/announce/:clubname" element={<Announce/>} />
+                <Route path="*" element={<NotFound />} />
         </Routes>
 
       </div>

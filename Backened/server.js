@@ -351,3 +351,19 @@ console.log(err)
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
+
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Required for __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve frontend from build folder
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+// Catch-all route to serve index.html for React Router
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
