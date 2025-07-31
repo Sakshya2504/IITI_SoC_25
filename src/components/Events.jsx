@@ -51,6 +51,7 @@ export default function Events(props) {
     setregisterinfo((prev) => ({ ...prev, [name]: value }));
   };
     useEffect(() => {
+      if (!commenteventid) return;
     const fetchcomments = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`);
@@ -146,7 +147,7 @@ export default function Events(props) {
         event.EventName.toLowerCase().includes(
           props.searchQuery.toLowerCase()
         ) ||
-        event.ConductedBy.toLowerCase().includes(
+       event?.ConductedBy?.toLowerCase().includes(
           props.searchQuery.toLowerCase()
         )
     );
@@ -187,7 +188,7 @@ export default function Events(props) {
       ):
         ((filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
-            key={event.id}
+            key={event._id}
             className="event-detail  rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
           >
             {filteredEvents.length === 0 && props.searchQuery && (
@@ -199,8 +200,8 @@ export default function Events(props) {
 
             <div className="box ">
               <div
-                className={`card  ${flippedEventId === event.id ? 'boxrotate' : '' }`}
-                onClick={() => toggleFlip(event.id)}
+                className={`card  ${flippedEventId === event._id ? 'boxrotate' : '' }`}
+                onClick={() => toggleFlip(event._id)}
               >
                 {/* FRONT SIDE */}
                 <div id='front' className="event-description  space-y-3 ">
@@ -236,9 +237,9 @@ export default function Events(props) {
                     <div className='flex flex-row gap-5 justify-center items-center mt-10'>
                     <button
                       className=" bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                      id={`joinEvent${event.id}`} onClick={() => {
+                      id={`joinEvent${event._id}`} onClick={() => {
                         if (props.issignup) {
-                          setSelectedEventId(event.id);
+                          setSelectedEventId(event._id);
                           setregister(true);
 
                         } else {
@@ -250,8 +251,8 @@ export default function Events(props) {
                       Join Event
                     </button>
                     <div className='flex gap-1'>
-                  <img src={commentlogo} onClick={() => {showcomment(event.id);
-                        toggleFlip(event.id)
+                  <img src={commentlogo} onClick={() => {showcomment(event._id);
+                        toggleFlip(event._id)
                        }} className={`cursor-pointer w-8 h-8 invert `} />
                        <p className='text-white font-bold'>Comment</p>
                        </div>

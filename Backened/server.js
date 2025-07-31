@@ -186,6 +186,9 @@ app.get('/Events', async (req, res) => {
 });
 app.get('/Events/:commenteventid', async (req, res) => {
     const {commenteventid}=req.params;
+     if (!commenteventid || commenteventid === "null") {
+    return res.status(400).json({ error: "Invalid ID" });
+  }
     if (!mongoose.Types.ObjectId.isValid(commenteventid)) {
         return res.status(400).json({ message: 'Invalid event ID format' });
     }
@@ -224,6 +227,9 @@ app.post('/api/verifyadmin', async (req, res) => {
 
 app.post('/events/:eventId/register', async (req, res) => {
     const { eventId } = req.params;
+     if (!eventId || eventId === "null") {
+    return res.status(400).json({ error: "Invalid ID" });
+  }
     const { Name, EmailAddress, RollNumber, Program, Branch, PhoneNumber } = req.body;
     try {
         // Check if the event exists
@@ -267,7 +273,9 @@ app.post('/events/:eventId/register', async (req, res) => {
 
 app.get('/events/:eventId/registrations/count', async (req, res) => {
     const { eventId } = req.params;
-
+ if (!eventId || eventId === "null") {
+    return res.status(400).json({ error: "Invalid ID" });
+  }
     try {
         const count = await Regis.countDocuments({ eventId });
         res.json({ count });
