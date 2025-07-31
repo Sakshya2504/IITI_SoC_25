@@ -70,24 +70,24 @@ export default function Events(props) {
 (commenteventid?fetchcomments():'')
   }, [commenteventid]);
 useEffect(() => {
-  if (!selectedEventId) return; // 🚫 don't fetch if ID is null
+  if (!selectedEventId || selectedEventId === "null" || selectedEventId === undefined) {
+    console.warn("Invalid selectedEventId — skipping fetch.");
+    return;
+  }
 
   fetch(`https://announcementiiti.onrender.com/Events/${selectedEventId}`)
     .then((res) => res.json())
     .then((data) => {
-      // Optional: check if data is an array
       if (Array.isArray(data)) {
         setEvents(data);
       } else {
-        console.error("Expected array but got:", data);
-        setEvents([]); // fallback to empty
+        console.error("Expected array, got:", data);
+        setEvents([]);
       }
     })
-    .catch((err) => {
-      console.error("Fetch error:", err);
-    });
-}, [selectedEventId]); // 🔁 refetch when selectedEventId changes
-if (!selectedEventId) return <div>Please select an event.</div>;
+    .catch((err) => console.error("Fetch error:", err));
+}, [selectedEventId]);
+
 
 if (events.length === 0) return <div>No events found.</div>;
 
