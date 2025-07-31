@@ -72,12 +72,12 @@ function Announce() {
     const authorized = await handleVerification(email);
     if (!authorized) {
       alert("You're not authorized to make announcements.");
-      navigate('/individualclubpage');
+      navigate('/#/individualclubpage');
       return;
     }
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/announce`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/announce`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(logininfo)
