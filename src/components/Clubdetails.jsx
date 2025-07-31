@@ -186,7 +186,7 @@ const {name} = useParams();
                         onClick={() => {
                           if (props.issignup) setRegister(true);
                           else {
-                            navigate("/signup");
+                            navigate("/#/signup");
                             alert("Please verify your email to continue.");
                           }
                         }}

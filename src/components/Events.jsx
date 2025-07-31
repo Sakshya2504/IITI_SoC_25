@@ -51,7 +51,6 @@ export default function Events(props) {
     setregisterinfo((prev) => ({ ...prev, [name]: value }));
   };
     useEffect(() => {
-      if (!commenteventid) return;
     const fetchcomments = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`);
@@ -69,27 +68,6 @@ export default function Events(props) {
     };
 (commenteventid?fetchcomments():'')
   }, [commenteventid]);
-useEffect(() => {
-  if (!selectedEventId || selectedEventId === "null" || selectedEventId === undefined) {
-    console.warn("Invalid selectedEventId — skipping fetch.");
-    return;
-  }
-
-  fetch(`https://announcementiiti.onrender.com/Events/${selectedEventId}`)
-    .then((res) => res.json())
-    .then((data) => {
-      if (Array.isArray(data)) {
-        setEvents(data);
-      } else {
-        console.error("Expected array, got:", data);
-        setEvents([]);
-      }
-    })
-    .catch((err) => console.error("Fetch error:", err));
-}, [selectedEventId]);
-
-
-if (events.length === 0) return <div>No events found.</div>;
 
  const handleSubmit = async (e) => {
     e.preventDefault();
@@ -168,7 +146,7 @@ if (events.length === 0) return <div>No events found.</div>;
         event.EventName.toLowerCase().includes(
           props.searchQuery.toLowerCase()
         ) ||
-       event?.ConductedBy?.toLowerCase().includes(
+        event.ConductedBy.toLowerCase().includes(
           props.searchQuery.toLowerCase()
         )
     );
@@ -209,7 +187,7 @@ if (events.length === 0) return <div>No events found.</div>;
       ):
         ((filteredEvents.length > 0 ? filteredEvents : events).map((event) => (
           <div
-            key={event._id}
+            key={event.id}
             className="event-detail  rounded-2xl shadow-lg p-6 bg-gradient-to-br from-cyan-500/10 to-blue-700/10 border border-cyan-400 hover:border-cyan-300 hover:shadow-[0_0_30px_cyan] hover:scale-[1.1] "
           >
             {filteredEvents.length === 0 && props.searchQuery && (
@@ -221,8 +199,8 @@ if (events.length === 0) return <div>No events found.</div>;
 
             <div className="box ">
               <div
-                className={`card  ${flippedEventId === event._id ? 'boxrotate' : '' }`}
-                onClick={() => toggleFlip(event._id)}
+                className={`card  ${flippedEventId === event.id ? 'boxrotate' : '' }`}
+                onClick={() => toggleFlip(event.id)}
               >
                 {/* FRONT SIDE */}
                 <div id='front' className="event-description  space-y-3 ">
@@ -258,9 +236,9 @@ if (events.length === 0) return <div>No events found.</div>;
                     <div className='flex flex-row gap-5 justify-center items-center mt-10'>
                     <button
                       className=" bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-                      id={`joinEvent${event._id}`} onClick={() => {
+                      id={`joinEvent${event.id}`} onClick={() => {
                         if (props.issignup) {
-                          setSelectedEventId(event._id);
+                          setSelectedEventId(event.id);
                           setregister(true);
 
                         } else {
@@ -272,8 +250,8 @@ if (events.length === 0) return <div>No events found.</div>;
                       Join Event
                     </button>
                     <div className='flex gap-1'>
-                  <img src={commentlogo} onClick={() => {showcomment(event._id);
-                        toggleFlip(event._id)
+                  <img src={commentlogo} onClick={() => {showcomment(event.id);
+                        toggleFlip(event.id)
                        }} className={`cursor-pointer w-8 h-8 invert `} />
                        <p className='text-white font-bold'>Comment</p>
                        </div>

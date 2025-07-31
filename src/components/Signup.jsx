@@ -166,7 +166,7 @@ setloading(true);
           </div>
 
           <p className="text-white font-bold mt-4 text-center">Already have an account?</p>
-          <Link to="/login" className="text-cyan-300 font-bold hover:underline transition-colors duration-200 text-center block">
+          <Link to="/#/login" className="text-cyan-300 font-bold hover:underline transition-colors duration-200 text-center block">
             Login
           </Link>
         </form>
