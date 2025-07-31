@@ -51,21 +51,22 @@ export default function Events(props) {
     setregisterinfo((prev) => ({ ...prev, [name]: value }));
   };
   useEffect(() => {
-  if (!commenteventid) return;
-  const fetchcomments = async () => {
-    try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`);
-      if (res.ok) {
-        const data = await res.json();
-        setcomments(data.reverse());
+    if (!commenteventid) return;
+    const fetchcomments = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`
+        );
+        if (res.ok) {
+          const data = await res.json();
+          setcomments(data.reverse());
+        }
+      } catch (err) {
+        console.error("Failed to load comments:", err);
       }
-    } catch (err) {
-      console.error("Failed to load comments:", err);
-    }
-  };
-  fetchcomments();
-}, [commenteventid]);
-
+    };
+    fetchcomments();
+  }, [commenteventid]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -111,14 +112,12 @@ export default function Events(props) {
         );
         const data = await res.json();
 
-        const updatedEvents = data
+        const updatedEvents = [data]
           .map((eve) => ({
             ...eve,
             id: eve._id,
           }))
           .reverse();
-
-        setEvents(updatedEvents);
 
         const counts = {};
         for (const event of updatedEvents) {
