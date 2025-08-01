@@ -65,7 +65,7 @@ NavBar.jsx, etc.
 | GET    | `/api/verifyadmin`  | verify admin to createevent.    |
 | GET    | `/api/register`     | register of intrested students. |
 
-|
+
 ---
 
 ## 🔐 User Authentication Flow
