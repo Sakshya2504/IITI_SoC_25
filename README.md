@@ -1,101 +1,102 @@
+# Club Connect – IIT Indore Student Club Portal
 
-Frontend (React)
-Post and view announcements
-Explore and create events
-Flip-card interaction for events
-Signup / Login functionality
-Explore club profiles
-Responsive design using 'Tailwind CSS'
+A full-stack web application designed to manage club activities, event announcements, and foster student engagement at **IIT Indore**.
 
-Backend (Node.js + Express + MongoDB)
-User authentication using 'bcrypt'
-Event creation & listing
-Announcement posting & retrieval
-MongoDB via 'Mongoose'
-
-#  Club Connect – IIT Indore Student Club Portal
-
-A full-stack web application for managing club events, announcements, and student engagement at IIT Indore.
+🌐 **Live Site:** [announcementiiti-1.onrender.com](https://announcementiiti-1.onrender.com)
 
 ---
 
-##  Features
+## 🌟 Features
 
-###  Frontend (React)
--  Post and view announcements
--  Explore and create events
--  Flip-card interaction for events
--  Signup / Login functionality
--  Explore club profiles
--  Responsive design using  'Tailwind CSS'
+### 🔹 Frontend – React + Tailwind CSS
+- 📢 Post and view announcements
+- 📅 Explore and create events
+- 🌀 Flip-card interaction for events
+- 🔐 Signup / Login functionality
+- 🧑‍🤝‍🧑 Explore club profiles
+- 📱 Fully responsive design using **Tailwind CSS**
 
-###  Backend (Node.js + Express + MongoDB)
--  User authentication using 'bcrypt'
--  Event creation & listing
--  Announcement posting & retrieval
--  MongoDB via 'Mongoose'
+### 🔹 Backend – Node.js + Express + MongoDB
+- 🔐 User authentication with **bcrypt**
+- 🗓️ Event creation & listing
+- 📢 Announcement posting & retrieval
+- 💾 Data handling using **Mongoose** (MongoDB ODM)
+
+---
+
+## 🧩 Project Structure
+
 
 ---
 
 ##  Project Structure
-src/
-├── components/
-│ ├── Events.jsx, Notification.jsx, Signup.jsx, NavBar.jsx, etc.
-├── App.jsx
-├── main.jsx
-└── index.css
-
-backened/
-├── server.jsx
-├── models/
+repo-root/
+├──  # Frontend (React + Vite)
+│ ├── src/
+│ │ ├── components/ # Events.jsx, Notification.jsx, Signup.jsx, NavBar.jsx, etc.
+│ │ ├── App.jsx
+│ │ ├── main.jsx
+│ │ └── index.css
+├── server/ # Backened (Node.js + Express)
+│ ├── server.jsx
+│ └── models/
 │ ├── UserSchema.js
 │ ├── Event.js
-│ ├── Announce.js
+│ └── Announce.js
 
 
 ---
 
-##  API Endpoints
-
- Method       Endpoint              Description                      
-
- POST       `/api/signup`         Register a new user              
- POST       `/api/login`          Login user and return info       
- POST       `/Createevent`        Create a new event               
- GET        `/Events`             Fetch all events                 
- POST       `/announce`           Create a new announcement        
- GET        `/notification`       Get all announcements            
 
 ---
 
-##  User Auth Flow
+## 🔗 API Endpoints
 
-1.  Signup - `/api/signup` with `name`, `email`, `password`
-   - Password is hashed using `bcrypt`
-   - On success, user info is returned and saved to localStorage
-2.  Login - `/api/login`
-   - Compares credentials with hashed password
-   - Returns user info on success
+| Method | Endpoint            | Description                     |
+|--------|---------------------|---------------------------------|
+| POST   | `/api/signup`       | Register a new user             |
+| POST   | `/api/login`        | User login                      |
+| POST   | `/Createevent`      | Create a new event              |
+| GET    | `/Events`           | Fetch all events                |
+| POST   | `/announce`         | Create a new announcement       |
+| GET    | `/notification`     | Get all announcements           |
 
 ---
 
-##  Install & Run
+## 🔐 User Authentication Flow
 
-###  Backend
+1. **Signup** – `POST /api/signup`
+   - Takes `name`, `email`, and `password`
+   - Password is hashed using **bcrypt**
+   - On success, user data is returned and saved in `localStorage`
 
+2. **Login** – `POST /api/login`
+   - Credentials are verified against hashed password
+   - Returns user data on successful authentication
+
+---
+
+## ⚙️ Installation & Running
+
+### Backend (Express + MongoDB)
 ```bash
 cd server
 npm install
 node server.jsx
-###   Frontend
-cd client
-npm install
-npm run dev   # if Vite
-# or
-npm start     # if CRA
+ Frontend
+npm i
+npm run dev
 
-### Contact
-Email: cse240001068@iiti.ac.in
+
+
+
+👥 Contributors
+Anand Vivek
+
+Sakshya Singh Kasera
+
+Shaik Riyaz
+
 ### License
 This project is for educational use at IIT Indore. 
 
