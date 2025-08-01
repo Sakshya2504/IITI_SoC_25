@@ -2,29 +2,29 @@
 
 A full-stack web application designed to manage club activities, event announcements, and foster student engagement at **IIT Indore**.
 
-🌐 **Live Site:** [announcementiiti-1.onrender.com](https://announcementiiti-1.onrender.com)
+ **Live Site:** [announcementiiti-1.onrender.com](https://announcementiiti-1.onrender.com)
 
 ---
 
-## 🌟 Features
+##  Features
 
-### 🔹 Frontend – React + Tailwind CSS
-- 📢 Post and view announcements
-- 📅 Explore and create events
-- 🌀 Flip-card interaction for events
-- 🔐 Signup / Login functionality
-- 🧑‍🤝‍🧑 Explore club profiles
-- 📱 Fully responsive design using **Tailwind CSS**
+###  Frontend – React + Tailwind CSS
+-  Post and view announcements
+-  Explore and create events
+-  Flip-card interaction for events
+-  Signup / Login functionality
+-  Explore club profiles
+-  Fully responsive design using **Tailwind CSS**
 
 ### 🔹 Backend – Node.js + Express + MongoDB
-- 🔐 User authentication with **bcrypt**
-- 🗓️ Event creation & listing
-- 📢 Announcement posting & retrieval
-- 💾 Data handling using **Mongoose** (MongoDB ODM)
+-  User authentication with **bcrypt**
+-  Event creation & listing
+-  Announcement posting & retrieval
+-  Data handling using **Mongoose** (MongoDB ODM)
 
 ---
 
-## 🧩 Project Structure
+##  Project Structure
 
 
 ---
@@ -63,7 +63,7 @@ repo-root/
 
 ---
 
-## 🔐 User Authentication Flow
+##  User Authentication Flow
 
 1. **Signup** – `POST /api/signup`
    - Takes `name`, `email`, and `password`
@@ -76,7 +76,7 @@ repo-root/
 
 ---
 
-## ⚙️ Installation & Running
+## ⚙ Installation & Running
 
 ### Backend (Express + MongoDB)
 ```bash
