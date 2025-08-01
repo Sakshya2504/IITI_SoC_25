@@ -31,7 +31,9 @@ app.use(express.json());
 await mongoose.connect(process.env.MONGODB_URI, {
   // useNewUrlParser: true, //useNewUrlParse is used for parsing the MongoDB connection string
   // useUnifiedTopology: true // useUnifiedTopology is used to opt in to the MongoDB driver's new connection management engine
+
 });
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
 if (!process.env.MONGODB_URI) {
   console.error("MONGODB_URI not found in .env");
   process.exit(1);
