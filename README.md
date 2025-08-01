@@ -33,7 +33,11 @@ A full-stack web application designed to manage club activities, event announcem
 repo-root/
 ├──  # Frontend (React + Vite)
 │ ├── src/
-│ │ ├── components/ # Events.jsx, Notification.jsx, Signup.jsx, NavBar.jsx, etc.
+│ │ ├── components/ 
+# Events.jsx, 
+Notification.jsx, 
+Signup.jsx, 
+NavBar.jsx, etc.
 │ │ ├── App.jsx
 │ │ ├── main.jsx
 │ │ └── index.css
@@ -44,8 +48,6 @@ repo-root/
 │ ├── Event.js
 │ └── Announce.js
 
-
----
 
 
 ---
@@ -60,7 +62,10 @@ repo-root/
 | GET    | `/Events`           | Fetch all events                |
 | POST   | `/announce`         | Create a new announcement       |
 | GET    | `/notification`     | Get all announcements           |
+| GET    | `/api/verifyadmin`  | verify admin to createevent.    |
+| GET    | `/api/register`     | register of intrested students. |
 
+|
 ---
 
 ## 🔐 User Authentication Flow
@@ -73,16 +78,18 @@ repo-root/
 2. **Login** – `POST /api/login`
    - Credentials are verified against hashed password
    - Returns user data on successful authentication
-
+3. **verifyadmin **  – `POST /api/verifyadmin `
+   - Credentials are verified against saved email
+   - Create events  on successful authentication
 ---
 
 ## ⚙️ Installation & Running
 
 ### Backend (Express + MongoDB)
 ```bash
-cd server
+cd Backened 
 npm install
-node server.jsx
+node server.js
  Frontend
 npm i
 npm run dev
@@ -92,9 +99,7 @@ npm run dev
 
 👥 Contributors
 Anand Vivek
-
 Sakshya Singh Kasera
-
 Shaik Riyaz
 
 ### License
