@@ -51,7 +51,7 @@ setloading(true);
         navigate('/');
       }
       else {
-        <LoadingSpinner />
+
 
         alert(result.message || 'Invalid credentials');
       }
@@ -59,7 +59,7 @@ setloading(true);
     }
     catch (error) {
       console.error(error);
-        <LoadingSpinner />
+
 
       alert('Something went wrong');
 
@@ -109,7 +109,7 @@ setloading(true);
 
             <p className="text-white font-bold mt-4">Don’t have an account?</p>
             <Link
-              to="/#/signup"
+              to="/signup"
               className="text-cyan-300 font-bold hover:underline transition-colors duration-200"
             >
               Signup
