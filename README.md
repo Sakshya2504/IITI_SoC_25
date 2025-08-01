@@ -24,10 +24,6 @@ A full-stack web application designed to manage club activities, event announcem
 
 ---
 
-## Project Structure
-
-
----
 
 ##  Project Structure
 repo-root/
