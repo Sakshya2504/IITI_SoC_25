@@ -500,7 +500,7 @@ export default function Events(props) {
     const emailid = props.personinfo.email;
     setComment((prev) => ({ ...prev, [_id]: "" }));
     try {
-      await fetch(`http://localhost:3000/api/comment/${_id}`, {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/comment/${_id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ emailid, comment }),
@@ -521,7 +521,7 @@ export default function Events(props) {
     useEffect(() => {
     const fetchcomments = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/Events/${commenteventid}`);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/Events/${commenteventid}`);
         const data = await res.json();
         if(res.ok){
 
@@ -542,7 +542,7 @@ export default function Events(props) {
     const eventId = selectedEventId || e.target.id;
 
     try {
-      const response = await fetch(`http://localhost:3000/events/${selectedEventId}/register`,
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/events/${selectedEventId}/register`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -572,7 +572,7 @@ export default function Events(props) {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:3000/Events");
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/Events`);
         const data = await res.json();
 
         const updatedEvents = data
@@ -587,7 +587,7 @@ export default function Events(props) {
         const counts = {};
         for (const event of updatedEvents) {
           const response = await fetch(
-            `http://localhost:3000/events/${event._id}/registrations/count`
+            `${import.meta.env.VITE_BACKEND_URL}/events/${event._id}/registrations/count`
           );
           const { count } = await response.json();
           counts[event._id] = count;
